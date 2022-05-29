@@ -1,2 +1,2 @@
-# cms-admin
-CMS(Contents management system) admin
+# Headless CMS
+Headless CMS(Contents management system)
