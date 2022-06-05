@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
@@ -14,7 +14,7 @@ import { RecoilRoot } from 'recoil';
 import GlobalStyles from '@/styles/GlobalStyles';
 import lightTheme from '@/styles/theme';
 
-function MyApp({ Component, pageProps }: AppProps): ReactElement {
+function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {

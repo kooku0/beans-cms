@@ -3615,13 +3615,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/kakao-js-sdk@npm:^1.39.1":
-  version: 1.39.1
-  resolution: "@types/kakao-js-sdk@npm:1.39.1"
-  checksum: e64c68a3c5554fa312a7f59f0068f720c5513eff56ed8fbb225820d300b922911eab4c01bd3027fd5712a65d776fd12241405869bcc640f7087ab81269a666bd
-  languageName: node
-  linkType: hard
-
 "@types/lodash@npm:^4.14.175":
   version: 4.14.182
   resolution: "@types/lodash@npm:4.14.182"
@@ -3633,13 +3626,6 @@ __metadata:
   version: 4.0.2
   resolution: "@types/long@npm:4.0.2"
   checksum: d16cde7240d834cf44ba1eaec49e78ae3180e724cd667052b194a372f350d024cba8dd3f37b0864931683dab09ca935d52f0c4c1687178af5ada9fc85b0635f4
-  languageName: node
-  linkType: hard
-
-"@types/navermaps@npm:^3.0.13":
-  version: 3.0.16
-  resolution: "@types/navermaps@npm:3.0.16"
-  checksum: dc07637480bb20eceda245a2411e8c69adf43e90de0bcb63491a6f7a5647532979a6d2aaeda18ff7f9c7029b522536727c6eba55f58c13c4c5e865f9750b212d
   languageName: node
   linkType: hard
 
@@ -4823,22 +4809,6 @@ __metadata:
   version: 1.0.2
   resolution: "char-regex@npm:1.0.2"
   checksum: b563e4b6039b15213114626621e7a3d12f31008bdce20f9c741d69987f62aeaace7ec30f6018890ad77b2e9b4d95324c9f5acfca58a9441e3b1dcdd1e2525d17
-  languageName: node
-  linkType: hard
-
-"chart.js@npm:^3.7.1":
-  version: 3.8.0
-  resolution: "chart.js@npm:3.8.0"
-  checksum: 0360212bf5d534effc8475a1aa705ba7257a315af368b5e8eecf476f0bd57a6bb80ad740e870d552f2d11e134dd1497ccef02950d7e626c21a400ff00ecf59af
-  languageName: node
-  linkType: hard
-
-"chartjs-plugin-datalabels@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "chartjs-plugin-datalabels@npm:2.0.0"
-  peerDependencies:
-    chart.js: ^3.0.0
-  checksum: aa59cabc57feca686281033f6160c4f7e84f973e5ad27e794daa7a6bc8dbf7a14055fee4c05df6a9d8c7be66ec0a59203244e8f528fce3dfd13847bf92d7aa7c
   languageName: node
   linkType: hard
 
@@ -7449,8 +7419,6 @@ __metadata:
     "@types/d3": ^7
     "@types/jest": ^27.5.0
     "@types/jest-plugin-context": ^2.9.4
-    "@types/kakao-js-sdk": ^1.39.1
-    "@types/navermaps": ^3.0.13
     "@types/node": ^17.0.31
     "@types/qs": ^6
     "@types/react": ^18.0.8
@@ -7466,8 +7434,6 @@ __metadata:
     awesome-phonenumber: ^2.72.0
     axios: ^0.27.2
     axios-retry: ^3.2.5
-    chart.js: ^3.7.1
-    chartjs-plugin-datalabels: ^2.0.0
     cypress: ^9.5.2
     d3: 6.7.0
     dayjs: ^1.11.1
@@ -7489,7 +7455,6 @@ __metadata:
     firebase: 8.10.1
     given2: ^2.1.7
     husky: ^7.0.2
-    is-retry-allowed: ^2.2.0
     jest: ^28.0.3
     jest-canvas-mock: ^2.3.1
     jest-environment-jsdom: ^28.0.2
@@ -7504,7 +7469,6 @@ __metadata:
     pure-react-carousel: ^1.28.0
     qs: ^6.10.2
     react: ^18.1.0
-    react-chartjs-2: ^4.0.1
     react-custom-scrollbars-2: ^4.4.0
     react-device-detect: ^2.2.2
     react-dom: ^18.1.0
@@ -7523,7 +7487,7 @@ __metadata:
     recoil: ^0.7.2
     sharp: ^0.30.4
     start-server-and-test: ^1.14.0
-    typescript: ^4.6.4
+    typescript: ^4.7.3
     use-resize-observer: ^8.0.0
     yup: ^0.32.11
   languageName: unknown
@@ -10494,16 +10458,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-chartjs-2@npm:^4.0.1":
-  version: 4.1.0
-  resolution: "react-chartjs-2@npm:4.1.0"
-  peerDependencies:
-    chart.js: ^3.5.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: fe01bdaf80c8a806af36e772719f420862e15e393a32c4c15b0e5fb8167143648e3f465b1b3ee8c4889f9531fff6ad6d34832606029ebf7d2751729198eb6121
-  languageName: node
-  linkType: hard
-
 "react-custom-scrollbars-2@npm:^4.4.0":
   version: 4.4.0
   resolution: "react-custom-scrollbars-2@npm:4.4.0"
@@ -12165,7 +12119,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4":
+"typescript@npm:^4.7.3":
   version: 4.7.3
   resolution: "typescript@npm:4.7.3"
   bin:
@@ -12175,7 +12129,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
   version: 4.7.3
   resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
   bin:

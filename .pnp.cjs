@@ -48,8 +48,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/d3", "npm:7.4.0"],\
             ["@types/jest", "npm:27.5.2"],\
             ["@types/jest-plugin-context", "npm:2.9.4"],\
-            ["@types/kakao-js-sdk", "npm:1.39.1"],\
-            ["@types/navermaps", "npm:3.0.16"],\
             ["@types/node", "npm:17.0.40"],\
             ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.11"],\
@@ -65,8 +63,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["awesome-phonenumber", "npm:2.73.0"],\
             ["axios", "npm:0.27.2"],\
             ["axios-retry", "npm:3.2.5"],\
-            ["chart.js", "npm:3.8.0"],\
-            ["chartjs-plugin-datalabels", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.0.0"],\
             ["cypress", "npm:9.7.0"],\
             ["d3", "npm:6.7.0"],\
             ["dayjs", "npm:1.11.2"],\
@@ -88,7 +84,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["firebase", "npm:8.10.1"],\
             ["given2", "npm:2.1.7"],\
             ["husky", "npm:7.0.4"],\
-            ["is-retry-allowed", "npm:2.2.0"],\
             ["jest", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:28.1.0"],\
             ["jest-canvas-mock", "npm:2.4.0"],\
             ["jest-environment-jsdom", "npm:28.1.0"],\
@@ -103,7 +98,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pure-react-carousel", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:1.28.1"],\
             ["qs", "npm:6.10.3"],\
             ["react", "npm:18.1.0"],\
-            ["react-chartjs-2", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.1.0"],\
             ["react-custom-scrollbars-2", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.4.0"],\
             ["react-device-detect", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.2.2"],\
             ["react-dom", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:18.1.0"],\
@@ -5816,15 +5810,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@types/kakao-js-sdk", [\
-        ["npm:1.39.1", {\
-          "packageLocation": "./.yarn/cache/@types-kakao-js-sdk-npm-1.39.1-baf2c0cd08-e64c68a3c5.zip/node_modules/@types/kakao-js-sdk/",\
-          "packageDependencies": [\
-            ["@types/kakao-js-sdk", "npm:1.39.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@types/lodash", [\
         ["npm:4.14.182", {\
           "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.182-1073aac722-7dd137aa9d.zip/node_modules/@types/lodash/",\
@@ -5839,15 +5824,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-long-npm-4.0.2-e7bdc00dd4-d16cde7240.zip/node_modules/@types/long/",\
           "packageDependencies": [\
             ["@types/long", "npm:4.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/navermaps", [\
-        ["npm:3.0.16", {\
-          "packageLocation": "./.yarn/cache/@types-navermaps-npm-3.0.16-751ef0f592-dc07637480.zip/node_modules/@types/navermaps/",\
-          "packageDependencies": [\
-            ["@types/navermaps", "npm:3.0.16"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7379,37 +7355,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/char-regex-npm-1.0.2-ecade5f97f-b563e4b603.zip/node_modules/char-regex/",\
           "packageDependencies": [\
             ["char-regex", "npm:1.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["chart.js", [\
-        ["npm:3.8.0", {\
-          "packageLocation": "./.yarn/cache/chart.js-npm-3.8.0-66bc0355a5-0360212bf5.zip/node_modules/chart.js/",\
-          "packageDependencies": [\
-            ["chart.js", "npm:3.8.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["chartjs-plugin-datalabels", [\
-        ["npm:2.0.0", {\
-          "packageLocation": "./.yarn/cache/chartjs-plugin-datalabels-npm-2.0.0-e2e720dc82-aa59cabc57.zip/node_modules/chartjs-plugin-datalabels/",\
-          "packageDependencies": [\
-            ["chartjs-plugin-datalabels", "npm:2.0.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.0.0", {\
-          "packageLocation": "./.yarn/__virtual__/chartjs-plugin-datalabels-virtual-459e5e6e38/0/cache/chartjs-plugin-datalabels-npm-2.0.0-e2e720dc82-aa59cabc57.zip/node_modules/chartjs-plugin-datalabels/",\
-          "packageDependencies": [\
-            ["chartjs-plugin-datalabels", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.0.0"],\
-            ["@types/chart.js", null],\
-            ["chart.js", "npm:3.8.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/chart.js",\
-            "chart.js"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10601,8 +10546,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/d3", "npm:7.4.0"],\
             ["@types/jest", "npm:27.5.2"],\
             ["@types/jest-plugin-context", "npm:2.9.4"],\
-            ["@types/kakao-js-sdk", "npm:1.39.1"],\
-            ["@types/navermaps", "npm:3.0.16"],\
             ["@types/node", "npm:17.0.40"],\
             ["@types/qs", "npm:6.9.7"],\
             ["@types/react", "npm:18.0.11"],\
@@ -10618,8 +10561,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["awesome-phonenumber", "npm:2.73.0"],\
             ["axios", "npm:0.27.2"],\
             ["axios-retry", "npm:3.2.5"],\
-            ["chart.js", "npm:3.8.0"],\
-            ["chartjs-plugin-datalabels", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.0.0"],\
             ["cypress", "npm:9.7.0"],\
             ["d3", "npm:6.7.0"],\
             ["dayjs", "npm:1.11.2"],\
@@ -10641,7 +10582,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["firebase", "npm:8.10.1"],\
             ["given2", "npm:2.1.7"],\
             ["husky", "npm:7.0.4"],\
-            ["is-retry-allowed", "npm:2.2.0"],\
             ["jest", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:28.1.0"],\
             ["jest-canvas-mock", "npm:2.4.0"],\
             ["jest-environment-jsdom", "npm:28.1.0"],\
@@ -10656,7 +10596,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["pure-react-carousel", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:1.28.1"],\
             ["qs", "npm:6.10.3"],\
             ["react", "npm:18.1.0"],\
-            ["react-chartjs-2", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.1.0"],\
             ["react-custom-scrollbars-2", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.4.0"],\
             ["react-device-detect", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.2.2"],\
             ["react-dom", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:18.1.0"],\
@@ -14142,32 +14081,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react", "npm:18.1.0"],\
             ["loose-envify", "npm:1.4.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["react-chartjs-2", [\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/react-chartjs-2-npm-4.1.0-98b8094b49-fe01bdaf80.zip/node_modules/react-chartjs-2/",\
-          "packageDependencies": [\
-            ["react-chartjs-2", "npm:4.1.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.1.0", {\
-          "packageLocation": "./.yarn/__virtual__/react-chartjs-2-virtual-ccd30ac575/0/cache/react-chartjs-2-npm-4.1.0-98b8094b49-fe01bdaf80.zip/node_modules/react-chartjs-2/",\
-          "packageDependencies": [\
-            ["react-chartjs-2", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:4.1.0"],\
-            ["@types/chart.js", null],\
-            ["@types/react", "npm:18.0.11"],\
-            ["chart.js", "npm:3.8.0"],\
-            ["react", "npm:18.1.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/chart.js",\
-            "@types/react",\
-            "chart.js",\
-            "react"\
           ],\
           "linkType": "HARD"\
         }]\
