@@ -1,17 +1,11 @@
 {
-  "name": "kasa-web",
+  "name": "headless-cms",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:dev": "env-cmd -f .env.development yarn build",
-    "build:staging": "env-cmd -f .env.staging yarn build",
-    "build:prod": "env-cmd -f .env.production yarn build",
     "start": "next start",
-    "start:dev": "env-cmd -f .env.development yarn start",
-    "start:staging": "env-cmd -f .env.staging yarn start",
-    "start:prod": "env-cmd -f .env.production yarn start",
     "lint": "eslint --ext ts,tsx .",
     "test:unit": "jest",
     "test:watch": "jest --watch",
