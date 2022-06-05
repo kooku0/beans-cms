@@ -1,0 +1,9 @@
+# Set to true to add reviewers to pull requests
+addReviewers: false
+
+# Set to true to add assignees to pull requests
+addAssignees: author
+
+# Number of reviewers has no impact on Github teams
+# Set 0 to add all the reviewers (default: 0)
+numberOfReviewers: 0

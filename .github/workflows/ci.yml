@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  continuous-integration:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.14.2
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.14.2"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Check Unit Test
+        run: yarn test:unit
+
+      - name: Check Lint
+        run: yarn lint
+
+  set-codecov-test-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.14.2
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.14.2"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Create Unit Test Coverage
+        run: yarn test:coverage
+
+      - name: Set unit test coverage
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
