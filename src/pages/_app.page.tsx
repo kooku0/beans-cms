@@ -14,10 +14,6 @@ import { RecoilRoot } from 'recoil';
 import GlobalStyles from '@/styles/GlobalStyles';
 import lightTheme from '@/styles/theme';
 
-import '../assets/css/faq-body-style.css';
-
-axiosInterceptors();
-
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
