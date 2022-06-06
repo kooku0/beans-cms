@@ -3722,13 +3722,13 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:^18.0.8":
-  version: 18.0.11
-  resolution: "@types/react@npm:18.0.11"
+  version: 18.0.12
+  resolution: "@types/react@npm:18.0.12"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: a2138d6929c36a398b0b43eb815b4e67c4f15aeebbdf8b1959edac56b8662d7409020a00540369b4eb1054579b1e8c9549447ae9b0335d5d1ec4ed4e1be2d628
+  checksum: 526ea13b3adf7fe4b475e55b7426510a7861ef2910664a9014ef42cba0c699d5167dc378eb161e2ec26c07a3b6fde9b6bdcbbb6f4b5580612246bc289395ef03
   languageName: node
   linkType: hard
 
@@ -6139,11 +6139,11 @@ __metadata:
   linkType: hard
 
 "error-stack-parser@npm:^2.0.6":
-  version: 2.0.7
-  resolution: "error-stack-parser@npm:2.0.7"
+  version: 2.1.1
+  resolution: "error-stack-parser@npm:2.1.1"
   dependencies:
-    stackframe: ^1.1.1
-  checksum: fe30bba934db08487dd2c5a8dfe785f64debf4948b5c79a531b610b4468d96b918a806c0f3d44f634e70945533d23f44cb3af0a2d2f934b1c698930307d1b73b
+    stackframe: ^1.3.0
+  checksum: bd80335da3b2bc191ba4d048a2f1c71cceb1fbb19de75c3ca7a269d67cabd4015af14e933a273bc4ae3cd9681e39c87f3656cabd53b7da7ee062966cbcd41500
   languageName: node
   linkType: hard
 
@@ -11433,11 +11433,11 @@ __metadata:
   linkType: hard
 
 "stack-generator@npm:^2.0.5":
-  version: 2.0.5
-  resolution: "stack-generator@npm:2.0.5"
+  version: 2.0.8
+  resolution: "stack-generator@npm:2.0.8"
   dependencies:
-    stackframe: ^1.1.1
-  checksum: a85c45a6f166319b31e9298da1e05b778b768553c2126eeeccfa5c4402fc810de1c541ec0b92db63238d68b3e08f4f57544adc27255e52f25f8edcabcc9caf63
+    stackframe: ^1.3.1
+  checksum: 20649995f359ecc7cf9589fe14158f6637352f61bd1a4c9e2d47883161ea684f749e6e705ce90b37fc4c76cd6b44636e9bb15321c14d2d1eaf6d0701aa854493
   languageName: node
   linkType: hard
 
@@ -11450,20 +11450,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stackframe@npm:^1.1.1":
-  version: 1.2.1
-  resolution: "stackframe@npm:1.2.1"
-  checksum: 1a3f281014bb1d2178b7c2ab26d657fb0f83c21d7d34ab33d858fd0b652a035254619fce8601278a2cf22ddb3382af21c4ea29b429806da75f3077fbd5e5bf17
+"stackframe@npm:^1.3.0, stackframe@npm:^1.3.1, stackframe@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "stackframe@npm:1.3.2"
+  checksum: 1dae826c5f6245086344499874d278ec25da5ff65bc401a97e2ed1c944ce9eaee3020512b71620c17c10ddf5718314926b15ecdf937e8062490da8e467dd79ff
   languageName: node
   linkType: hard
 
 "stacktrace-gps@npm:^3.0.4":
-  version: 3.0.4
-  resolution: "stacktrace-gps@npm:3.0.4"
+  version: 3.1.0
+  resolution: "stacktrace-gps@npm:3.1.0"
   dependencies:
     source-map: 0.5.6
-    stackframe: ^1.1.1
-  checksum: b98cb77632d38e6cbc243da4c47ca5f4bef918985c233bb4cfe8bfdc60fde92b53ce0630b16cf24d81560f1442e2ff92ccf6e2fe19031c90fb775d8e86037d9b
+    stackframe: ^1.3.2
+  checksum: 4e5f4755429ef8038be2c9939041ef271e7a021e36bd135d577a383dc50a2c7cbed17a1e45fc7bd5d6d4c67efb982a21d4e6d5cd808bade25dbf0e56b6cb93b5
   languageName: node
   linkType: hard
 
@@ -12131,11 +12131,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
   version: 4.7.3
-  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8257ce7ecbbf9416da60045a76a99d473698ca9e973fa0ddab7137cacb1587255431176cbbcc801a650938c4dc8109ab88355774829a714fabe56a53a2fe4524
+  checksum: 137d18a77f52254a284960b16ab53d0619f57b69b5d585804b8413f798a1175ce3e774fb95e6a101868577aafe357d8fcfc9171f0dc9fc0c210e9ae59d107cc0
   languageName: node
   linkType: hard
 
