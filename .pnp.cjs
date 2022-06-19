@@ -81,7 +81,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jwt-decode", "npm:3.1.2"],\
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
-            ["mongoose", "npm:6.4.0"],\
             ["next", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:12.1.6"],\
             ["next-connect", "npm:0.12.2"],\
             ["nextjs-progressbar", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:0.0.14"],\
@@ -8585,7 +8584,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jwt-decode", "npm:3.1.2"],\
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
-            ["mongoose", "npm:6.4.0"],\
             ["next", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:12.1.6"],\
             ["next-connect", "npm:0.12.2"],\
             ["nextjs-progressbar", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:0.0.14"],\
@@ -10116,15 +10114,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["kareem", [\
-        ["npm:2.4.1", {\
-          "packageLocation": "./.yarn/cache/kareem-npm-2.4.1-cb643c6e21-83c8d8f5ea.zip/node_modules/kareem/",\
-          "packageDependencies": [\
-            ["kareem", "npm:2.4.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["kleur", [\
         ["npm:3.0.3", {\
           "packageLocation": "./.yarn/cache/kleur-npm-3.0.3-f6f53649a4-df82cd1e17.zip/node_modules/kleur/",\
@@ -10771,47 +10760,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["mongoose", [\
-        ["npm:6.4.0", {\
-          "packageLocation": "./.yarn/cache/mongoose-npm-6.4.0-704e15469e-bc10695bb9.zip/node_modules/mongoose/",\
-          "packageDependencies": [\
-            ["mongoose", "npm:6.4.0"],\
-            ["bson", "npm:4.6.4"],\
-            ["kareem", "npm:2.4.1"],\
-            ["mongodb", "npm:4.7.0"],\
-            ["mpath", "npm:0.9.0"],\
-            ["mquery", "npm:4.0.3"],\
-            ["ms", "npm:2.1.3"],\
-            ["sift", "npm:16.0.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["moo-color", [\
         ["npm:1.0.3", {\
           "packageLocation": "./.yarn/cache/moo-color-npm-1.0.3-50b8650764-02bf59b6bb.zip/node_modules/moo-color/",\
           "packageDependencies": [\
             ["moo-color", "npm:1.0.3"],\
             ["color-name", "npm:1.1.4"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["mpath", [\
-        ["npm:0.9.0", {\
-          "packageLocation": "./.yarn/cache/mpath-npm-0.9.0-e79cc94aea-1052f1f926.zip/node_modules/mpath/",\
-          "packageDependencies": [\
-            ["mpath", "npm:0.9.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["mquery", [\
-        ["npm:4.0.3", {\
-          "packageLocation": "./.yarn/cache/mquery-npm-4.0.3-993368e4d5-16a6887ba7.zip/node_modules/mquery/",\
-          "packageDependencies": [\
-            ["mquery", "npm:4.0.3"],\
-            ["debug", "virtual:e9768252e43aa6de65fb854961d56a022a412f93016571f7cfd339a91f5a5fc7545f1bcf4252cbdf5b29e03fc6994a47e8fc72f12f0404c4b962ba5757f205c9#npm:4.3.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -12594,15 +12548,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["call-bind", "npm:1.0.2"],\
             ["get-intrinsic", "npm:1.1.1"],\
             ["object-inspect", "npm:1.12.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["sift", [\
-        ["npm:16.0.0", {\
-          "packageLocation": "./.yarn/cache/sift-npm-16.0.0-c5d447b898-88d5754afe.zip/node_modules/sift/",\
-          "packageDependencies": [\
-            ["sift", "npm:16.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\

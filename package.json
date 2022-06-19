@@ -35,7 +35,6 @@
     "emotion-normalize": "^11.0.1",
     "jwt-decode": "^3.1.2",
     "mongodb": "^4.7.0",
-    "mongoose": "^6.4.0",
     "next": "^12.1.6",
     "next-connect": "^0.12.2",
     "nextjs-progressbar": "^0.0.14",
