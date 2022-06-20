@@ -11,6 +11,8 @@ if (!DB_URI) {
 
 const client = new MongoClient(DB_URI);
 
+console.log(client);
+
 async function database(req: any, res: NextApiResponse, next: any) {
   if (!client.listenerCount) {
     await client.connect();
