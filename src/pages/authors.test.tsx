@@ -2,9 +2,13 @@ import { render } from '@testing-library/react';
 
 import AuthorsPage from './authors.page';
 
+jest.mock('axios', () => ({
+  get: jest.fn().mockResolvedValue([]),
+}));
+
 describe('AuthorsPage', () => {
   const renderAuthorsPage = () => render(
-    <AuthorsPage />
+    <AuthorsPage />,
   );
 
   it('AuthorsPage가 랜더링되어야 한다.', () => {

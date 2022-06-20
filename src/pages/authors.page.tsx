@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import axios, { AxiosResponse } from 'axios';
+
 import { AuthorSchema } from '@/models/author';
 
 function AuthorsPage() {
