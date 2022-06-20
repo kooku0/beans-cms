@@ -4,7 +4,7 @@ import HomePage from './index.page';
 
 describe('HomePage', () => {
   const renderHomePage = () => render(
-    <HomePage />
+    <HomePage />,
   );
 
   it('HomePage가 랜더링되어야 한다.', () => {
