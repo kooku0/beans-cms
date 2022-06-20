@@ -6,7 +6,7 @@ const DB_URI = process.env.MONGODB_URI;
 const DB = process.env.MONGODB_DB;
 
 if (!DB_URI) {
-  throw new Error('Please add your Mongo URI to .env.local');
+  throw new Error('Please add your Mongo URI to environment variables');
 }
 
 const client = new MongoClient(DB_URI);
