@@ -1,4 +1,4 @@
 export type AuthorSchema = {
-  id: number;
+  _id: string;
   name: string;
 }

@@ -1,31 +1,36 @@
 import { Collection } from 'mongodb';
+import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
 
-import middleware from '@/middleware/database';
+import database from '@/middleware/database';
 import { AuthorSchema } from '@/models/author';
 
 const COLLECTION = 'authors';
 
-const handler = nextConnect();
+const handler = nextConnect<NextApiRequest, NextApiResponse>();
 
-handler.use(middleware);
+handler.use(database);
 
-handler.get(async (req: any, res: any) => {
-  const collection = req.db.collection(COLLECTION) as Collection<AuthorSchema>;
+handler
+  .post(async (req: any, res) => {
+    const collection = req.db.collection(COLLECTION) as Collection<AuthorSchema>;
 
-  const findResult = await collection.find({}).toArray();
+    const doc = JSON.parse(JSON.stringify(req.body));
 
-  res.json(findResult);
-});
+    try {
+      const result = await collection.insertOne(doc);
 
-handler.post(async (req: any, res: any) => {
-  const collection = req.db.collection(COLLECTION) as Collection<AuthorSchema>;
+      res.end(result);
+    } catch (error) {
+      res.end(error);
+    }
+  })
+  .get(async (req: any, res) => {
+    const collection = req.db.collection(COLLECTION) as Collection<AuthorSchema>;
 
-  const doc = JSON.parse(req.body);
+    const findResult = await collection.find({}).toArray();
 
-  const result = await collection.insertOne(doc);
-
-  res.json(result);
-});
+    res.json(findResult);
+  });
 
 export default handler;
