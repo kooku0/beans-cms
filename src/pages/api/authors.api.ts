@@ -2,17 +2,13 @@ import { Collection } from 'mongodb';
 import nextConnect from 'next-connect';
 
 import middleware from '@/middleware/database';
+import { AuthorSchema } from '@/models/author';
 
 const COLLECTION = 'authors';
 
 const handler = nextConnect();
 
 handler.use(middleware);
-
-type AuthorSchema = {
-  id: number;
-  name: string;
-}
 
 handler.get(async (req: any, res: any) => {
   const collection = req.db.collection(COLLECTION) as Collection<AuthorSchema>;

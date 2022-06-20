@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import axios, { AxiosResponse } from 'axios';
-
-type AuthorSchema = {
-  id: number;
-  name: string;
-}
+import { AuthorSchema } from '@/models/author';
 
 function AuthorsPage() {
   const [authors, setAuthors] = useState<AuthorSchema[]>([]);
