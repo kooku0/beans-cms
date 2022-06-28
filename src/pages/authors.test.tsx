@@ -3,14 +3,14 @@ import {
 } from '@testing-library/react';
 
 import AUTHOR_FIXTURE from '@/fixtures/author';
-import useCreateAuthor from '@/hooks/query/useCreateAuthor';
-import useFetchAuthors from '@/hooks/query/useFetchAuthors';
+import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
+import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import AuthorsPage from './authors.page';
 
-jest.mock('@/hooks/query/useFetchAuthors');
-jest.mock('@/hooks/query/useCreateAuthor');
+jest.mock('@/hooks/query/author/useFetchAuthors');
+jest.mock('@/hooks/query/author/useCreateAuthor');
 
 describe('AuthorsPage', () => {
   const renderAuthorsPage = () => render(
