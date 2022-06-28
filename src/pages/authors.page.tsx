@@ -1,27 +1,25 @@
 /* eslint-disable no-underscore-dangle */
 import {
-  ChangeEventHandler, useEffect, useState,
+  ChangeEventHandler, useState,
 } from 'react';
 
-import axios, { AxiosResponse } from 'axios';
-
-import { AuthorSchema } from '@/models/author';
+import useCreateAuthor from '@/hooks/query/useCreateAuthor';
+import useFetchAuthors from '@/hooks/query/useFetchAuthors';
 
 function AuthorsPage() {
   const [name, setName] = useState('');
-  const [authors, setAuthors] = useState<AuthorSchema[]>([]);
+  const { data: authors } = useFetchAuthors();
+  const { mutate } = useCreateAuthor();
 
-  useEffect(() => {
-    axios.get('/api/authors').then(({ data }: AxiosResponse<AuthorSchema[]>) => {
-      setAuthors(data);
-    });
-  }, []);
-
-  const handleClick = () => axios.post('/api/authors', { name });
+  const handleClick = () => mutate({ name });
 
   const handleChangeInput: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     setName(target.value);
   };
+
+  if (!authors) {
+    return <div>loading</div>;
+  }
 
   return (
     <div>
