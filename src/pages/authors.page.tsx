@@ -3,8 +3,8 @@ import {
   ChangeEventHandler, useState,
 } from 'react';
 
-import useCreateAuthor from '@/hooks/query/useCreateAuthor';
-import useFetchAuthors from '@/hooks/query/useFetchAuthors';
+import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
+import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 
 function AuthorsPage() {
   const [name, setName] = useState('');
