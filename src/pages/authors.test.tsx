@@ -1,55 +1,69 @@
 import {
-  act, fireEvent, render, screen, waitFor, waitForElementToBeRemoved,
+  act, fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
-import axios from 'axios';
 
-import { fetchAuthors } from '@/api/author';
 import AUTHOR_FIXTURE from '@/fixtures/author';
+import useCreateAuthor from '@/hooks/query/useCreateAuthor';
+import useFetchAuthors from '@/hooks/query/useFetchAuthors';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import AuthorsPage from './authors.page';
 
-jest.mock('@/api/author');
+jest.mock('@/hooks/query/useFetchAuthors');
+jest.mock('@/hooks/query/useCreateAuthor');
 
 describe('AuthorsPage', () => {
-  const axiosPost = jest.spyOn(axios, 'post');
-
   const renderAuthorsPage = () => render(
     <ReactQueryWrapper>
       <AuthorsPage />
     </ReactQueryWrapper>,
   );
 
-  it('AuthorsPage가 랜더링되어야 한다.', async () => {
-    (fetchAuthors as jest.Mock).mockResolvedValue({ data: [] });
+  const mutate = jest.fn();
 
-    const { container } = renderAuthorsPage();
-
-    await waitForElementToBeRemoved(screen.queryByText(/loading/));
-
-    expect(container).toHaveTextContent(/Authors/);
+  beforeEach(() => {
+    (useFetchAuthors as jest.Mock).mockImplementation(() => ({ data: given.authors }));
+    (useCreateAuthor as jest.Mock).mockReturnValue({ mutate });
   });
 
-  it('Authors name이 보여야 한다.', async () => {
-    (fetchAuthors as jest.Mock).mockResolvedValue({ data: [AUTHOR_FIXTURE] });
+  context('data fetching이 완료되지 않았다면', () => {
+    given('authors', () => undefined);
 
-    const { container } = renderAuthorsPage();
+    it('"loading"이 보여야 한다.', () => {
+      const { container } = renderAuthorsPage();
 
-    await waitForElementToBeRemoved(screen.queryByText(/loading/));
-
-    await waitFor(() => expect(container).toHaveTextContent(AUTHOR_FIXTURE.name));
+      expect(container).toHaveTextContent(/loading/);
+    });
   });
 
-  it('author 를 등록할 수 있어야한다.', () => {
-    const { name } = AUTHOR_FIXTURE;
+  context('data fetching이 완료되었다면', () => {
+    given('authors', () => []);
 
-    renderAuthorsPage();
+    it('AuthorsPage가 랜더링되어야 한다.', () => {
+      const { container } = renderAuthorsPage();
 
-    act(() => {
-      fireEvent.change(screen.getByLabelText('name'), { target: { value: name } });
-      fireEvent.click(screen.getByText('등록'));
+      expect(container).toHaveTextContent(/Authors/);
     });
 
-    expect(axiosPost).toBeCalledWith('/api/authors', { name });
+    it('Authors name이 보여야 한다.', async () => {
+      given('authors', () => [AUTHOR_FIXTURE]);
+
+      const { container } = renderAuthorsPage();
+
+      await waitFor(() => expect(container).toHaveTextContent(AUTHOR_FIXTURE.name));
+    });
+
+    it('author 를 등록할 수 있어야한다.', () => {
+      const { name } = AUTHOR_FIXTURE;
+
+      renderAuthorsPage();
+
+      act(() => {
+        fireEvent.change(screen.getByLabelText('name'), { target: { value: name } });
+        fireEvent.click(screen.getByText('등록'));
+      });
+
+      expect(mutate).toBeCalledWith({ name });
+    });
   });
 });
