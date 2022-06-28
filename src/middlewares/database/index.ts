@@ -1,6 +1,8 @@
 import { MongoClient } from 'mongodb';
 import { NextApiResponse } from 'next';
-import nextConnect from 'next-connect';
+import nextConnect, { NextHandler } from 'next-connect';
+
+import { ExtendedRequest } from './model';
 
 const DB_URI = process.env.MONGODB_URI;
 const DB = process.env.MONGODB_DB;
@@ -11,7 +13,7 @@ if (!DB_URI) {
 
 const client = new MongoClient(DB_URI);
 
-async function database(req: any, res: NextApiResponse, next: any) {
+async function database(req: ExtendedRequest, res: NextApiResponse, next: NextHandler) {
   if (!client.listenerCount) {
     await client.connect();
   }
