@@ -18,9 +18,10 @@ handler
     const doc = JSON.parse(JSON.stringify(req.body));
 
     try {
-      const result = await collection.insertOne(doc);
+      const { insertedId } = await collection.insertOne(doc);
 
-      res.end(result);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end({ data: { _id: insertedId.toString() } });
     } catch (error) {
       res.end(error);
     }
@@ -30,7 +31,7 @@ handler
 
     const findResult = await collection.find({}).toArray();
 
-    res.json(findResult);
+    res.json({ data: findResult });
   });
 
 export default handler;
