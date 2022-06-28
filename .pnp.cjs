@@ -84,7 +84,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:12.1.6"],\
             ["next-connect", "npm:0.12.2"],\
             ["nextjs-progressbar", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:0.0.14"],\
-            ["qs", "npm:6.10.3"],\
+            ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
             ["react-device-detect", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.2.2"],\
             ["react-dom", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:18.1.0"],\
@@ -8587,7 +8587,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:12.1.6"],\
             ["next-connect", "npm:0.12.2"],\
             ["nextjs-progressbar", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:0.0.14"],\
-            ["qs", "npm:6.10.3"],\
+            ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
             ["react-device-detect", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:2.2.2"],\
             ["react-dom", "virtual:de87a652296d0ead204395eba4b82e64a8397262bb23f3d4d31f22a9856e34dbedc2366b575fcca2195f9a1e845941238656217d1e8202853197ed4f7c7afdbd#npm:18.1.0"],\
@@ -11695,10 +11695,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["qs", [\
-        ["npm:6.10.3", {\
-          "packageLocation": "./.yarn/cache/qs-npm-6.10.3-172e1a3fb7-0fac5e6c71.zip/node_modules/qs/",\
+        ["npm:6.11.0", {\
+          "packageLocation": "./.yarn/cache/qs-npm-6.11.0-caf1bc9dea-6e1f29dd53.zip/node_modules/qs/",\
           "packageDependencies": [\
-            ["qs", "npm:6.10.3"],\
+            ["qs", "npm:6.11.0"],\
             ["side-channel", "npm:1.0.4"]\
           ],\
           "linkType": "HARD"\
