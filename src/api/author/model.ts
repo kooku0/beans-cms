@@ -2,5 +2,7 @@ import { AuthorSchema } from '@/models/author';
 
 export type FetchAuthorsResponse = AuthorSchema[];
 
-export type PostAuthorRequest = Omit<AuthorSchema, 'id'>;
-export type PostAuthorResponse = never;
+export type PostAuthorRequest = Omit<AuthorSchema, '_id'>;
+export type PostAuthorResponse = {
+  _id: string;
+};

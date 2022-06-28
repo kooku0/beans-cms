@@ -1,4 +1,4 @@
-class ApiException<C extends string, D = any> extends Error {
+class ApiException extends Error {
   statusCode: number;
 
   constructor(statusCode: number, message: string) {
