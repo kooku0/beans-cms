@@ -1,6 +1,13 @@
+import { Button } from '@nextui-org/react';
+
 function HomePage() {
   return (
-    <div>Home</div>
+    <div>
+      <div>
+        Home
+      </div>
+      <Button>버튼</Button>
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { ThemeProvider } from '@emotion/react';
+import { NextUIProvider } from '@nextui-org/react';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
@@ -38,7 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
               }}
             />
             <GlobalStyles />
-            <Component {...pageProps} />
+            <NextUIProvider>
+              <Component {...pageProps} />
+            </NextUIProvider>
           </ThemeProvider>
         </RecoilRoot>
         <ReactQueryDevtools initialIsOpen={false} />
