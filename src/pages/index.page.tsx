@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Button } from '@nextui-org/react';
 
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/sidebar/Sidebar';
 
 function HomePage() {
   const sidebarConfig = [
@@ -35,16 +35,7 @@ function HomePage() {
     <div css={css`display: flex;`}>
       <Sidebar
         config={sidebarConfig}
-        header={(
-          <Sidebar.Header>
-            <img src="/logo.png" alt="logo" />
-          </Sidebar.Header>
-        )}
-        footer={(
-          <Sidebar.Footer>
-            footer
-          </Sidebar.Footer>
-        )}
+        header={<img src="/logo.png" alt="logo" />}
       />
       <main>
         <div>
