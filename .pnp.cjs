@@ -37,6 +37,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.9.0"],\
             ["@emotion/styled", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.8.1"],\
             ["@emotion/utils", "npm:1.1.0"],\
+            ["@mdi/js", "npm:6.9.96"],\
+            ["@mdi/react", "npm:1.6.0"],\
             ["@nextui-org/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:1.0.0-beta.7"],\
             ["@svgr/webpack", "npm:6.2.1"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\
@@ -3457,6 +3459,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jridgewell/trace-mapping", "npm:0.3.13"],\
             ["@jridgewell/resolve-uri", "npm:3.0.7"],\
             ["@jridgewell/sourcemap-codec", "npm:1.4.13"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mdi/js", [\
+        ["npm:6.9.96", {\
+          "packageLocation": "./.yarn/cache/@mdi-js-npm-6.9.96-f4e41b1ad1-94c4327158.zip/node_modules/@mdi/js/",\
+          "packageDependencies": [\
+            ["@mdi/js", "npm:6.9.96"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@mdi/react", [\
+        ["npm:1.6.0", {\
+          "packageLocation": "./.yarn/cache/@mdi-react-npm-1.6.0-eb845e22a4-3516c240bd.zip/node_modules/@mdi/react/",\
+          "packageDependencies": [\
+            ["@mdi/react", "npm:1.6.0"],\
+            ["prop-types", "npm:15.8.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7053,6 +7074,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.9.0"],\
             ["@emotion/styled", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.8.1"],\
             ["@emotion/utils", "npm:1.1.0"],\
+            ["@mdi/js", "npm:6.9.96"],\
+            ["@mdi/react", "npm:1.6.0"],\
             ["@nextui-org/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:1.0.0-beta.7"],\
             ["@svgr/webpack", "npm:6.2.1"],\
             ["@testing-library/jest-dom", "npm:5.16.4"],\

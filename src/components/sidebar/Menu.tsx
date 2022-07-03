@@ -3,8 +3,9 @@ import { a, useSpring } from 'react-spring';
 import { useMeasure } from 'react-use';
 
 import styled from '@emotion/styled';
-
-import ChevronDown from '@/assets/chevron-down.svg';
+import { mdiChevronDown } from '@mdi/js';
+import Icon from '@mdi/react';
+import { useRouter } from 'next/router';
 
 type SubMenuConfig = {
   icon?: string;
@@ -14,7 +15,7 @@ type SubMenuConfig = {
 
 interface Props {
   icon?: string;
-  link: string;
+  link?: string;
   text: string;
   items?: SubMenuConfig[];
 }
@@ -22,6 +23,7 @@ interface Props {
 function Menu({
   link, icon, text, items,
 }: PropsWithChildren<Props>) {
+  const router = useRouter();
   const [isOpen, setOpen] = useState(false);
   const [ref, { height: viewHeight }] = useMeasure<HTMLDivElement>();
 
@@ -34,14 +36,20 @@ function Menu({
     },
   });
 
-  const handleClick = () => setOpen(!isOpen);
+  const handleClick = () => {
+    setOpen(!isOpen);
+
+    if (link) {
+      router.push(link);
+    }
+  };
 
   return (
     <MenuWrapper onClick={handleClick}>
       <Contents>
         {icon && <img src={icon} alt="icon" />}
         {text}
-        {items && <a.div style={{ rotate }}><ChevronDown /></a.div>}
+        {items && <a.div style={{ rotate }}><Icon path={mdiChevronDown} size={1} /></a.div>}
       </Contents>
       <a.div style={{ opacity, height, overflow: 'hidden' }}>
         <div ref={ref}>

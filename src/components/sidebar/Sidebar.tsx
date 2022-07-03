@@ -1,20 +1,11 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 
 import Menu from './Menu';
 
-type MenuConfig = {
-  icon?: string;
-  text: string;
-  link: string;
-  items?: SubMenuConfig[];
-}
-
-type SubMenuConfig = Omit<MenuConfig, 'items'>;
-
 interface Props {
-  config: MenuConfig[];
+  config: ComponentProps<typeof Menu>[];
   header?: ReactNode;
   footer?: ReactNode;
 }
@@ -28,13 +19,15 @@ function Sidebar({
         {header}
       </Header>
       {
-        config.map((menu) => (
+        config.map(({
+          link, icon, text, items,
+        }) => (
           <Menu
-            key={menu.link}
-            icon={menu.icon}
-            text={menu.text}
-            link={menu.link}
-            items={menu.items}
+            key={link}
+            icon={icon}
+            text={text}
+            link={link}
+            items={items}
           />
         ))
       }

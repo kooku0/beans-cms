@@ -8,16 +8,9 @@ function HomePage() {
     {
       text: 'Contents',
       link: '/contents',
-      items: [
-        {
-          text: 'Authors',
-          link: '/meta/authors',
-        },
-      ],
     },
     {
       text: 'Meta',
-      link: '/meta',
       items: [
         {
           text: 'Authors',
