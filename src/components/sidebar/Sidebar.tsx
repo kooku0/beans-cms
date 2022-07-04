@@ -23,7 +23,7 @@ function Sidebar({
           link, icon, text, items,
         }) => (
           <Menu
-            key={link}
+            key={text}
             icon={icon}
             text={text}
             link={link}

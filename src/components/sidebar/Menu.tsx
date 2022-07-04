@@ -7,7 +7,7 @@ import { mdiChevronDown } from '@mdi/js';
 import Icon from '@mdi/react';
 import { useRouter } from 'next/router';
 
-type SubMenuConfig = {
+type SubMenu = {
   icon?: string;
   text: string;
   link: string;
@@ -17,7 +17,7 @@ interface Props {
   icon?: string;
   link?: string;
   text: string;
-  items?: SubMenuConfig[];
+  items?: SubMenu[];
 }
 
 function Menu({
@@ -70,11 +70,6 @@ export default Menu;
 
 const MenuWrapper = styled.div`
   border-bottom: solid 1px black;
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.8);
-  }
 `;
 
 const Contents = styled.div`
@@ -82,6 +77,11 @@ const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const SubMenu = styled.div`
@@ -91,6 +91,6 @@ const SubMenu = styled.div`
   cursor: pointer;
 
   &:hover {
-    filter: brightness(0.8);
+    opacity: 0.8
   }
 `;
