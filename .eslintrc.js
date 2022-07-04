@@ -103,6 +103,7 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
+    'no-restricted-exports': 'off',
     'jest/no-identical-title': 'off',
     'import/no-unresolved': 'error',
     'react/react-in-jsx-scope': 'off',
