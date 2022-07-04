@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Button } from '@nextui-org/react';
 
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/Sidebar_';
 
 function HomePage() {
   const sidebarConfig = [
