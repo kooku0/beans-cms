@@ -11,9 +11,10 @@ import RoleCell from './PositionCell';
 
 interface Props {
   authors: AuthorSchema[];
+  onPageChange?: (page: number) => void;
 }
 
-function AuthorsTable({ authors }: Props) {
+function AuthorsTable({ authors, onPageChange }: Props) {
   const columns: Column[] = [
     { name: 'NAME', uid: 'name' },
     { name: 'POSITION', uid: 'position' },
@@ -33,11 +34,7 @@ function AuthorsTable({ authors }: Props) {
       return <RoleCell position={author?.position} team={author?.team} />;
     }
 
-    if (columnKey === 'actions') {
-      return <ActionsCell />;
-    }
-
-    return null;
+    return <ActionsCell />;
   };
 
   return (
@@ -75,7 +72,7 @@ function AuthorsTable({ authors }: Props) {
           noMargin
           align="center"
           rowsPerPage={3}
-          onPageChange={(page) => console.log({ page })}
+          onPageChange={onPageChange}
         />
       </Table>
     </TableWrapper>

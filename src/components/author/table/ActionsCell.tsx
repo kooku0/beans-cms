@@ -10,23 +10,23 @@ function ActionsCell() {
   return (
     <Row justify="center" align="center">
       <Col css={{ d: 'flex' }}>
-        <Tooltip content="Details">
+        <Tooltip content="View user">
           <IconButton onClick={() => console.log('View user')}>
-            <Icon path={mdiEyeOutline} size={1} color="#979797" />
+            <Icon data-testid="details" path={mdiEyeOutline} size={1} color="#979797" />
           </IconButton>
         </Tooltip>
       </Col>
       <Col css={{ d: 'flex' }}>
         <Tooltip content="Edit user">
           <IconButton onClick={() => console.log('Edit user')}>
-            <Icon path={mdiPencilOutline} size={1} color="#979797" />
+            <Icon data-testid="edit" path={mdiPencilOutline} size={1} color="#979797" />
           </IconButton>
         </Tooltip>
       </Col>
       <Col css={{ d: 'flex' }}>
         <Tooltip content="Delete user" color="error">
           <IconButton onClick={() => console.log('Delete user')}>
-            <Icon path={mdiDelete} size={1} color="#FF0080" />
+            <Icon data-testid="delete" path={mdiDelete} size={1} color="#FF0080" />
           </IconButton>
         </Tooltip>
       </Col>
