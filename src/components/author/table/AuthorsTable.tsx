@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 import { Table, User } from '@nextui-org/react';
@@ -65,7 +65,7 @@ function AuthorsTable({ authors }: Props) {
         <Table.Body items={authors} loadingState="loading">
           {(item: AuthorSchema) => (
             <Table.Row key={item.uid}>
-              {(columnKey: string) => (
+              {(columnKey: React.Key) => (
                 <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
               )}
             </Table.Row>
