@@ -3,15 +3,24 @@ import Icon from '@mdi/react';
 import {
   Col, Row, Tooltip,
 } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
 import IconButton from '@/components/common/IconButton';
 
-function ActionsCell() {
+interface Props {
+  authorId: string;
+}
+
+function ActionsCell({ authorId }: Props) {
+  const router = useRouter();
+
+  const handleEdit = () => router.push(`/authors/${authorId}/edit`);
+
   return (
     <Row justify="center" align="center">
       <Col css={{ d: 'flex' }}>
         <Tooltip content="Edit user">
-          <IconButton onClick={() => console.log('Edit user')}>
+          <IconButton onClick={handleEdit}>
             <Icon data-testid="edit" path={mdiPencilOutline} size={1} color="#979797" />
           </IconButton>
         </Tooltip>

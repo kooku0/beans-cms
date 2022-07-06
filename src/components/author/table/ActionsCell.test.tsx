@@ -1,13 +1,23 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { useRouter } from 'next/router';
 
 import ActionsCell from './ActionsCell';
 
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));
+
 describe('ActionsCell', () => {
+  const authorId = 'author-id';
   const spyOnConsoleLog = jest.spyOn(console, 'log');
+  const mockPush = jest.fn();
 
   const renderActionsCell = () => render((
-    <ActionsCell />
+    <ActionsCell authorId={authorId} />
   ));
+
+  (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
 
   describe('툴팁', () => {
     context('수정 아이콘에 마우스를 가져다 대면', () => {
@@ -38,7 +48,7 @@ describe('ActionsCell', () => {
 
         fireEvent.click(screen.getByTestId('edit'));
 
-        expect(spyOnConsoleLog).toBeCalledWith('Edit user');
+        expect(mockPush).toBeCalledWith(`/authors/${authorId}/edit`);
       });
     });
 

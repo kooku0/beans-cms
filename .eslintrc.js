@@ -162,7 +162,7 @@ module.exports = {
       ignoreFunctionalComponents: true,
     }],
     camelcase: ['error', { allow: ['snapshot_UNSTABLE', 'next_page'], properties: 'never' }],
-    'no-underscore-dangle': ['error', { allow: ['_r', '_active'] }],
+    'no-underscore-dangle': ['error', { allow: ['_r', '_active', '_id'] }],
     'testing-library/no-unnecessary-act': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'function-paren-newline': 'off',

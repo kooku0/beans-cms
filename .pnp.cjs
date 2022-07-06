@@ -85,7 +85,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
             ["next", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:12.1.6"],\
-            ["next-connect", "npm:0.12.2"],\
+            ["next-connect", "npm:1.0.0-next.1"],\
             ["nextjs-progressbar", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.0.14"],\
             ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
@@ -7122,7 +7122,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
             ["next", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:12.1.6"],\
-            ["next-connect", "npm:0.12.2"],\
+            ["next-connect", "npm:1.0.0-next.1"],\
             ["nextjs-progressbar", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.0.14"],\
             ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
@@ -12424,11 +12424,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["next-connect", [\
-        ["npm:0.12.2", {\
-          "packageLocation": "./.yarn/cache/next-connect-npm-0.12.2-163641f2ba-1870ba44da.zip/node_modules/next-connect/",\
+        ["npm:1.0.0-next.1", {\
+          "packageLocation": "./.yarn/cache/next-connect-npm-1.0.0-next.1-e9f9cc99d9-abb56b59cf.zip/node_modules/next-connect/",\
           "packageDependencies": [\
-            ["next-connect", "npm:0.12.2"],\
-            ["trouter", "npm:3.2.0"]\
+            ["next-connect", "npm:1.0.0-next.1"],\
+            ["regexparam", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13645,10 +13645,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["regexparam", [\
-        ["npm:1.3.0", {\
-          "packageLocation": "./.yarn/cache/regexparam-npm-1.3.0-47c2b50eae-ea6449d998.zip/node_modules/regexparam/",\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/regexparam-npm-2.0.1-703aa285b3-797998e96c.zip/node_modules/regexparam/",\
           "packageDependencies": [\
-            ["regexparam", "npm:1.3.0"]\
+            ["regexparam", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14863,16 +14863,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["tr46", "npm:3.0.0"],\
             ["punycode", "npm:2.1.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["trouter", [\
-        ["npm:3.2.0", {\
-          "packageLocation": "./.yarn/cache/trouter-npm-3.2.0-518e678a20-50beb18d4c.zip/node_modules/trouter/",\
-          "packageDependencies": [\
-            ["trouter", "npm:3.2.0"],\
-            ["regexparam", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\

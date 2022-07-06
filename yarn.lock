@@ -4418,7 +4418,7 @@ __metadata:
     lint-staged: 10.0.0
     mongodb: ^4.7.0
     next: ^12.1.6
-    next-connect: ^0.12.2
+    next-connect: 1.0.0-next.1
     nextjs-progressbar: ^0.0.14
     qs: ^6.11.0
     react: ^18.1.0
@@ -8812,12 +8812,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-connect@npm:^0.12.2":
-  version: 0.12.2
-  resolution: "next-connect@npm:0.12.2"
+"next-connect@npm:1.0.0-next.1":
+  version: 1.0.0-next.1
+  resolution: "next-connect@npm:1.0.0-next.1"
   dependencies:
-    trouter: ^3.2.0
-  checksum: 1870ba44dad28114e8bd7308969346727dfd3a6bf9f29167aae0fb46fe36619c72421338996f76db1327840019a24a876a213ab7276d0381391af8334fc89432
+    regexparam: ^2.0.1
+  checksum: abb56b59cf743f5bda1c089a1231651eeae4f3fe8c31900772bf037dff2d08513fd90390415de51438a013781431dcfd8e6ddaff93261a9886c9c6495400b8c7
   languageName: node
   linkType: hard
 
@@ -9834,10 +9834,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexparam@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "regexparam@npm:1.3.0"
-  checksum: ea6449d9984392cdf401d3d9b722a56357224fba7e9fdf2887f1901e0d3a838052d3b92b30f2276047bf5d5b6a1a90b7dff6aa1c89599b246a86285e7e3e3fd4
+"regexparam@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "regexparam@npm:2.0.1"
+  checksum: 797998e96c995c200ebd4a7d5e734381b96d3979b4b6672ec65ed5ca9210b8a5149ad73109ec32115779674b526088704c2564e9fa07f8b747743beadc424803
   languageName: node
   linkType: hard
 
@@ -10947,15 +10947,6 @@ __metadata:
   dependencies:
     punycode: ^2.1.1
   checksum: 44c3cc6767fb800490e6e9fd64fd49041aa4e49e1f6a012b34a75de739cc9ed3a6405296072c1df8b6389ae139c5e7c6496f659cfe13a04a4bff3a1422981270
-  languageName: node
-  linkType: hard
-
-"trouter@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "trouter@npm:3.2.0"
-  dependencies:
-    regexparam: ^1.3.0
-  checksum: 50beb18d4cf0239fe5ee81368d59f08b25298869d169d39c35b1c1d142e922025e14a648989382da70d4064d2ac7900b4348401caa0a235c3cccabaaa85351ef
   languageName: node
   linkType: hard
 

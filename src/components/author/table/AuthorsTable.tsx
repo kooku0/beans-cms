@@ -34,7 +34,7 @@ function AuthorsTable({ authors, onPageChange }: Props) {
       return <RoleCell position={author?.position} team={author?.team} />;
     }
 
-    return <ActionsCell />;
+    return <ActionsCell authorId={author.uid} />;
   };
 
   return (
