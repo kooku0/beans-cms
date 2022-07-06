@@ -1,29 +1,35 @@
-import { GetServerSidePropsContext } from 'next';
+import {
+  Avatar, Button, Container, Input, Spacer, Text,
+} from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
-import { fetchAuthor } from '@/api/author';
-import { AuthorSchema } from '@/models/author';
+import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
 
-interface Props {
-  author: AuthorSchema;
-}
+function EditPage() {
+  const router = useRouter();
 
-function EditPage({ author }: Props) {
-  console.log(author);
-  return <div>edit-page</div>;
-}
+  const { data } = useFetchAuthor(router.query.uid as string);
 
-type ParsedUrlParams = { uid: string };
+  const handleSubmit = () => console.log('submit');
 
-export async function getServerSideProps({ params }: GetServerSidePropsContext<ParsedUrlParams>) {
-  if (!params) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const author = await fetchAuthor(params.uid);
-
-  return { props: { author } };
+  return (
+    <div>
+      <Text h1>Edit Page</Text>
+      <Container as="form" onSubmit={handleSubmit} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
+        <Avatar squared src={data?.avatar} size="xl" />
+        <Spacer y={2} />
+        <Input labelPlaceholder="name" value={data?.name} />
+        <Spacer y={2} />
+        <Input labelPlaceholder="email" value={data?.email} />
+        <Spacer y={2} />
+        <Input labelPlaceholder="position" value={data?.position} />
+        <Spacer y={2} />
+        <Input labelPlaceholder="team" value={data?.team} />
+        <Spacer y={1} />
+        <Button type="submit">저장하기</Button>
+      </Container>
+    </div>
+  );
 }
 
 export default EditPage;

@@ -1,9 +1,9 @@
-/* eslint-disable no-underscore-dangle */
 import {
   ChangeEventHandler, useState,
 } from 'react';
 
 import { css } from '@emotion/react';
+import { Text } from '@nextui-org/react';
 
 import AuthorsTable from '@/components/author/table/AuthorsTable';
 import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
@@ -26,7 +26,7 @@ function AuthorsPage() {
 
   return (
     <div css={css`width: 100%;`}>
-      <div>Authors page</div>
+      <Text h1>Authors Page</Text>
       <ul>
         {
           authors?.map((author) => (
