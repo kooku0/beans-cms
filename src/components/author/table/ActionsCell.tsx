@@ -1,4 +1,4 @@
-import { mdiDelete, mdiEyeOutline, mdiPencilOutline } from '@mdi/js';
+import { mdiDelete, mdiPencilOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import {
   Col, Row, Tooltip,
@@ -9,13 +9,6 @@ import IconButton from '@/components/common/IconButton';
 function ActionsCell() {
   return (
     <Row justify="center" align="center">
-      <Col css={{ d: 'flex' }}>
-        <Tooltip content="View user">
-          <IconButton onClick={() => console.log('View user')}>
-            <Icon data-testid="details" path={mdiEyeOutline} size={1} color="#979797" />
-          </IconButton>
-        </Tooltip>
-      </Col>
       <Col css={{ d: 'flex' }}>
         <Tooltip content="Edit user">
           <IconButton onClick={() => console.log('Edit user')}>

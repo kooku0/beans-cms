@@ -59,7 +59,7 @@ function AuthorsTable({ authors, onPageChange }: Props) {
             </Table.Column>
           )}
         </Table.Header>
-        <Table.Body items={authors} loadingState="loading">
+        <Table.Body items={authors}>
           {(item: AuthorSchema) => (
             <Table.Row key={item.uid}>
               {(columnKey: React.Key) => (

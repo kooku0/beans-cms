@@ -7,7 +7,7 @@ import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
-import AuthorsPage from './authors.page';
+import AuthorsPage from './index.page';
 
 jest.mock('@/hooks/query/author/useFetchAuthors');
 jest.mock('@/hooks/query/author/useCreateAuthor');
