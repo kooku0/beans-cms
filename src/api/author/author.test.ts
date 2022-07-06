@@ -33,7 +33,7 @@ describe('author API', () => {
       name: 'mock-name',
     };
     const mockResponseData: PostAuthorResponse = {
-      _id: 'mock-id',
+      uid: 'mock-id',
     };
 
     beforeEach(() => {

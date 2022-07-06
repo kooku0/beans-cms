@@ -1,4 +1,8 @@
 export type AuthorSchema = {
-  _id: string;
-  name: string;
+  uid: string,
+  name: string,
+  email?: string,
+  position?: string,
+  team?: string,
+  avatar?: string,
 }

@@ -3,6 +3,9 @@ import {
   ChangeEventHandler, useState,
 } from 'react';
 
+import { css } from '@emotion/react';
+
+import AuthorsTable from '@/components/author/table/AuthorsTable';
 import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 
@@ -22,12 +25,12 @@ function AuthorsPage() {
   }
 
   return (
-    <div>
+    <div css={css`width: 100%;`}>
       <div>Authors page</div>
       <ul>
         {
-          authors.map((author) => (
-            <li key={author._id}>{author.name}</li>
+          authors?.map((author) => (
+            <li key={author.uid}>{author.name}</li>
           ))
         }
       </ul>
@@ -35,6 +38,9 @@ function AuthorsPage() {
         <label htmlFor="name">name</label>
         <input placeholder="name" id="name" value={name} onChange={handleChangeInput} />
         <button type="button" onClick={handleClick}>등록</button>
+      </div>
+      <div className="author-table">
+        <AuthorsTable authors={authors} />
       </div>
     </div>
   );

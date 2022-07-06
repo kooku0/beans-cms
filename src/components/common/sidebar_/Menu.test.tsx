@@ -66,4 +66,16 @@ describe('Menu', () => {
       expect(mockPush).toBeCalledWith('/link');
     });
   });
+
+  context('subMenu를 클릭하면', () => {
+    given('items', () => [{ text: '서브메뉴', link: '/sub-menu' }]);
+
+    it('link로 이동해야 한다.', () => {
+      renderMenu();
+
+      fireEvent.click(screen.getByText('서브메뉴'));
+
+      expect(mockPush).toBeCalledWith('/sub-link');
+    });
+  });
 });
