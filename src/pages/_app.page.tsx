@@ -12,7 +12,7 @@ import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import { RecoilRoot } from 'recoil';
 
-import Sidebar from '@/components/common/sidebar_/Sidebar';
+import Sidebar from '@/components/common/sidebar/Sidebar';
 import GlobalStyles from '@/styles/GlobalStyles';
 import lightTheme from '@/styles/theme';
 
