@@ -26,7 +26,7 @@ describe('Menu', () => {
   context('icon이 없으면', () => {
     given('icon', () => undefined);
 
-    it('icon이 보이지 않아야 한다.', () => {
+    it('icon이 보이지 않는다.', () => {
       renderMenu();
 
       expect(screen.queryByAltText('icon')).toBeNull();
@@ -36,7 +36,7 @@ describe('Menu', () => {
   context('icon이 있으면', () => {
     given('icon', () => 'icon.png');
 
-    it('icon이 보여야 한다.', () => {
+    it('icon이 보인다.', () => {
       renderMenu();
 
       expect(screen.getByAltText('icon')).not.toBeNull();
@@ -46,7 +46,7 @@ describe('Menu', () => {
   context('link가 없으면', () => {
     given('link', () => undefined);
 
-    it('메뉴를 클릭했을때 link로 이동하지 않아야한다.', () => {
+    it('메뉴를 클릭했을때 link로 이동하지 않는다.', () => {
       renderMenu();
 
       fireEvent.click(screen.getByText('메뉴'));
@@ -58,12 +58,24 @@ describe('Menu', () => {
   context('link가 있으면', () => {
     given('link', () => '/link');
 
-    it('메뉴를 클릭했을때 link로 이동해야 한다.', () => {
+    it('메뉴를 클릭했을때 link로 이동한다.', () => {
       renderMenu();
 
       fireEvent.click(screen.getByText('메뉴'));
 
       expect(mockPush).toBeCalledWith('/link');
+    });
+  });
+
+  context('subMenu를 클릭하면', () => {
+    given('items', () => [{ text: '서브메뉴', link: '/sub-link' }]);
+
+    it('link로 이동한다.', () => {
+      renderMenu();
+
+      fireEvent.click(screen.getByText('서브메뉴'));
+
+      expect(mockPush).toBeCalledWith('/sub-link');
     });
   });
 });

@@ -36,16 +36,17 @@ function Menu({
     },
   });
 
-  const handleClick = () => {
-    setOpen(!isOpen);
-
-    if (link) {
-      router.push(link);
+  const handleClick = (menuLink?: string) => {
+    if (menuLink) {
+      router.push(menuLink);
+      return;
     }
+
+    setOpen(!isOpen);
   };
 
   return (
-    <MenuWrapper onClick={handleClick}>
+    <MenuWrapper onClick={() => handleClick(link)}>
       <Contents>
         {icon && <img src={icon} alt="icon" />}
         {text}
@@ -55,7 +56,7 @@ function Menu({
         <div ref={ref}>
           {
             items?.map((item) => (
-              <SubMenu key={item.link}>
+              <SubMenu key={item.text} onClick={() => handleClick(item.link)}>
                 {item.text}
               </SubMenu>
             ))
