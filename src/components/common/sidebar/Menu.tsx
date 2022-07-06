@@ -36,7 +36,7 @@ function Menu({
     },
   });
 
-  const handleClick = (menuLink) => {
+  const handleClick = (menuLink?: string) => {
     if (menuLink) {
       router.push(menuLink);
       return;
