@@ -3,9 +3,10 @@ import FIXTURE_AUTHOR from '@/fixtures/author';
 import { api } from '..';
 
 import {
+  FetchAuthorResponse,
   FetchAuthorsResponse, PostAuthorRequest, PostAuthorResponse,
 } from './model';
-import { fetchAuthors, postAuthor } from '.';
+import { fetchAuthor, fetchAuthors, postAuthor } from '.';
 
 jest.mock('..');
 
@@ -24,6 +25,25 @@ describe('author API', () => {
       expect(api).toBeCalledWith({
         method: 'get',
         url: '/authors',
+      });
+    });
+  });
+
+  describe('fetchAuthor', () => {
+    const uid = 'mock-uid';
+    const mockResponseData: FetchAuthorResponse = FIXTURE_AUTHOR;
+
+    beforeEach(() => {
+      (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
+    });
+
+    it('GET /author/{uid}', async () => {
+      const response = await fetchAuthor(uid);
+
+      expect(response).toBe(mockResponseData);
+      expect(api).toBeCalledWith({
+        method: 'get',
+        url: `/authors/${uid}`,
       });
     });
   });

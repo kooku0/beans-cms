@@ -143,7 +143,7 @@ module.exports = {
         vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_',
       },
     ],
-    'react/jsx-props-no-spreading': ['error', { exceptions: ['input', 'TradingLineChart', 'select', 'InputField'] }],
+    'react/jsx-props-no-spreading': ['error', { exceptions: ['input', 'Input', 'Textarea'] }],
     'jsx-a11y/anchor-is-valid': ['error', {
       aspects: ['invalidHref'],
     }],
