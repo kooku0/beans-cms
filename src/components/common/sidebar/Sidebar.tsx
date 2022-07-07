@@ -41,7 +41,7 @@ function Sidebar({
 export default Sidebar;
 
 const SidebarWrapper = styled.div`
-  width: 225px;
+  width: 320px;
   height: 100vh;
   padding: 20px 0;
   background-color: skyblue;
