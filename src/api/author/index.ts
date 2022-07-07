@@ -49,3 +49,12 @@ export const patchAuthor = async (uid: string, author: PatchAuthorRequest):Promi
 
   return response.data;
 };
+
+export const deleteAuthor = async (uid: string):Promise<void> => {
+  const response = await api<ApiResponse<void>>({
+    method: 'delete',
+    url: `${BASE_URL}/${uid}`,
+  });
+
+  return response.data;
+};

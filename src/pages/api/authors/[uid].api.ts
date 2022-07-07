@@ -29,7 +29,15 @@ router
       { $set: req.body },
     );
 
-    res.json({ data: uid });
+    res.status(204).end('Success updated');
+  })
+  .delete(async (req, res) => {
+    const { uid } = req.query;
+    const collection = req.db.collection<AuthorSchema>(COLLECTION);
+
+    await collection.deleteOne({ _id: new ObjectId(uid as string) });
+
+    res.status(204).end('Success deleted');
   });
 
 export default router.handler({

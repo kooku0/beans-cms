@@ -5,6 +5,7 @@ import {
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
+import { deleteAuthor } from '@/api/author';
 import IconButton from '@/components/common/IconButton';
 
 interface Props {
@@ -15,6 +16,7 @@ function ActionsCell({ authorId }: Props) {
   const router = useRouter();
 
   const handleEdit = () => router.push(`/authors/${authorId}/edit`);
+  const handleDelete = () => deleteAuthor(authorId);
 
   return (
     <Row justify="center" align="center">
@@ -27,7 +29,7 @@ function ActionsCell({ authorId }: Props) {
       </Col>
       <Col css={{ d: 'flex' }}>
         <Tooltip content="Delete user" color="error">
-          <IconButton onClick={() => console.log('Delete user')}>
+          <IconButton onClick={handleDelete}>
             <Icon data-testid="delete" path={mdiDelete} size={1} color="#FF0080" />
           </IconButton>
         </Tooltip>
