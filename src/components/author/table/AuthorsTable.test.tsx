@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 
 import FIXTURE_AUTHOR from '@/fixtures/author';
+import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import AuthorsTable from './AuthorsTable';
 
@@ -8,7 +9,9 @@ describe('AuthorsTable', () => {
   const handlePageChange = jest.fn();
 
   const renderAuthorsTable = () => render((
-    <AuthorsTable authors={given.authors} onPageChange={handlePageChange} />
+    <ReactQueryWrapper>
+      <AuthorsTable authors={given.authors} onPageChange={handlePageChange} />
+    </ReactQueryWrapper>
   ));
 
   given('authors', () => [FIXTURE_AUTHOR]);

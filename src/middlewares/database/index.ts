@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 import { NextApiResponse } from 'next';
-import nextConnect, { NextHandler } from 'next-connect';
+import { NextHandler } from 'next-connect';
 
 import { NextApiRequestWithDb } from './model';
 
@@ -24,8 +24,8 @@ async function database(req: NextApiRequestWithDb, res: NextApiResponse, next: N
   return next();
 }
 
-const middleware = nextConnect();
+export default database;
 
-middleware.use(database);
+// const middleware = createRouter<NextApiRequestWithDb, NextApiResponse>().use(database);
 
-export default middleware;
+// export default middleware;

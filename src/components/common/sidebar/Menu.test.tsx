@@ -1,4 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen,
+} from '@testing-library/react';
 import { useRouter } from 'next/router';
 
 import Menu from './Menu';
@@ -21,7 +23,10 @@ describe('Menu', () => {
     />
   ));
 
-  (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+  (useRouter as jest.Mock).mockImplementation(() => ({ push: mockPush, pathname: given.pathname }));
+
+  given('link', () => '/link');
+  given('pathname', () => '/');
 
   context('icon이 없으면', () => {
     given('icon', () => undefined);
@@ -76,6 +81,28 @@ describe('Menu', () => {
       fireEvent.click(screen.getByText('서브메뉴'));
 
       expect(mockPush).toBeCalledWith('/sub-link');
+    });
+  });
+
+  context('현재 path와 menu의 link가 일치하면', () => {
+    given('pathname', () => '/link/sub-link');
+    given('items', () => [{ text: '서브메뉴', link: '/sub-link' }]);
+
+    it('메뉴가 열려야 한다.', () => {
+      renderMenu();
+
+      expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'true');
+    });
+  });
+
+  context('현재 path와 menu의 link가 일치하지 않으면', () => {
+    given('pathname', () => '/mock/sub-mock');
+    given('items', () => [{ text: '서브메뉴', link: '/sub-link' }]);
+
+    it('메뉴가 닫혀있어야 한다.', () => {
+      renderMenu();
+
+      expect(screen.getByRole('button')).toHaveAttribute('aria-expanded', 'false');
     });
   });
 });

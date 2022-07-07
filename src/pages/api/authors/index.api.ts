@@ -1,6 +1,5 @@
-/* eslint-disable no-underscore-dangle */
 import { NextApiResponse } from 'next';
-import nextConnect from 'next-connect';
+import { createRouter } from 'next-connect';
 
 import database from '@/middlewares/database';
 import { NextApiRequestWithDb } from '@/middlewares/database/model';
@@ -8,11 +7,10 @@ import { AuthorSchema } from '@/models/author';
 
 const COLLECTION = 'authors';
 
-const handler = nextConnect<NextApiRequestWithDb, NextApiResponse>();
+const router = createRouter<NextApiRequestWithDb, NextApiResponse>();
 
-handler.use(database);
-
-handler
+router
+  .use(database)
   .post(async (req, res) => {
     const collection = req.db.collection<AuthorSchema>(COLLECTION);
 
@@ -36,4 +34,11 @@ handler
     res.json({ data });
   });
 
-export default handler;
+export default router.handler({
+  onError: (err, req, res) => {
+    res.status(500).end('Something broke!');
+  },
+  onNoMatch: (req, res) => {
+    res.status(404).end('Page is not found');
+  },
+});

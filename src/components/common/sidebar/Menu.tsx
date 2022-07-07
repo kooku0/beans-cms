@@ -1,10 +1,11 @@
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { a, useSpring } from 'react-spring';
 import { useMeasure } from 'react-use';
 
 import styled from '@emotion/styled';
 import { mdiChevronDown } from '@mdi/js';
 import Icon from '@mdi/react';
+import { Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 type SubMenu = {
@@ -27,6 +28,18 @@ function Menu({
   const [isOpen, setOpen] = useState(false);
   const [ref, { height: viewHeight }] = useMeasure<HTMLDivElement>();
 
+  useEffect(() => {
+    const { pathname } = router;
+
+    const isMenuLinkMatched = link && pathname.search(link) !== -1;
+    const isSubMenuLinkMatched = items?.some(
+      ({ link: itemLink }) => pathname.search(itemLink) !== -1,
+    );
+    if (isMenuLinkMatched || isSubMenuLinkMatched) {
+      setOpen(true);
+    }
+  }, [link, items]);
+
   const { height, opacity, rotate } = useSpring({
     from: { height: 0, opacity: 0, rotate: 180 },
     to: {
@@ -47,17 +60,17 @@ function Menu({
 
   return (
     <MenuWrapper onClick={() => handleClick(link)}>
-      <Contents>
+      <Contents aria-expanded={isOpen} role="button" aria-controls="submenu">
         {icon && <img src={icon} alt="icon" />}
-        {text}
+        <Text h3>{text}</Text>
         {items && <a.div style={{ rotate }}><Icon path={mdiChevronDown} size={1} /></a.div>}
       </Contents>
-      <a.div style={{ opacity, height, overflow: 'hidden' }}>
+      <a.div style={{ opacity, height, overflow: 'hidden' }} id="submenu" aria-hidden={!isOpen}>
         <div ref={ref}>
           {
             items?.map((item) => (
               <SubMenu key={item.text} onClick={() => handleClick(item.link)}>
-                {item.text}
+                <Text h5>{item.text}</Text>
               </SubMenu>
             ))
           }
@@ -74,7 +87,7 @@ const MenuWrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  padding: 16px 8px;
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,8 +99,7 @@ const Contents = styled.div`
 `;
 
 const SubMenu = styled.div`
-  padding: 13px 30px;
-  padding-left: 16px;
+  padding: 13px 24px;
   background-color: whitesmoke;
   cursor: pointer;
 

@@ -143,7 +143,7 @@ module.exports = {
         vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_',
       },
     ],
-    'react/jsx-props-no-spreading': ['error', { exceptions: ['input', 'TradingLineChart', 'select', 'InputField'] }],
+    'react/jsx-props-no-spreading': ['error', { exceptions: ['input', 'Input', 'Textarea'] }],
     'jsx-a11y/anchor-is-valid': ['error', {
       aspects: ['invalidHref'],
     }],
@@ -162,7 +162,7 @@ module.exports = {
       ignoreFunctionalComponents: true,
     }],
     camelcase: ['error', { allow: ['snapshot_UNSTABLE', 'next_page'], properties: 'never' }],
-    'no-underscore-dangle': ['error', { allow: ['_r', '_active'] }],
+    'no-underscore-dangle': ['error', { allow: ['_r', '_active', '_id'] }],
     'testing-library/no-unnecessary-act': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'function-paren-newline': 'off',

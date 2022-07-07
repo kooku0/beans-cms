@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.9.0"],\
             ["@emotion/styled", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.8.1"],\
             ["@emotion/utils", "npm:1.1.0"],\
+            ["@hookform/resolvers", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.9.3"],\
             ["@mdi/js", "npm:6.9.96"],\
             ["@mdi/react", "npm:1.6.0"],\
             ["@nextui-org/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:1.0.0-beta.7"],\
@@ -55,6 +56,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-test-renderer", "npm:18.0.0"],\
             ["@types/sharp", "npm:0.30.2"],\
             ["@types/testing-library__jest-dom", "npm:5.14.3"],\
+            ["@types/yup", "npm:0.29.14"],\
             ["@typescript-eslint/eslint-plugin", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["@typescript-eslint/parser", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["axios", "npm:0.27.2"],\
@@ -85,12 +87,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
             ["next", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:12.1.6"],\
-            ["next-connect", "npm:0.12.2"],\
+            ["next-connect", "npm:1.0.0-next.1"],\
             ["nextjs-progressbar", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.0.14"],\
             ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
             ["react-device-detect", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.2.2"],\
             ["react-dom", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:18.1.0"],\
+            ["react-hook-form", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:7.33.1"],\
             ["react-query", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:3.39.1"],\
             ["react-spinners", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.11.0"],\
             ["react-spring", "npm:9.4.5"],\
@@ -98,7 +101,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-use", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:17.4.0"],\
             ["recoil", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.7.3"],\
             ["sharp", "npm:0.30.6"],\
-            ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"]\
+            ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"],\
+            ["yup", "npm:0.32.11"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -2646,6 +2650,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
+        ["npm:7.18.6", {\
+          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.18.6-6a59ef0d54-8b707b64ae.zip/node_modules/@babel/runtime/",\
+          "packageDependencies": [\
+            ["@babel/runtime", "npm:7.18.6"],\
+            ["regenerator-runtime", "npm:0.13.9"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:7.9.6", {\
           "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.9.6-93b1a0d418-67cd41b670.zip/node_modules/@babel/runtime/",\
           "packageDependencies": [\
@@ -3057,6 +3069,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@gar-promisify-npm-1.1.3-ac1a325862-4059f790e2.zip/node_modules/@gar/promisify/",\
           "packageDependencies": [\
             ["@gar/promisify", "npm:1.1.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@hookform/resolvers", [\
+        ["npm:2.9.3", {\
+          "packageLocation": "./.yarn/cache/@hookform-resolvers-npm-2.9.3-eebd8d8bcb-e0010426c9.zip/node_modules/@hookform/resolvers/",\
+          "packageDependencies": [\
+            ["@hookform/resolvers", "npm:2.9.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.9.3", {\
+          "packageLocation": "./.yarn/__virtual__/@hookform-resolvers-virtual-e855c7bcde/0/cache/@hookform-resolvers-npm-2.9.3-eebd8d8bcb-e0010426c9.zip/node_modules/@hookform/resolvers/",\
+          "packageDependencies": [\
+            ["@hookform/resolvers", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.9.3"],\
+            ["@types/react-hook-form", null],\
+            ["react-hook-form", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:7.33.1"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-hook-form",\
+            "react-hook-form"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5876,6 +5910,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.182", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.182-1073aac722-7dd137aa9d.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.182"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/node", [\
         ["npm:14.18.21", {\
           "packageLocation": "./.yarn/cache/@types-node-npm-14.18.21-2487d6eca5-4ed35b7660.zip/node_modules/@types/node/",\
@@ -6098,6 +6141,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/yauzl", "npm:2.10.0"],\
             ["@types/node", "npm:17.0.40"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/yup", [\
+        ["npm:0.29.14", {\
+          "packageLocation": "./.yarn/cache/@types-yup-npm-0.29.14-455474960f-291b6c2f06.zip/node_modules/@types/yup/",\
+          "packageDependencies": [\
+            ["@types/yup", "npm:0.29.14"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -7074,6 +7126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.9.0"],\
             ["@emotion/styled", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:11.8.1"],\
             ["@emotion/utils", "npm:1.1.0"],\
+            ["@hookform/resolvers", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.9.3"],\
             ["@mdi/js", "npm:6.9.96"],\
             ["@mdi/react", "npm:1.6.0"],\
             ["@nextui-org/react", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:1.0.0-beta.7"],\
@@ -7092,6 +7145,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-test-renderer", "npm:18.0.0"],\
             ["@types/sharp", "npm:0.30.2"],\
             ["@types/testing-library__jest-dom", "npm:5.14.3"],\
+            ["@types/yup", "npm:0.29.14"],\
             ["@typescript-eslint/eslint-plugin", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["@typescript-eslint/parser", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["axios", "npm:0.27.2"],\
@@ -7122,12 +7176,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.0.0"],\
             ["mongodb", "npm:4.7.0"],\
             ["next", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:12.1.6"],\
-            ["next-connect", "npm:0.12.2"],\
+            ["next-connect", "npm:1.0.0-next.1"],\
             ["nextjs-progressbar", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.0.14"],\
             ["qs", "npm:6.11.0"],\
             ["react", "npm:18.1.0"],\
             ["react-device-detect", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:2.2.2"],\
             ["react-dom", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:18.1.0"],\
+            ["react-hook-form", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:7.33.1"],\
             ["react-query", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:3.39.1"],\
             ["react-spinners", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.11.0"],\
             ["react-spring", "npm:9.4.5"],\
@@ -7135,7 +7190,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-use", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:17.4.0"],\
             ["recoil", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.7.3"],\
             ["sharp", "npm:0.30.6"],\
-            ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"]\
+            ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"],\
+            ["yup", "npm:0.32.11"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -11834,6 +11890,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lodash-es", [\
+        ["npm:4.17.21", {\
+          "packageLocation": "./.yarn/cache/lodash-es-npm-4.17.21-b45832dfce-05cbffad6e.zip/node_modules/lodash-es/",\
+          "packageDependencies": [\
+            ["lodash-es", "npm:4.17.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lodash.debounce", [\
         ["npm:4.0.8", {\
           "packageLocation": "./.yarn/cache/lodash.debounce-npm-4.0.8-f1d6e09799-a3f527d22c.zip/node_modules/lodash.debounce/",\
@@ -12333,6 +12398,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["nanoclone", [\
+        ["npm:0.2.1", {\
+          "packageLocation": "./.yarn/cache/nanoclone-npm-0.2.1-972ee958a0-96b2954e22.zip/node_modules/nanoclone/",\
+          "packageDependencies": [\
+            ["nanoclone", "npm:0.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["nanoid", [\
         ["npm:3.3.4", {\
           "packageLocation": "./.yarn/cache/nanoid-npm-3.3.4-3d250377d6-2fddd6dee9.zip/node_modules/nanoid/",\
@@ -12424,11 +12498,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["next-connect", [\
-        ["npm:0.12.2", {\
-          "packageLocation": "./.yarn/cache/next-connect-npm-0.12.2-163641f2ba-1870ba44da.zip/node_modules/next-connect/",\
+        ["npm:1.0.0-next.1", {\
+          "packageLocation": "./.yarn/cache/next-connect-npm-1.0.0-next.1-e9f9cc99d9-abb56b59cf.zip/node_modules/next-connect/",\
           "packageDependencies": [\
-            ["next-connect", "npm:0.12.2"],\
-            ["trouter", "npm:3.2.0"]\
+            ["next-connect", "npm:1.0.0-next.1"],\
+            ["regexparam", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13152,6 +13226,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["property-expr", [\
+        ["npm:2.0.5", {\
+          "packageLocation": "./.yarn/cache/property-expr-npm-2.0.5-6f6bda4c65-4ebe82ce45.zip/node_modules/property-expr/",\
+          "packageDependencies": [\
+            ["property-expr", "npm:2.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["proxy-from-env", [\
         ["npm:1.0.0", {\
           "packageLocation": "./.yarn/cache/proxy-from-env-npm-1.0.0-679b82b4ec-292e28d1de.zip/node_modules/proxy-from-env/",\
@@ -13303,6 +13386,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react-error-boundary", "virtual:3368e4365dd933d99163d7c580719098845beaceaeaf7b953dc246f0961f20fd8dfb189a481417842ad7fa76855b3edad2f249fd81e8e04805f98397103f8a18#npm:3.1.4"],\
             ["@babel/runtime", "npm:7.18.3"],\
+            ["@types/react", "npm:18.0.12"],\
+            ["react", "npm:18.1.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-hook-form", [\
+        ["npm:7.33.1", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.33.1-f1c46322f4-ec8f938b5a.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.33.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:7.33.1", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-9042cfd4c4/0/cache/react-hook-form-npm-7.33.1-f1c46322f4-ec8f938b5a.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:7.33.1"],\
             ["@types/react", "npm:18.0.12"],\
             ["react", "npm:18.1.0"]\
           ],\
@@ -13645,10 +13750,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["regexparam", [\
-        ["npm:1.3.0", {\
-          "packageLocation": "./.yarn/cache/regexparam-npm-1.3.0-47c2b50eae-ea6449d998.zip/node_modules/regexparam/",\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/regexparam-npm-2.0.1-703aa285b3-797998e96c.zip/node_modules/regexparam/",\
           "packageDependencies": [\
-            ["regexparam", "npm:1.3.0"]\
+            ["regexparam", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14836,6 +14941,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["toposort", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/toposort-npm-2.0.2-d472329c7d-d64c74b570.zip/node_modules/toposort/",\
+          "packageDependencies": [\
+            ["toposort", "npm:2.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["tough-cookie", [\
         ["npm:2.5.0", {\
           "packageLocation": "./.yarn/cache/tough-cookie-npm-2.5.0-79a2fe43fe-16a8cd0902.zip/node_modules/tough-cookie/",\
@@ -14863,16 +14977,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["tr46", "npm:3.0.0"],\
             ["punycode", "npm:2.1.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["trouter", [\
-        ["npm:3.2.0", {\
-          "packageLocation": "./.yarn/cache/trouter-npm-3.2.0-518e678a20-50beb18d4c.zip/node_modules/trouter/",\
-          "packageDependencies": [\
-            ["trouter", "npm:3.2.0"],\
-            ["regexparam", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -15475,6 +15579,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yauzl", "npm:2.10.0"],\
             ["buffer-crc32", "npm:0.2.13"],\
             ["fd-slicer", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["yup", [\
+        ["npm:0.32.11", {\
+          "packageLocation": "./.yarn/cache/yup-npm-0.32.11-dbaff8ca9c-43a16786b4.zip/node_modules/yup/",\
+          "packageDependencies": [\
+            ["yup", "npm:0.32.11"],\
+            ["@babel/runtime", "npm:7.18.6"],\
+            ["@types/lodash", "npm:4.14.182"],\
+            ["lodash", "npm:4.17.21"],\
+            ["lodash-es", "npm:4.17.21"],\
+            ["nanoclone", "npm:0.2.1"],\
+            ["property-expr", "npm:2.0.5"],\
+            ["toposort", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\

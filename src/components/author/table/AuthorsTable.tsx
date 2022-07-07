@@ -34,7 +34,7 @@ function AuthorsTable({ authors, onPageChange }: Props) {
       return <RoleCell position={author?.position} team={author?.team} />;
     }
 
-    return <ActionsCell />;
+    return <ActionsCell authorId={author.uid} />;
   };
 
   return (
@@ -59,7 +59,7 @@ function AuthorsTable({ authors, onPageChange }: Props) {
             </Table.Column>
           )}
         </Table.Header>
-        <Table.Body items={authors} loadingState="loading">
+        <Table.Body items={authors}>
           {(item: AuthorSchema) => (
             <Table.Row key={item.uid}>
               {(columnKey: React.Key) => (

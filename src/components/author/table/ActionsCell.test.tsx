@@ -1,25 +1,32 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen, waitFor,
+} from '@testing-library/react';
+import { useRouter } from 'next/router';
+
+import { deleteAuthor } from '@/api/author';
+import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import ActionsCell from './ActionsCell';
 
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));
+jest.mock('@/api/author');
+
 describe('ActionsCell', () => {
-  const spyOnConsoleLog = jest.spyOn(console, 'log');
+  const authorId = 'author-id';
+  const mockPush = jest.fn();
 
   const renderActionsCell = () => render((
-    <ActionsCell />
+    <ReactQueryWrapper>
+      <ActionsCell authorId={authorId} />
+    </ReactQueryWrapper>
   ));
 
+  (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+
   describe('툴팁', () => {
-    context('상세 아이콘에 마우스를 가져다 대면', () => {
-      it('View user 툴팁이 나타난다.', async () => {
-        renderActionsCell();
-
-        fireEvent.mouseOver(screen.getByTestId('details'));
-
-        expect(await screen.findByText('View user')).toBeInTheDocument();
-      });
-    });
-
     context('수정 아이콘에 마우스를 가져다 대면', () => {
       it('Edit user 툴팁이 나타난다.', async () => {
         renderActionsCell();
@@ -42,33 +49,25 @@ describe('ActionsCell', () => {
   });
 
   describe('클릭', () => {
-    context('상세 아이콘을 클릭하면', () => {
-      it('View user 이 출력된다.', async () => {
-        renderActionsCell();
-
-        fireEvent.click(screen.getByTestId('details'));
-
-        expect(spyOnConsoleLog).toBeCalledWith('View user');
-      });
-    });
-
     context('수정 아이콘을 클릭하면', () => {
-      it('Edit user 이 출력된다.', async () => {
+      it('Author edit 페이지로 이동한다.', async () => {
         renderActionsCell();
 
         fireEvent.click(screen.getByTestId('edit'));
 
-        expect(spyOnConsoleLog).toBeCalledWith('Edit user');
+        expect(mockPush).toBeCalledWith(`/authors/${authorId}/edit`);
       });
     });
 
     context('삭제 아이콘을 클릭하면', () => {
-      it('Delete user 이 출력된다.', async () => {
+      it('Author가 delete 된다.', async () => {
         renderActionsCell();
 
         fireEvent.click(screen.getByTestId('delete'));
 
-        expect(spyOnConsoleLog).toBeCalledWith('Delete user');
+        await waitFor(async () => {
+          await expect(deleteAuthor).toBeCalledWith(authorId);
+        });
       });
     });
   });
