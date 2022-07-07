@@ -7,3 +7,5 @@ export type PostAuthorRequest = Omit<AuthorSchema, 'uid'>;
 export type PostAuthorResponse = {
   uid: string;
 };
+
+export type PatchAuthorRequest = Partial<Omit<AuthorSchema, 'uid' | '_id'>>;

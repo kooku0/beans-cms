@@ -3,7 +3,11 @@ import { ApiResponse } from '@/models/api';
 import { api } from '..';
 
 import {
-  FetchAuthorResponse, FetchAuthorsResponse, PostAuthorRequest, PostAuthorResponse,
+  FetchAuthorResponse,
+  FetchAuthorsResponse,
+  PatchAuthorRequest,
+  PostAuthorRequest,
+  PostAuthorResponse,
 } from './model';
 
 const BASE_URL = '/authors';
@@ -30,6 +34,16 @@ export const postAuthor = async (author: PostAuthorRequest):Promise<PostAuthorRe
   const response = await api<ApiResponse<PostAuthorResponse>>({
     method: 'post',
     url: BASE_URL,
+    data: author,
+  });
+
+  return response.data;
+};
+
+export const patchAuthor = async (uid: string, author: PatchAuthorRequest):Promise<void> => {
+  const response = await api<ApiResponse<void>>({
+    method: 'patch',
+    url: `${BASE_URL}/${uid}`,
     data: author,
   });
 

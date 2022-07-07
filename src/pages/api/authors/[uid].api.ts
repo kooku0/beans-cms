@@ -24,11 +24,10 @@ router
     const { uid } = req.query;
     const collection = req.db.collection<AuthorSchema>(COLLECTION);
 
-    const returnData = collection.updateOne(
+    await collection.updateOne(
       { _id: new ObjectId(uid as string) },
       { $set: req.body },
     );
-    console.log(returnData);
 
     res.json({ data: uid });
   });
