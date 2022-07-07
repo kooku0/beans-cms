@@ -29,9 +29,9 @@ describe('CreatePage', () => {
 
     await act(async () => {
       Object.entries(mockAuthor).forEach(([key, value]) => {
-        fireEvent.change(screen.getByLabelText(key), { target: { value } });
+        fireEvent.input(screen.getByLabelText(key), { target: { value } });
       });
-      await fireEvent.submit(screen.getByTestId('author-form'));
+      await fireEvent.submit(screen.getByRole('button'));
     });
 
     expect(postAuthor).toBeCalledWith(mockAuthor);

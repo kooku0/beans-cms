@@ -27,7 +27,7 @@ function AuthorForm({ author, onSubmit }: Props) {
   };
 
   const {
-    register, handleSubmit, formState: { errors, isValid },
+    register, handleSubmit, reset, formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -39,8 +39,13 @@ function AuthorForm({ author, onSubmit }: Props) {
   const fields = (Object.keys(schema.fields) as Array<keyof Schema>);
   const submitText = author ? 'Update' : 'Create';
 
+  const onSubmitHandler = (formData: Schema) => {
+    onSubmit(formData);
+    reset();
+  };
+
   return (
-    <Container data-testid="author-form" as="form" onSubmit={handleSubmit(onSubmit)} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
+    <Container as="form" role="form" onSubmit={handleSubmit(onSubmitHandler)} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
       <Avatar squared src={avatar} size="xl" />
       <Spacer y={1} />
       {fields.map((label) => (
@@ -49,7 +54,7 @@ function AuthorForm({ author, onSubmit }: Props) {
           <Spacer y={1} />
         </Fragment>
       ))}
-      <Button type="submit" disabled={!isValid}>{submitText}</Button>
+      <Button type="submit" role="button" disabled={!isValid}>{submitText}</Button>
     </Container>
   );
 }
