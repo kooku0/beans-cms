@@ -1,3 +1,5 @@
+import { useForm } from 'react-hook-form';
+
 import {
   Avatar, Button, Container, Input, Spacer, Text,
 } from '@nextui-org/react';
@@ -10,15 +12,18 @@ function EditPage() {
 
   const { data } = useFetchAuthor(router.query.uid as string);
 
-  const handleSubmit = () => console.log('submit');
+  const {
+    register, handleSubmit, watch, formState: { errors },
+  } = useForm();
+  const onSubmit = (d: any) => console.log(d);
 
   return (
     <div>
       <Text h1>Edit Page</Text>
-      <Container as="form" onSubmit={handleSubmit} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
+      <Container as="form" onSubmit={handleSubmit(onSubmit)} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
         <Avatar squared src={data?.avatar} size="xl" />
         <Spacer y={2} />
-        <Input labelPlaceholder="name" value={data?.name} />
+        <Input labelPlaceholder="name" defaultValue={data?.name} />
         <Spacer y={2} />
         <Input labelPlaceholder="email" value={data?.email} />
         <Spacer y={2} />

@@ -4424,6 +4424,7 @@ __metadata:
     react: ^18.1.0
     react-device-detect: ^2.2.2
     react-dom: ^18.1.0
+    react-hook-form: ^7.33.1
     react-query: ^3.38.1
     react-spinners: ^0.11.0
     react-spring: ^9.4.5
@@ -9602,6 +9603,15 @@ __metadata:
   peerDependencies:
     react: ">=16.13.1"
   checksum: f36270a5d775a25c8920f854c0d91649ceea417b15b5bc51e270a959b0476647bb79abb4da3be7dd9a4597b029214e8fe43ea914a7f16fa7543c91f784977f1b
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.33.1":
+  version: 7.33.1
+  resolution: "react-hook-form@npm:7.33.1"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: ec8f938b5af32148956edc9a87b6a0a99cc305617925608961cf4352ad1a786daea9fdc4d15106aea2821937d27367a69ab525882f07c0bb7ea45fba5dbf8ff2
   languageName: node
   linkType: hard
 
