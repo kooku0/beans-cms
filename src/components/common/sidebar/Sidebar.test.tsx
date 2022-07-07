@@ -1,6 +1,12 @@
 import { render } from '@testing-library/react';
+import { useRouter } from 'next/router';
 
 import Sidebar from './Sidebar';
+
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));
 
 describe('Sidebar', () => {
   const renderSidebar = () => render((
@@ -12,6 +18,8 @@ describe('Sidebar', () => {
   ));
 
   given('config', () => []);
+
+  (useRouter as jest.Mock).mockReturnValue({ push: jest.fn(), pathname: '/' });
 
   it('header와 footer가 렌더되어야 한다.', () => {
     given('header', () => <div>header</div>);

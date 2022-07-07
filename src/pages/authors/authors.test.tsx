@@ -1,8 +1,5 @@
-import {
-  act, fireEvent, render, screen, waitFor,
-} from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import AUTHOR_FIXTURE from '@/fixtures/author';
 import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
@@ -43,27 +40,6 @@ describe('AuthorsPage', () => {
       const { container } = renderAuthorsPage();
 
       expect(container).toHaveTextContent(/Authors/);
-    });
-
-    it('Authors name이 보여야 한다.', async () => {
-      given('authors', () => [AUTHOR_FIXTURE]);
-
-      const { container } = renderAuthorsPage();
-
-      await waitFor(() => expect(container).toHaveTextContent(AUTHOR_FIXTURE.name));
-    });
-
-    it('author 를 등록할 수 있어야한다.', () => {
-      const { name } = AUTHOR_FIXTURE;
-
-      renderAuthorsPage();
-
-      act(() => {
-        fireEvent.change(screen.getByLabelText('name'), { target: { value: name } });
-        fireEvent.click(screen.getByText('등록'));
-      });
-
-      expect(mutate).toBeCalledWith({ name });
     });
   });
 });

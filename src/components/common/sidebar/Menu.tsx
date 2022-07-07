@@ -31,9 +31,11 @@ function Menu({
   useEffect(() => {
     const { pathname } = router;
 
-    const isMenuActive = link && pathname.search(link) !== -1;
-    const isSubMenuActive = items?.some(({ link: itemLink }) => pathname.search(itemLink) !== -1);
-    if (isMenuActive || isSubMenuActive) {
+    const isMenuLinkMatched = link && pathname.search(link) !== -1;
+    const isSubMenuLinkMatched = items?.some(
+      ({ link: itemLink }) => pathname.search(itemLink) !== -1,
+    );
+    if (isMenuLinkMatched || isSubMenuLinkMatched) {
       setOpen(true);
     }
   }, [link, items]);
@@ -58,12 +60,12 @@ function Menu({
 
   return (
     <MenuWrapper onClick={() => handleClick(link)}>
-      <Contents>
+      <Contents aria-expanded={isOpen} role="button" aria-controls="submenu">
         {icon && <img src={icon} alt="icon" />}
         <Text h3>{text}</Text>
         {items && <a.div style={{ rotate }}><Icon path={mdiChevronDown} size={1} /></a.div>}
       </Contents>
-      <a.div style={{ opacity, height, overflow: 'hidden' }}>
+      <a.div style={{ opacity, height, overflow: 'hidden' }} id="submenu" aria-hidden={!isOpen}>
         <div ref={ref}>
           {
             items?.map((item) => (

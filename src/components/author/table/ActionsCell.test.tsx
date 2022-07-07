@@ -1,16 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { useRouter } from 'next/router';
 
+import { deleteAuthor } from '@/api/author';
+
 import ActionsCell from './ActionsCell';
 
 jest.mock('next/router', () => ({
   __esModule: true,
   useRouter: jest.fn(),
 }));
+jest.mock('@/api/author');
 
 describe('ActionsCell', () => {
   const authorId = 'author-id';
-  const spyOnConsoleLog = jest.spyOn(console, 'log');
   const mockPush = jest.fn();
 
   const renderActionsCell = () => render((
@@ -43,7 +45,7 @@ describe('ActionsCell', () => {
 
   describe('클릭', () => {
     context('수정 아이콘을 클릭하면', () => {
-      it('Edit user 이 출력된다.', async () => {
+      it('Author edit 페이지로 이동한다.', async () => {
         renderActionsCell();
 
         fireEvent.click(screen.getByTestId('edit'));
@@ -53,12 +55,12 @@ describe('ActionsCell', () => {
     });
 
     context('삭제 아이콘을 클릭하면', () => {
-      it('Delete user 이 출력된다.', async () => {
+      it('Author가 delete 된다.', async () => {
         renderActionsCell();
 
         fireEvent.click(screen.getByTestId('delete'));
 
-        expect(spyOnConsoleLog).toBeCalledWith('Delete user');
+        expect(deleteAuthor).toBeCalledWith(authorId);
       });
     });
   });

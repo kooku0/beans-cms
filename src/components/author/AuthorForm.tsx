@@ -32,7 +32,7 @@ function AuthorForm({ author, onSubmit }: Props) {
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
-      avatar, name, email, position, team,
+      name, email, position, team,
     },
   });
 
@@ -40,7 +40,7 @@ function AuthorForm({ author, onSubmit }: Props) {
   const submitText = author ? 'Update' : 'Create';
 
   return (
-    <Container as="form" onSubmit={handleSubmit(onSubmit)} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
+    <Container data-testid="author-form" as="form" onSubmit={handleSubmit(onSubmit)} fluid gap={2} display="flex" direction="column" css={{ width: 360 }}>
       <Avatar squared src={avatar} size="xl" />
       <Spacer y={1} />
       {fields.map((label) => (
