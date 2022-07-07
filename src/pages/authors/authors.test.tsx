@@ -1,13 +1,11 @@
 import { render } from '@testing-library/react';
 
-import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import AuthorsPage from './index.page';
 
 jest.mock('@/hooks/query/author/useFetchAuthors');
-jest.mock('@/hooks/query/author/useCreateAuthor');
 
 describe('AuthorsPage', () => {
   const renderAuthorsPage = () => render(
@@ -16,11 +14,8 @@ describe('AuthorsPage', () => {
     </ReactQueryWrapper>,
   );
 
-  const mutate = jest.fn();
-
   beforeEach(() => {
     (useFetchAuthors as jest.Mock).mockImplementation(() => ({ data: given.authors }));
-    (useCreateAuthor as jest.Mock).mockReturnValue({ mutate });
   });
 
   context('data fetching이 완료되지 않았다면', () => {

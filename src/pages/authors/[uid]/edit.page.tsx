@@ -8,14 +8,15 @@ import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
 
 function EditPage() {
   const router = useRouter();
+  const { uid } = router.query;
 
-  const { data: author } = useFetchAuthor(router.query.uid as string);
+  const { data: author } = useFetchAuthor(uid as string);
 
   if (!author) {
     return <div>loading</div>;
   }
 
-  const handleSubmit = (formData: PatchAuthorRequest) => patchAuthor(author.uid, formData);
+  const handleSubmit = (formData: PatchAuthorRequest) => patchAuthor(uid as string, formData);
 
   return (
     <div>
