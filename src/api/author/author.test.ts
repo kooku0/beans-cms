@@ -4,9 +4,11 @@ import { api } from '..';
 
 import {
   FetchAuthorResponse,
-  FetchAuthorsResponse, PostAuthorRequest, PostAuthorResponse,
+  FetchAuthorsResponse, PatchAuthorRequest, PostAuthorRequest, PostAuthorResponse,
 } from './model';
-import { fetchAuthor, fetchAuthors, postAuthor } from '.';
+import {
+  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor, postAuthor,
+} from '.';
 
 jest.mock('..');
 
@@ -68,6 +70,48 @@ describe('author API', () => {
         method: 'post',
         url: '/authors',
         data: author,
+      });
+    });
+  });
+
+  describe('patchAuthor', () => {
+    const uid = 'mock-uid';
+    const author: PatchAuthorRequest = {
+      name: 'mock-name',
+    };
+    const mockResponseData = null;
+
+    beforeEach(() => {
+      (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
+    });
+
+    it('PATCH /authors/{uid}', async () => {
+      const response = await patchAuthor(uid, author);
+
+      expect(response).toBe(mockResponseData);
+      expect(api).toBeCalledWith({
+        method: 'patch',
+        url: `/authors/${uid}`,
+        data: author,
+      });
+    });
+  });
+
+  describe('deleteAuthor', () => {
+    const uid = 'mock-uid';
+    const mockResponseData = null;
+
+    beforeEach(() => {
+      (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
+    });
+
+    it('DELETE /authors/{uid}', async () => {
+      const response = await deleteAuthor(uid);
+
+      expect(response).toBe(mockResponseData);
+      expect(api).toBeCalledWith({
+        method: 'delete',
+        url: `/authors/${uid}`,
       });
     });
   });
