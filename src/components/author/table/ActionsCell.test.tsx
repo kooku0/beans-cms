@@ -1,7 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen, waitFor,
+} from '@testing-library/react';
 import { useRouter } from 'next/router';
 
 import { deleteAuthor } from '@/api/author';
+import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import ActionsCell from './ActionsCell';
 
@@ -16,7 +19,9 @@ describe('ActionsCell', () => {
   const mockPush = jest.fn();
 
   const renderActionsCell = () => render((
-    <ActionsCell authorId={authorId} />
+    <ReactQueryWrapper>
+      <ActionsCell authorId={authorId} />
+    </ReactQueryWrapper>
   ));
 
   (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
@@ -60,7 +65,9 @@ describe('ActionsCell', () => {
 
         fireEvent.click(screen.getByTestId('delete'));
 
-        expect(deleteAuthor).toBeCalledWith(authorId);
+        await waitFor(async () => {
+          await expect(deleteAuthor).toBeCalledWith(authorId);
+        });
       });
     });
   });

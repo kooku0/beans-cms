@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
-import { deleteAuthor } from '@/api/author';
 import IconButton from '@/components/common/IconButton';
+import useDeleteAuthor from '@/hooks/query/author/useDeleteAuthor';
 
 interface Props {
   authorId: string;
@@ -14,9 +14,10 @@ interface Props {
 
 function ActionsCell({ authorId }: Props) {
   const router = useRouter();
+  const { mutate } = useDeleteAuthor(authorId);
 
   const handleEdit = () => router.push(`/authors/${authorId}/edit`);
-  const handleDelete = () => deleteAuthor(authorId);
+  const handleDelete = () => mutate();
 
   return (
     <Row justify="center" align="center">
