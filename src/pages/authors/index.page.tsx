@@ -1,8 +1,8 @@
-import { css } from '@emotion/react';
-import { Button, Text } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import AuthorsTable from '@/components/author/table/AuthorsTable';
+import Layout from '@/components/common/Layout';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 
 function AuthorsPage() {
@@ -16,11 +16,10 @@ function AuthorsPage() {
   }
 
   return (
-    <div css={css`width: 100%;`}>
-      <Text h1>Authors Page</Text>
+    <Layout title="Authors">
       <Button onPress={handleCreate}>Create</Button>
       <AuthorsTable authors={authors} />
-    </div>
+    </Layout>
   );
 }
 
