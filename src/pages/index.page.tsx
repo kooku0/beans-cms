@@ -1,15 +1,8 @@
-import { Button } from '@nextui-org/react';
+import Layout from '@/components/common/Layout';
 
 function HomePage() {
   return (
-    <div>
-      <main>
-        <div>
-          Home
-        </div>
-        <Button>버튼</Button>
-      </main>
-    </div>
+    <Layout title="Home" />
   );
 }
 

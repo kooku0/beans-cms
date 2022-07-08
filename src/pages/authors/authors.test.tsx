@@ -5,6 +5,7 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import AuthorsPage from './index.page';
 
+jest.mock('@/components/common/sidebar/Sidebar');
 jest.mock('@/hooks/query/author/useFetchAuthors');
 
 describe('AuthorsPage', () => {
