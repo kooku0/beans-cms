@@ -1,8 +1,10 @@
-import { css } from '@emotion/react';
-import { Button, Text } from '@nextui-org/react';
+import { mdiPlus } from '@mdi/js';
+import Icon from '@mdi/react';
+import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import AuthorsTable from '@/components/author/table/AuthorsTable';
+import Layout from '@/components/common/Layout';
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 
 function AuthorsPage() {
@@ -16,11 +18,16 @@ function AuthorsPage() {
   }
 
   return (
-    <div css={css`width: 100%;`}>
-      <Text h1>Authors Page</Text>
-      <Button onPress={handleCreate}>Create</Button>
+    <Layout
+      title="Authors"
+      right={(
+        <Button auto icon={<Icon path={mdiPlus} size={1} />} onPress={handleCreate}>
+          Create
+        </Button>
+      )}
+    >
       <AuthorsTable authors={authors} />
-    </div>
+    </Layout>
   );
 }
 

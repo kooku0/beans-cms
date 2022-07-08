@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { css, ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@emotion/react';
 import { NextUIProvider } from '@nextui-org/react';
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
@@ -12,7 +12,6 @@ import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import { RecoilRoot } from 'recoil';
 
-import Sidebar from '@/components/common/sidebar/Sidebar';
 import GlobalStyles from '@/styles/GlobalStyles';
 import lightTheme from '@/styles/theme';
 
@@ -24,26 +23,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       },
     },
   }));
-
-  const sidebarConfig = [
-    {
-      text: 'Contents',
-      link: '/contents',
-    },
-    {
-      text: 'Meta',
-      items: [
-        {
-          text: 'Authors',
-          link: '/authors',
-        },
-      ],
-    },
-    {
-      text: 'Images',
-      link: '/images',
-    },
-  ];
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -61,13 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
             <GlobalStyles />
             <NextUIProvider>
-              <main css={css({ display: 'flex' })}>
-                <Sidebar
-                  config={sidebarConfig}
-                  header={<img src="/logo.png" alt="logo" />}
-                />
-                <Component {...pageProps} />
-              </main>
+              <Component {...pageProps} />
             </NextUIProvider>
           </ThemeProvider>
         </RecoilRoot>

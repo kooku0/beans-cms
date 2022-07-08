@@ -9,6 +9,7 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 import CreatePage from './create.page';
 
 jest.mock('@/api/author');
+jest.mock('@/components/common/sidebar/Sidebar');
 
 describe('CreatePage', () => {
   const mockAuthor: PostAuthorRequest = {

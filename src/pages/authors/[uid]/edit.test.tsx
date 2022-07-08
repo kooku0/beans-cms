@@ -12,6 +12,7 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 import EditPage from './edit.page';
 
 jest.mock('next/router');
+jest.mock('@/components/common/sidebar/Sidebar');
 jest.mock('@/api/author');
 jest.mock('@/hooks/query/author/useFetchAuthor');
 

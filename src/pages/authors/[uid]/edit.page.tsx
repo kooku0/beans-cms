@@ -1,8 +1,8 @@
-import { Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import { PatchAuthorRequest } from '@/api/author/model';
 import AuthorForm from '@/components/author/AuthorForm';
+import Layout from '@/components/common/Layout';
 import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
 import useUpdateAuthor from '@/hooks/query/author/useUpdateAuthor';
 
@@ -20,10 +20,9 @@ function EditPage() {
   const handleSubmit = (formData: PatchAuthorRequest) => mutate(formData);
 
   return (
-    <div>
-      <Text h1>Edit Author</Text>
+    <Layout title="Edit Author">
       <AuthorForm author={author} onSubmit={handleSubmit} />
-    </div>
+    </Layout>
   );
 }
 

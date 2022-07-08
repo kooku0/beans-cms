@@ -1,7 +1,6 @@
-import { Text } from '@nextui-org/react';
-
 import { PostAuthorRequest } from '@/api/author/model';
 import AuthorForm from '@/components/author/AuthorForm';
+import Layout from '@/components/common/Layout';
 import useCreateAuthor from '@/hooks/query/author/useCreateAuthor';
 
 function CreatePage() {
@@ -10,10 +9,9 @@ function CreatePage() {
   const handleSubmit = (formData: PostAuthorRequest) => mutate(formData);
 
   return (
-    <div>
-      <Text h1>Create Author</Text>
+    <Layout title="Create Author">
       <AuthorForm onSubmit={handleSubmit} />
-    </div>
+    </Layout>
   );
 }
 
