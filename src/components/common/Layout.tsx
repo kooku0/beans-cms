@@ -42,7 +42,7 @@ function Layout({
       />
       <Container fluid css={({ padding: 100 })}>
         <header css={css({ display: 'flex' })}>
-          {title && <Text h1>{title}</Text>}
+          <Text h1 data-testid="title">{title}</Text>
           <Container display="flex" justify="space-between" alignItems="center">
             <div>
               {left}
