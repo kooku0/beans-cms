@@ -62,7 +62,7 @@ function Menu({
     <MenuWrapper onClick={() => handleClick(link)}>
       <Contents aria-expanded={isOpen} role="button" aria-controls="submenu">
         {icon && <img src={icon} alt="icon" />}
-        <Text h3>{text}</Text>
+        <Text h5>{text}</Text>
         {items && <a.div style={{ rotate }}><Icon path={mdiChevronDown} size={1} /></a.div>}
       </Contents>
       <a.div style={{ opacity, height, overflow: 'hidden' }} id="submenu" aria-hidden={!isOpen}>
@@ -70,7 +70,7 @@ function Menu({
           {
             items?.map((item) => (
               <SubMenu key={item.text} onClick={() => handleClick(item.link)}>
-                <Text h5>{item.text}</Text>
+                <Text h6>{item.text}</Text>
               </SubMenu>
             ))
           }
@@ -83,7 +83,7 @@ function Menu({
 export default Menu;
 
 const MenuWrapper = styled.div`
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px #e0e0e0;
 `;
 
 const Contents = styled.div`

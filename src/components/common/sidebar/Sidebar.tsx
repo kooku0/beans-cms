@@ -18,19 +18,21 @@ function Sidebar({
       <Header>
         {header}
       </Header>
-      {
-        config.map(({
-          link, icon, text, items,
-        }) => (
-          <Menu
-            key={text}
-            icon={icon}
-            text={text}
-            link={link}
-            items={items}
-          />
-        ))
-      }
+      <nav>
+        {
+          config.map(({
+            link, icon, text, items,
+          }) => (
+            <Menu
+              key={text}
+              icon={icon}
+              text={text}
+              link={link}
+              items={items}
+            />
+          ))
+        }
+      </nav>
       <Footer>
         {footer}
       </Footer>
@@ -40,11 +42,12 @@ function Sidebar({
 
 export default Sidebar;
 
-const SidebarWrapper = styled.div`
+const SidebarWrapper = styled.aside`
   width: 320px;
   height: 100vh;
   padding: 20px 0;
-  background-color: skyblue;
+  background-color: #fafafa;
+  border-right: 2px solid #e0e0e0;
   position: relative;
 `;
 

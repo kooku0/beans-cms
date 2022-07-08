@@ -39,6 +39,8 @@ export default router.handler({
     res.status(500).end('Something broke!');
   },
   onNoMatch: (req, res) => {
-    res.status(404).end('Page is not found');
+    const { method } = req;
+
+    res.status(404).end(`${method?.toUpperCase()} is not supported`);
   },
 });

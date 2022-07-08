@@ -1,7 +1,5 @@
-import { PropsWithChildren } from 'react';
-
-function Sidebar({ children }: PropsWithChildren) {
-  return <div>{children}</div>;
+function Sidebar() {
+  return <div>sidebar</div>;
 }
 
 export default Sidebar;

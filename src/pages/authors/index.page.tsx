@@ -1,3 +1,5 @@
+import { mdiPlus } from '@mdi/js';
+import Icon from '@mdi/react';
 import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
@@ -16,8 +18,14 @@ function AuthorsPage() {
   }
 
   return (
-    <Layout title="Authors">
-      <Button onPress={handleCreate}>Create</Button>
+    <Layout
+      title="Authors"
+      right={(
+        <Button auto icon={<Icon path={mdiPlus} size={1} />} onPress={handleCreate}>
+          Create
+        </Button>
+      )}
+    >
       <AuthorsTable authors={authors} />
     </Layout>
   );
