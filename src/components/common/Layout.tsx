@@ -52,7 +52,9 @@ function Layout({
             </div>
           </Container>
         </header>
-        {children}
+        <section css={{ marginTop: 20 }}>
+          {children}
+        </section>
       </Container>
     </main>
   );
