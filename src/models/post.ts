@@ -5,6 +5,8 @@ export type PostSchema = {
   title: string;
   html: string;
   tags: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type PostStatus = 'draft' | 'published';

@@ -3,6 +3,7 @@ import Icon from '@mdi/react';
 import { Button } from '@nextui-org/react';
 
 import Layout from '@/components/common/Layout';
+import Posts from '@/components/post/Posts';
 
 function PostsPage() {
   return (
@@ -14,7 +15,7 @@ function PostsPage() {
         </Button>
       )}
     >
-      <div>post table</div>
+      <Posts />
     </Layout>
   );
 }
