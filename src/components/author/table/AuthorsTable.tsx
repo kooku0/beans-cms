@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 
 import { User } from '@nextui-org/react';
 
@@ -54,7 +54,7 @@ function AuthorsTable({ authors }: Props) {
       </thead>
       <tbody>
         {
-          authors.map((author) => (
+          authors?.map((author) => (
             <tr key={author.uid}>
               {
                 columns.map((column) => (
@@ -69,4 +69,4 @@ function AuthorsTable({ authors }: Props) {
   );
 }
 
-export default memo(AuthorsTable);
+export default AuthorsTable;
