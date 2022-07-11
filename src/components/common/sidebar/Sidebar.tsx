@@ -2,10 +2,10 @@ import { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 
-import Menu from './Menu';
+import MenuList from './MenuList';
 
 interface Props {
-  config: ComponentProps<typeof Menu>[];
+  config: ComponentProps<typeof MenuList>[];
   header?: ReactNode;
   footer?: ReactNode;
 }
@@ -21,13 +21,12 @@ function Sidebar({
       <nav>
         {
           config.map(({
-            link, icon, text, items,
+            icon, label, items,
           }) => (
-            <Menu
-              key={text}
+            <MenuList
+              key={label}
               icon={icon}
-              text={text}
-              link={link}
+              label={label}
               items={items}
             />
           ))
@@ -46,7 +45,7 @@ const SidebarWrapper = styled.aside`
   width: 320px;
   height: 100vh;
   padding: 20px 0;
-  background-color: #fafafa;
+  background-color: #f3f3f3;
   border-right: 2px solid #e0e0e0;
   position: relative;
 `;

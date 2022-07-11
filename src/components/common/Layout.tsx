@@ -1,7 +1,9 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
 import { css } from '@emotion/react';
-import { Container, Text } from '@nextui-org/react';
+import { mdiAccount } from '@mdi/js';
+import { Container, Image, Text } from '@nextui-org/react';
+import Link from 'next/link';
 
 import Sidebar from './sidebar/Sidebar';
 
@@ -16,21 +18,27 @@ function Layout({
 }: PropsWithChildren<Props>) {
   const sidebarConfig = [
     {
-      text: 'Contents',
-      link: '/contents',
-    },
-    {
-      text: 'Meta',
+      label: 'Collections',
       items: [
         {
-          text: 'Authors',
-          link: '/authors',
+          text: 'Contents',
+          link: '/contents',
+        },
+        {
+          text: 'Image',
+          link: '/images',
         },
       ],
     },
     {
-      text: 'Images',
-      link: '/images',
+      label: 'Meta',
+      items: [
+        {
+          icon: mdiAccount,
+          text: 'Authors',
+          link: '/authors',
+        },
+      ],
     },
   ];
 
@@ -38,7 +46,11 @@ function Layout({
     <main css={css({ display: 'flex' })}>
       <Sidebar
         config={sidebarConfig}
-        header={<img src="/logo.png" alt="logo" />}
+        header={(
+          <Link href="/">
+            <Image src="/logo.png" alt="logo" width={150} objectFit="cover" css={{ cursor: 'pointer' }} />
+          </Link>
+        )}
       />
       <Container fluid css={({ padding: 100 })}>
         <header css={css({ display: 'flex' })}>
