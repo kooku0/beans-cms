@@ -21,8 +21,8 @@ function Layout({
       label: 'Collections',
       items: [
         {
-          text: 'Contents',
-          link: '/contents',
+          text: 'Posts',
+          link: '/posts',
         },
         {
           text: 'Image',
