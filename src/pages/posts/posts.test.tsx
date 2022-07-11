@@ -4,20 +4,20 @@ import {
 
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
-import AuthorsPage from './index.page';
+import PostsPage from './index.page';
 
 jest.mock('@/components/common/sidebar/Sidebar');
 
-describe('AuthorsPage', () => {
-  const renderAuthorsPage = () => render(
+describe('PostsPage', () => {
+  const renderPostsPage = () => render(
     <ReactQueryWrapper>
-      <AuthorsPage />
+      <PostsPage />
     </ReactQueryWrapper>,
   );
 
   context('Create 버튼을 누르면', () => {
-    it('AuthorCreate 페이지로 이동한다.', async () => {
-      renderAuthorsPage();
+    it('PostCreate 페이지로 이동한다.', async () => {
+      renderPostsPage();
 
       const button = screen.getByTestId('create-button');
 
@@ -25,7 +25,7 @@ describe('AuthorsPage', () => {
         await fireEvent.click(button);
       });
 
-      expect(button).toHaveAttribute('href', '/authors/create');
+      expect(button).toHaveAttribute('href', '/posts/create');
     });
   });
 });

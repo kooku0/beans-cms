@@ -1,62 +1,65 @@
-import FIXTURE_AUTHOR from '@/fixtures/author';
+import FIXTURE_POST from '@/fixtures/post';
 
 import { api } from '..';
 
 import {
-  CreateAuthorRequest, CreateAuthorResponse,
-  FetchAuthorResponse,
-  FetchAuthorsResponse, PatchAuthorRequest,
+  CreatePostRequest, CreatePostResponse,
+  FetchPostResponse,
+  FetchPostsResponse, PatchPostRequest,
 } from './model';
 import {
-  createAuthor,
-  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor,
+  createPost,
+  deletePost, fetchPost, fetchPosts, patchPost,
 } from '.';
 
 jest.mock('..');
 
-describe('author API', () => {
-  describe('fetchAuthors', () => {
-    const mockResponseData: FetchAuthorsResponse = [FIXTURE_AUTHOR];
+describe('post API', () => {
+  describe('fetchPosts', () => {
+    const mockResponseData: FetchPostsResponse = [FIXTURE_POST];
 
     beforeEach(() => {
       (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
     });
 
-    it('GET /authors', async () => {
-      const response = await fetchAuthors();
+    it('GET /posts', async () => {
+      const response = await fetchPosts();
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
         method: 'get',
-        url: '/authors',
+        url: '/posts',
       });
     });
   });
 
-  describe('fetchAuthor', () => {
+  describe('fetchPost', () => {
     const uid = 'mock-uid';
-    const mockResponseData: FetchAuthorResponse = FIXTURE_AUTHOR;
+    const mockResponseData: FetchPostResponse = FIXTURE_POST;
 
     beforeEach(() => {
       (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
     });
 
-    it('GET /author/{uid}', async () => {
-      const response = await fetchAuthor(uid);
+    it('GET /post/{uid}', async () => {
+      const response = await fetchPost(uid);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
         method: 'get',
-        url: `/authors/${uid}`,
+        url: `/posts/${uid}`,
       });
     });
   });
 
-  describe('createAuthor', () => {
-    const author: CreateAuthorRequest = {
-      name: 'mock-name',
+  describe('postPost', () => {
+    const post: CreatePostRequest = {
+      authorUid: 'mock-author-uid',
+      html: 'mock-html',
+      status: 'draft',
+      tags: ['mock-tag'],
     };
-    const mockResponseData: CreateAuthorResponse = {
+    const mockResponseData: CreatePostResponse = {
       uid: 'mock-id',
     };
 
@@ -64,22 +67,22 @@ describe('author API', () => {
       (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
     });
 
-    it('POST /authors', async () => {
-      const response = await createAuthor(author);
+    it('POST /posts', async () => {
+      const response = await createPost(post);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
         method: 'post',
-        url: '/authors',
-        data: author,
+        url: '/posts',
+        data: post,
       });
     });
   });
 
-  describe('patchAuthor', () => {
+  describe('patchPost', () => {
     const uid = 'mock-uid';
-    const author: PatchAuthorRequest = {
-      name: 'mock-name',
+    const post: PatchPostRequest = {
+      html: 'mock-html',
     };
     const mockResponseData = null;
 
@@ -87,19 +90,19 @@ describe('author API', () => {
       (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
     });
 
-    it('PATCH /authors/{uid}', async () => {
-      const response = await patchAuthor(uid, author);
+    it('PATCH /posts/{uid}', async () => {
+      const response = await patchPost(uid, post);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
         method: 'patch',
-        url: `/authors/${uid}`,
-        data: author,
+        url: `/posts/${uid}`,
+        data: post,
       });
     });
   });
 
-  describe('deleteAuthor', () => {
+  describe('deletePost', () => {
     const uid = 'mock-uid';
     const mockResponseData = null;
 
@@ -107,13 +110,13 @@ describe('author API', () => {
       (api as jest.Mock).mockReturnValueOnce({ data: mockResponseData });
     });
 
-    it('DELETE /authors/{uid}', async () => {
-      const response = await deleteAuthor(uid);
+    it('DELETE /posts/{uid}', async () => {
+      const response = await deletePost(uid);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
         method: 'delete',
-        url: `/authors/${uid}`,
+        url: `/posts/${uid}`,
       });
     });
   });
