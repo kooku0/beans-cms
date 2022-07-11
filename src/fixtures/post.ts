@@ -7,6 +7,8 @@ const post: PostSchema = {
   title: 'title',
   html: '<p>mock-html</p>',
   tags: ['mock-tag'],
+  createdAt: '2020-01-01T00:00:00.000Z',
+  updatedAt: '2020-01-01T00:00:00.000Z',
 };
 
 export default post;
