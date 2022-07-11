@@ -17,7 +17,7 @@ function PostsTable({ posts }: Props) {
     { name: 'STATUS', uid: 'status' },
     { name: 'CREATED AT', uid: 'createdAt' },
     { name: 'TITLE', uid: 'title' },
-    { name: 'AUTHOR', uid: 'post' },
+    { name: 'AUTHOR', uid: 'author' },
     { name: 'ACTIONS', uid: 'actions' },
   ];
 
@@ -50,11 +50,7 @@ function PostsTable({ posts }: Props) {
       return <div>{post.authorUid}</div>;
     }
 
-    if (columnKey === 'actions') {
-      return <ActionsCell postId={post.uid} />;
-    }
-
-    return null;
+    return <ActionsCell postId={post.uid} />;
   };
 
   return (

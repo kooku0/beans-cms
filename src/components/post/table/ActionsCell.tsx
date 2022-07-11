@@ -16,7 +16,7 @@ function ActionsCell({ postId }: Props) {
   const router = useRouter();
   const { mutate } = useDeletePost(postId);
 
-  const handleEdit = () => router.push(`/post/${postId}/edit`);
+  const handleEdit = () => router.push(`/posts/${postId}/edit`);
   const handleDelete = () => mutate();
 
   return (
