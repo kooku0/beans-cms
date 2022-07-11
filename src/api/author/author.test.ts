@@ -3,11 +3,13 @@ import FIXTURE_AUTHOR from '@/fixtures/author';
 import { api } from '..';
 
 import {
+  CreateAuthorRequest, CreateAuthorResponse,
   FetchAuthorResponse,
-  FetchAuthorsResponse, PatchAuthorRequest, PostAuthorRequest, PostAuthorResponse,
+  FetchAuthorsResponse, PatchAuthorRequest,
 } from './model';
 import {
-  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor, postAuthor,
+  createAuthor,
+  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor,
 } from '.';
 
 jest.mock('..');
@@ -50,11 +52,11 @@ describe('author API', () => {
     });
   });
 
-  describe('postAuthor', () => {
-    const author: PostAuthorRequest = {
+  describe('createAuthor', () => {
+    const author: CreateAuthorRequest = {
       name: 'mock-name',
     };
-    const mockResponseData: PostAuthorResponse = {
+    const mockResponseData: CreateAuthorResponse = {
       uid: 'mock-id',
     };
 
@@ -63,7 +65,7 @@ describe('author API', () => {
     });
 
     it('POST /authors', async () => {
-      const response = await postAuthor(author);
+      const response = await createAuthor(author);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({

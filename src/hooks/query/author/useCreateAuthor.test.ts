@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { postAuthor } from '@/api/author';
-import { PostAuthorRequest } from '@/api/author/model';
+import { createAuthor } from '@/api/author';
+import { CreateAuthorRequest } from '@/api/author/model';
 import wrapper from '@/test/ReactQueryWrapper';
 
 import useCreateAuthor from './useCreateAuthor';
@@ -9,7 +9,7 @@ import useCreateAuthor from './useCreateAuthor';
 jest.mock('@/api/author');
 
 describe('useCreateAuthor', () => {
-  const author: PostAuthorRequest = {
+  const author: CreateAuthorRequest = {
     name: 'mock-name',
   };
 
@@ -20,16 +20,16 @@ describe('useCreateAuthor', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (postAuthor as jest.Mock).mockResolvedValue(null);
+    (createAuthor as jest.Mock).mockResolvedValue(null);
   });
 
-  it('postAuthor api가 호출되어야만 한다', async () => {
+  it('createAuthor api가 호출되어야만 한다', async () => {
     const { result } = useCreateAuthorHook();
 
     await act(async () => {
       await result.current.mutate(author);
     });
 
-    expect(postAuthor).toBeCalledWith(author);
+    expect(createAuthor).toBeCalledWith(author);
   });
 });

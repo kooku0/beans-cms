@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from 'react-query';
 
-import { postAuthor } from '@/api/author';
-import { PostAuthorRequest, PostAuthorResponse } from '@/api/author/model';
+import { createAuthor } from '@/api/author';
+import { CreateAuthorRequest, CreateAuthorResponse } from '@/api/author/model';
 import ApiException from '@/exceptions/ApiException';
 
 function useCreateAuthor() {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation<PostAuthorResponse, ApiException, PostAuthorRequest>(
-    (author) => postAuthor(author),
+  const mutation = useMutation<CreateAuthorResponse, ApiException, CreateAuthorRequest>(
+    (author) => createAuthor(author),
     {
       onSuccess: () => queryClient.invalidateQueries('authors'),
     },

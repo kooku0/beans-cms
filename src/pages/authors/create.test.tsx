@@ -2,8 +2,8 @@ import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
 
-import { postAuthor } from '@/api/author';
-import { PostAuthorRequest } from '@/api/author/model';
+import { createAuthor } from '@/api/author';
+import { CreateAuthorRequest } from '@/api/author/model';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import CreatePage from './create.page';
@@ -12,7 +12,7 @@ jest.mock('@/api/author');
 jest.mock('@/components/common/sidebar/Sidebar');
 
 describe('CreatePage', () => {
-  const mockAuthor: PostAuthorRequest = {
+  const mockAuthor: CreateAuthorRequest = {
     name: 'mock-name',
     email: 'mock-email',
     position: 'mock-position',
@@ -35,6 +35,6 @@ describe('CreatePage', () => {
       await fireEvent.submit(screen.getByRole('button'));
     });
 
-    expect(postAuthor).toBeCalledWith(mockAuthor);
+    expect(createAuthor).toBeCalledWith(mockAuthor);
   });
 });
