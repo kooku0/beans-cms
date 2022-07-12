@@ -10,28 +10,26 @@ function PostHeader() {
   const handleBack = () => router.push('/posts');
 
   return (
-    <header>
-      <Nav>
-        <Button auto flat icon={<Icon path={mdiArrowLeft} size={1} />} onPress={handleBack}>
-          Back
+    <Header>
+      <Button auto light icon={<Icon path={mdiArrowLeft} size={1} />} onPress={handleBack}>
+        Back
+      </Button>
+      <Row justify="flex-end" align="center">
+        <Button auto flat color="warning">
+          Draft
         </Button>
-        <Row justify="flex-end" align="center">
-          <Button auto flat color="warning">
-            Draft
-          </Button>
-          <Spacer x={0.5} />
-          <Button auto flat color="success">
-            Publish
-          </Button>
-        </Row>
-      </Nav>
-    </header>
+        <Spacer x={0.5} />
+        <Button auto flat color="success">
+          Publish
+        </Button>
+      </Row>
+    </Header>
   );
 }
 
 export default PostHeader;
 
-const Nav = styled.nav`
+const Header = styled.header`
   position: sticky;
   top: 0;
   padding: 0 16px;
@@ -39,4 +37,5 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-items: space-between;
+  background-color: #eee;
 `;
