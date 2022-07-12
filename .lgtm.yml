@@ -1,0 +1,26 @@
+queries:
+  - exclude: "*"
+  - include:            
+      tags:
+        - "security"
+        - "correctness"
+  - include:              
+      severity: "error"
+
+path_classifiers:
+  test:
+    - "**/*.test.tsx"
+    - "**/*.test.ts"
+    - "**/*.test.jsx"
+    - "**/*.test.js"
+    - __mocks__
+    - cypress
+  
+extraction:
+  javascript:
+    index:
+      exclude:
+        - node_modules
+        - .yarn
+        - .pnp.cjs
+        - .pnp.loader.mjs
