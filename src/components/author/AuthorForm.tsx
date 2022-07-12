@@ -7,7 +7,7 @@ import {
 } from '@nextui-org/react';
 import * as yup from 'yup';
 
-import { PatchAuthorRequest, CreateAuthorRequest } from '@/api/author/model';
+import { CreateAuthorRequest, PatchAuthorRequest } from '@/api/author/model';
 import { AuthorSchema } from '@/models/author';
 
 interface Props {
