@@ -3,7 +3,7 @@ import { PostSchema } from '@/models/post';
 export type FetchPostsResponse = PostSchema[];
 export type FetchPostResponse = PostSchema;
 
-export type CreatePostRequest = Omit<PostSchema, 'uid'>;
+export type CreatePostRequest = Omit<PostSchema, 'uid' | 'createdAt' | 'updatedAt'>;
 export type CreatePostResponse = {
   uid: string;
 };

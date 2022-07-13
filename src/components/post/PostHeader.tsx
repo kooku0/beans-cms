@@ -3,11 +3,27 @@ import { mdiArrowLeft } from '@mdi/js';
 import Icon from '@mdi/react';
 import { Button, Row, Spacer } from '@nextui-org/react';
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';
+
+import useCreatePost from '@/hooks/query/post/useCreatePost';
+import postFormState from '@/recoil/post/create/atom';
 
 function PostHeader() {
   const router = useRouter();
+  const { mutate } = useCreatePost();
+  const postForm = useRecoilValue(postFormState);
 
   const handleBack = () => router.push('/posts');
+
+  const handleDraft = () => {
+    mutate({ ...postForm, status: 'draft' });
+    router.push('/posts');
+  };
+
+  const handlePublish = () => {
+    mutate({ ...postForm, status: 'published' });
+    router.push('/posts');
+  };
 
   return (
     <Header>
@@ -15,11 +31,11 @@ function PostHeader() {
         Back
       </Button>
       <Row justify="flex-end" align="center">
-        <Button auto flat color="warning">
+        <Button auto flat color="warning" onPress={handleDraft}>
           Draft
         </Button>
         <Spacer x={0.5} />
-        <Button auto flat color="success">
+        <Button auto flat color="success" onPress={handlePublish}>
           Publish
         </Button>
       </Row>

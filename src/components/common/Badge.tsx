@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLSpanElement> {
   bg?: string;
   color?: string;
   bordered?: boolean;
@@ -8,7 +8,6 @@ interface Props {
 
 const Badge = styled.span<Props>`
   display: inline-block;
-  text-transform: uppercase;
   padding: 0.25rem 0.375rem;
   margin: 0 2px;
   font-size: 10px;
@@ -22,7 +21,7 @@ const Badge = styled.span<Props>`
   background-color: ${({ bordered, bg }) => (bordered ? 'transparent' : (bg || '#042F14'))};
   color: ${({ color }) => color || '#41EC8B'};
 
-  ${({ bordered, color }) => bordered && `border: 1px solid ${color};`}
+  ${({ bordered, color }) => bordered && `border: 1px solid ${color || '#41EC8B'};`}
 `;
 
 export default Badge;

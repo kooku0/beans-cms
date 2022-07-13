@@ -13,8 +13,8 @@ router
   .use(database)
   .post(async (req, res) => {
     const collection = req.db.collection<PostSchema>(COLLECTION);
-
-    const doc = JSON.parse(JSON.stringify(req.body));
+    const now = new Date().toISOString();
+    const doc = JSON.parse(JSON.stringify({ ...req.body, createdAt: now, updatedAt: now }));
 
     try {
       const { insertedId } = await collection.insertOne(doc);
