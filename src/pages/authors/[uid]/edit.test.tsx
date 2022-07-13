@@ -11,7 +11,10 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import EditPage from './edit.page';
 
-jest.mock('next/router');
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));
 jest.mock('@/components/common/sidebar/Sidebar');
 jest.mock('@/api/author');
 jest.mock('@/hooks/query/author/useFetchAuthor');

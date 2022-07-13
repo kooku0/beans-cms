@@ -7,6 +7,7 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import PostsPage from './index.page';
 
+jest.mock('@/api/post');
 jest.mock('@/components/common/sidebar/Sidebar');
 jest.mock('next/router', () => ({
   __esModule: true,

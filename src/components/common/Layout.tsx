@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
 
 import { css } from '@emotion/react';
-import { mdiAccount } from '@mdi/js';
+import { mdiAccount, mdiFileDocumentEdit } from '@mdi/js';
 import { Container, Image, Text } from '@nextui-org/react';
 import Link from 'next/link';
 
@@ -21,6 +21,7 @@ function Layout({
       label: 'Collections',
       items: [
         {
+          icon: mdiFileDocumentEdit,
           text: 'Posts',
           link: '/posts',
         },
