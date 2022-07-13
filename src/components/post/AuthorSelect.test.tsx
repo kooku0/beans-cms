@@ -1,6 +1,4 @@
-import {
-  fireEvent, render, screen,
-} from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { fetchAuthors } from '@/api/author';
 import FIXTURE_AUTHOR from '@/fixtures/author';
@@ -31,8 +29,10 @@ describe('AuthorSelect', () => {
   it('author를 선택할 수 있어야한다.', async () => {
     renderAuthorSelect();
 
-    fireEvent.change(screen.getByLabelText('author'), { target: { value: FIXTURE_AUTHOR.name } });
+    const input = screen.getByLabelText('author');
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
     await screen.findByText(FIXTURE_AUTHOR.name);
+    fireEvent.click(screen.getByText(FIXTURE_AUTHOR.name));
 
     expect(setPostForm).toBeCalledWith({
       ...initialPostForm,

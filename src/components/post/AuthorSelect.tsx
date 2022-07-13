@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-import Select, { Options } from 'react-select';
+import { useCallback, useMemo } from 'react';
+import Select, {
+  GroupBase, OptionsOrGroups, SingleValue,
+} from 'react-select';
 
 import { useRecoilState } from 'recoil';
 
@@ -13,19 +15,13 @@ type Option = {
 
 function AuthorSelect() {
   const [{ authorUid }, setPostForm] = useRecoilState(postFormState);
-  const [options, setOptions] = useState<Options<Option>>([]);
   const { data: authors } = useFetchAuthors();
 
-  useEffect(() => {
-    if (authors) {
-      const parsedAuthors = authors.map((author) => ({
-        value: author.uid,
-        label: author.name,
-      }));
-
-      setOptions(parsedAuthors);
-    }
-  }, [authors]);
+  const options: OptionsOrGroups<Option, GroupBase<Option>> = useMemo(
+    () => authors?.map((author) => ({
+      value: author.uid,
+      label: author.name,
+    })) ?? [], [authors]);
 
   const customStyles = {
     control: () => ({
@@ -43,12 +39,22 @@ function AuthorSelect() {
     }),
   };
 
-  const handleChange = (selectedOption: Options<Option>) => {
-    console.log(selectedOption);
-    setPostForm((prev) => ({ ...prev, authorUid: selectedOption.value }));
-  };
+  const handleChange = useCallback((selectedOption: SingleValue<Option | GroupBase<Option>>) => {
+    setPostForm((prev) => ({ ...prev, authorUid: (selectedOption as Option).value }));
+  }, []);
 
-  return <Select aria-label="author" defaultValue={authorUid} options={options} styles={customStyles} placeholder="Author" onChange={handleChange} />;
+  const defaultValue = options.find((option) => option.label === authorUid);
+
+  return (
+    <Select
+      aria-label="author"
+      defaultValue={defaultValue}
+      options={options}
+      styles={customStyles}
+      placeholder="Author"
+      onChange={handleChange}
+    />
+  );
 }
 
 export default AuthorSelect;
