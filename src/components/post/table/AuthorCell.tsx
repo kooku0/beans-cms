@@ -7,7 +7,7 @@ interface Props {
 function AuthorCell({ authorUid }: Props) {
   const { data: authors } = useFetchAuthors();
 
-  return <div>{authors?.find(({ uid }) => uid === authorUid)?.name}</div>;
+  return <div>{authors?.find(({ uid }) => uid === authorUid)?.name || 'Not Found Author'}</div>;
 }
 
 export default AuthorCell;
