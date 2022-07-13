@@ -1,7 +1,9 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEvent } from 'react';
 
 import styled from '@emotion/styled';
-import { Input, Spacer, Textarea } from '@nextui-org/react';
+import {
+  FormElement, Input, Spacer, Textarea,
+} from '@nextui-org/react';
 import { useRecoilState } from 'recoil';
 
 import postFormState from '@/recoil/post/create/atom';
@@ -12,23 +14,42 @@ import TagInput from './TagInput';
 function PostForm() {
   const [{ title, html }, setPostForm] = useRecoilState(postFormState);
 
-  const handleTitleChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
+  const handleTitleChange = ({ target }: ChangeEvent<FormElement>) => {
     setPostForm((prev) => ({ ...prev, title: target.value }));
   };
 
-  const handleHtmlChange: ChangeEventHandler<HTMLTextAreaElement> = ({ target }) => {
+  const handleHtmlChange = ({ target }: ChangeEvent<FormElement>) => {
     setPostForm((prev) => ({ ...prev, html: target.value }));
   };
 
   return (
     <Form>
-      <Input bordered fullWidth color="primary" placeholder="title" size="xl" animated={false} value={title} onChange={handleTitleChange} />
+      <Input
+        aria-label="title"
+        bordered
+        fullWidth
+        color="primary"
+        placeholder="title"
+        size="xl"
+        animated={false}
+        value={title}
+        onChange={handleTitleChange}
+      />
       <Spacer y={0.5} />
       <AuthorSelect />
       <Spacer y={0.5} />
       <TagInput />
       <Spacer y={0.5} />
-      <Textarea autoComplete="off" fullWidth placeholder="Enter contents" shadow={false} animated={false} value={html} onChange={handleHtmlChange} />
+      <Textarea
+        aria-label="contents"
+        autoComplete="off"
+        fullWidth
+        placeholder="Enter contents"
+        shadow={false}
+        animated={false}
+        value={html}
+        onChange={handleHtmlChange}
+      />
     </Form>
   );
 }

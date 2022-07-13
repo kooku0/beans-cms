@@ -44,10 +44,11 @@ function AuthorSelect() {
   };
 
   const handleChange = (selectedOption: Options<Option>) => {
+    console.log(selectedOption);
     setPostForm((prev) => ({ ...prev, authorUid: selectedOption.value }));
   };
 
-  return <Select defaultValue={authorUid} options={options} styles={customStyles} placeholder="Author" onChange={handleChange} />;
+  return <Select aria-label="author" defaultValue={authorUid} options={options} styles={customStyles} placeholder="Author" onChange={handleChange} />;
 }
 
 export default AuthorSelect;
