@@ -34,7 +34,7 @@ describe('Badge', () => {
     it('renders with border', () => {
       renderBadge();
 
-      expect(screen.getByText(badge)).toHaveStyle({ border: `1px solid ${defaultColor};` });
+      expect(screen.getByText(badge)).toHaveStyle(`border: 1px solid ${defaultColor};`);
     });
 
     it('backgroundColor is transparent', () => {

@@ -7,6 +7,7 @@ import { PostSchema, PostStatus } from '@/models/post';
 import { Column } from '@/models/table';
 
 import ActionsCell from './ActionsCell';
+import AuthorCell from './AuthorCell';
 
 interface Props {
   posts: PostSchema[];
@@ -21,25 +22,22 @@ function PostsTable({ posts }: Props) {
     { name: 'ACTIONS', uid: 'actions' },
   ];
 
-  const statusBadges: { [key in PostStatus]: any } = {
+  const statusBadgeColor: { [key in PostStatus]: any } = {
     draft: {
       color: '#F6AD37',
-      bg: '#3A2503',
     },
     published: {
       color: '#41EC8B',
-      bg: '#042F14',
     },
   };
 
   const renderCell = (post: PostSchema, columnKey: React.Key) => {
     if (columnKey === 'status') {
-      const statusBadge = statusBadges[post.status];
-      return <Badge bordered bg={statusBadge.bg} color={statusBadge.color}>{post.status}</Badge>;
+      return <Badge bordered color={statusBadgeColor[post.status].color}>{post.status}</Badge>;
     }
 
     if (columnKey === 'createdAt') {
-      return <div>{dayjs(post.createdAt).format('YYYY-MM-DD HH:mm:ss')}</div>;
+      return <div>{dayjs(post.createdAt).format('YYYY/MM/DD HH:mm:ss')}</div>;
     }
 
     if (columnKey === 'title') {
@@ -47,7 +45,7 @@ function PostsTable({ posts }: Props) {
     }
 
     if (columnKey === 'author') {
-      return <div>{post.authorUid}</div>;
+      return <AuthorCell authorUid={post.authorUid} />;
     }
 
     return <ActionsCell postId={post.uid} />;
