@@ -1,3 +1,5 @@
+import { User } from '@nextui-org/react';
+
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
 
 interface Props {
@@ -7,7 +9,16 @@ interface Props {
 function AuthorCell({ authorUid }: Props) {
   const { data: authors } = useFetchAuthors();
 
-  return <div>{authors?.find(({ uid }) => uid === authorUid)?.name || 'Not Found Author'}</div>;
+  const author = authors?.find(({ uid }) => uid === authorUid);
+
+  if (!author) {
+    return <div>Not Found Author</div>;
+  }
+  return (
+    <User squared src={author.avatar} name={author.name} css={{ p: 0 }}>
+      {author.email}
+    </User>
+  );
 }
 
 export default AuthorCell;

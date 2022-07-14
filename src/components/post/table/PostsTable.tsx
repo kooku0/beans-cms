@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Table } from '@nextui-org/react';
+import { Table, Text } from '@nextui-org/react';
 import dayjs from 'dayjs';
 
 import Badge from '@/components/common/Badge';
@@ -38,11 +38,11 @@ function PostsTable({ posts }: Props) {
     }
 
     if (columnKey === 'createdAt') {
-      return <div>{dayjs(post.createdAt).format('YYYY/MM/DD HH:mm:ss')}</div>;
+      return <Text small color="#3a3a3a">{dayjs(post.createdAt).format('YYYY.MM.DD HH:mm:ss')}</Text>;
     }
 
     if (columnKey === 'title') {
-      return <div>{post.title}</div>;
+      return <Text b size={14} css={{ tt: 'capitalize' }}>{post.title}</Text>;
     }
 
     if (columnKey === 'author') {
