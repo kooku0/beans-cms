@@ -2,11 +2,13 @@ import { ChangeEvent } from 'react';
 
 import styled from '@emotion/styled';
 import {
-  FormElement, Input, Spacer, Textarea,
+  FormElement, Input, Spacer,
 } from '@nextui-org/react';
 import { useRecoilState } from 'recoil';
 
 import postFormState from '@/recoil/post/form/atom';
+
+import MarkdownEditor from '../markdown/MarkdownEditor';
 
 import AuthorSelect from './AuthorSelect';
 import TagInput from './TagInput';
@@ -18,8 +20,8 @@ function PostForm() {
     setPostForm((prev) => ({ ...prev, title: target.value }));
   };
 
-  const handleMarkdownChange = ({ target }: ChangeEvent<FormElement>) => {
-    setPostForm((prev) => ({ ...prev, markdown: target.value }));
+  const setMarkdown = (value: string) => {
+    setPostForm((prev) => ({ ...prev, markdown: value }));
   };
 
   return (
@@ -40,16 +42,7 @@ function PostForm() {
       <Spacer y={0.5} />
       <TagInput />
       <Spacer y={0.5} />
-      <Textarea
-        aria-label="markdown"
-        autoComplete="off"
-        fullWidth
-        placeholder="Enter markdown"
-        shadow={false}
-        animated={false}
-        value={markdown}
-        onChange={handleMarkdownChange}
-      />
+      <MarkdownEditor markdown={markdown} setMarkdown={setMarkdown} />
     </Form>
   );
 }
@@ -58,5 +51,7 @@ export default PostForm;
 
 const Form = styled.form`
   padding: 16px;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 `;

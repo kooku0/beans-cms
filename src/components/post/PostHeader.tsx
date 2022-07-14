@@ -14,6 +14,7 @@ import useCreatePost from '@/hooks/query/post/useCreatePost';
 import useUpdatePost from '@/hooks/query/post/useUpdatePost';
 import { PostStatus } from '@/models/post';
 import postFormState from '@/recoil/post/form/atom';
+import zIndexes from '@/styles/zIndexes';
 
 function PostHeader() {
   const router = useRouter();
@@ -84,7 +85,8 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-items: space-between;
-  background-color: #eee;
+  background-color: rgba(210, 210, 210, 0.8);
+  z-index: ${zIndexes.postHeader};
 `;
 
 const StyledLoader = styled(Loading)`

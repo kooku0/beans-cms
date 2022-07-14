@@ -1,4 +1,4 @@
-import { Col, Row } from '@nextui-org/react';
+import styled from '@emotion/styled';
 
 import PostForm from './form/PostForm';
 import MarkdownPreview from './MarkdownPreview';
@@ -6,16 +6,27 @@ import PostHeader from './PostHeader';
 
 function PostEditor() {
   return (
-    <Row>
-      <Col>
+    <Wrapper>
+      <PostFormWrapper>
         <PostHeader />
         <PostForm />
-      </Col>
-      <Col>
-        <MarkdownPreview />
-      </Col>
-    </Row>
+      </PostFormWrapper>
+      <MarkdownPreview />
+    </Wrapper>
   );
 }
 
 export default PostEditor;
+
+const Wrapper = styled.div`
+  display: flex;
+
+  & > * {
+    flex-basis: 50%;
+  }
+`;
+
+const PostFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
