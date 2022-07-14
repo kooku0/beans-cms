@@ -31,11 +31,11 @@ function PostHeader() {
         Back
       </Button>
       <Row justify="flex-end" align="center">
-        <Button auto flat color="warning" onPress={handleDraft}>
+        <Button auto flat color="warning" onPress={handleDraft} disabled={postForm.status === 'draft'}>
           Draft
         </Button>
         <Spacer x={0.5} />
-        <Button auto flat color="success" onPress={handlePublish}>
+        <Button auto flat color="success" onPress={handlePublish} disabled={postForm.status === 'published'}>
           Publish
         </Button>
       </Row>

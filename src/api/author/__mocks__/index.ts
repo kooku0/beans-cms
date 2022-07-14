@@ -6,6 +6,6 @@ export const fetchAuthor = jest.fn(() => FIXTURE_AUTHOR);
 
 export const createAuthor = jest.fn(() => ({ uid: '1' }));
 
-export const patchAuthor = jest.fn(() => null);
+export const updateAuthor = jest.fn(() => null);
 
 export const deleteAuthor = jest.fn(() => null);

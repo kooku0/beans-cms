@@ -5,11 +5,11 @@ import { api } from '..';
 import {
   CreatePostRequest, CreatePostResponse,
   FetchPostResponse,
-  FetchPostsResponse, PatchPostRequest,
+  FetchPostsResponse, UpdatePostRequest,
 } from './model';
 import {
   createPost,
-  deletePost, fetchPost, fetchPosts, patchPost,
+  deletePost, fetchPost, fetchPosts, updatePost,
 } from '.';
 
 jest.mock('..');
@@ -55,6 +55,7 @@ describe('post API', () => {
   describe('postPost', () => {
     const post: CreatePostRequest = {
       authorUid: 'mock-author-uid',
+      title: 'asf',
       html: 'mock-html',
       status: 'draft',
       tags: ['mock-tag'],
@@ -79,9 +80,9 @@ describe('post API', () => {
     });
   });
 
-  describe('patchPost', () => {
+  describe('updatePost', () => {
     const uid = 'mock-uid';
-    const post: PatchPostRequest = {
+    const post: UpdatePostRequest = {
       html: 'mock-html',
     };
     const mockResponseData = null;
@@ -91,7 +92,7 @@ describe('post API', () => {
     });
 
     it('PATCH /posts/{uid}', async () => {
-      const response = await patchPost(uid, post);
+      const response = await updatePost(uid, post);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({
