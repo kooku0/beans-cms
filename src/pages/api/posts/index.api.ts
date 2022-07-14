@@ -1,5 +1,6 @@
 import { NextApiResponse } from 'next';
 import { createRouter } from 'next-connect';
+import { chain } from 'underscore';
 
 import database from '@/middlewares/database';
 import { NextApiRequestWithDb } from '@/middlewares/database/model';
@@ -29,7 +30,7 @@ router
     const collection = req.db.collection<PostSchema>(COLLECTION);
 
     const findResult = await collection.find({}).toArray();
-    const data = findResult.map((item) => ({ ...item, uid: item._id.toString() }));
+    const data = findResult.map((item) => (chain(item).extend({ uid: item._id.toString() }).omit('_id').value()));
 
     res.json({ data });
   });

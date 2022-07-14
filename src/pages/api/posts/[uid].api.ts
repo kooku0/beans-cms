@@ -1,6 +1,7 @@
 import { ObjectId } from 'mongodb';
 import { NextApiResponse } from 'next';
 import { createRouter } from 'next-connect';
+import { chain } from 'underscore';
 
 import database from '@/middlewares/database';
 import { NextApiRequestWithDb } from '@/middlewares/database/model';
@@ -17,8 +18,9 @@ router
     const collection = req.db.collection<PostSchema>(COLLECTION);
 
     const findResult = await collection.findOne({ _id: new ObjectId(uid as string) });
+    const data = chain(findResult).extend({ uid }).omit('_id').value();
 
-    res.json({ data: { ...findResult, uid } });
+    res.json({ data });
   })
   .patch(async (req, res) => {
     const { uid } = req.query;

@@ -58,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-test-renderer", "npm:18.0.0"],\
             ["@types/sharp", "npm:0.30.2"],\
             ["@types/testing-library__jest-dom", "npm:5.14.3"],\
+            ["@types/underscore", "npm:1.11.4"],\
             ["@types/yup", "npm:0.29.14"],\
             ["@typescript-eslint/eslint-plugin", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["@typescript-eslint/parser", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
@@ -104,6 +105,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["recoil", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.7.3"],\
             ["sharp", "npm:0.30.6"],\
             ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"],\
+            ["underscore", "npm:1.13.4"],\
             ["yup", "npm:0.32.11"]\
           ],\
           "linkType": "SOFT"\
@@ -6446,6 +6448,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/underscore", [\
+        ["npm:1.11.4", {\
+          "packageLocation": "./.yarn/cache/@types-underscore-npm-1.11.4-20333ba8c0-db9f8486bc.zip/node_modules/@types/underscore/",\
+          "packageDependencies": [\
+            ["@types/underscore", "npm:1.11.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/webidl-conversions", [\
         ["npm:6.1.1", {\
           "packageLocation": "./.yarn/cache/@types-webidl-conversions-npm-6.1.1-ce4d057614-bd0faad4df.zip/node_modules/@types/webidl-conversions/",\
@@ -7497,6 +7508,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-test-renderer", "npm:18.0.0"],\
             ["@types/sharp", "npm:0.30.2"],\
             ["@types/testing-library__jest-dom", "npm:5.14.3"],\
+            ["@types/underscore", "npm:1.11.4"],\
             ["@types/yup", "npm:0.29.14"],\
             ["@typescript-eslint/eslint-plugin", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
             ["@typescript-eslint/parser", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:5.27.0"],\
@@ -7543,6 +7555,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["recoil", "virtual:79494677922aee7e3342cc1c7a18dcafdc6f8d8175b84f16a813b5639d89efaa5625215609422b742e6a58cd0ca94b7b91be5bcc78b57124c2e776905761aec9#npm:0.7.3"],\
             ["sharp", "npm:0.30.6"],\
             ["typescript", "patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=7ad353"],\
+            ["underscore", "npm:1.13.4"],\
             ["yup", "npm:0.32.11"]\
           ],\
           "linkType": "SOFT"\
@@ -15554,6 +15567,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["has-bigints", "npm:1.0.2"],\
             ["has-symbols", "npm:1.0.3"],\
             ["which-boxed-primitive", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["underscore", [\
+        ["npm:1.13.4", {\
+          "packageLocation": "./.yarn/cache/underscore-npm-1.13.4-9195880774-6b04f66cd4.zip/node_modules/underscore/",\
+          "packageDependencies": [\
+            ["underscore", "npm:1.13.4"]\
           ],\
           "linkType": "HARD"\
         }]\
