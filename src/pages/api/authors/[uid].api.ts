@@ -18,7 +18,7 @@ router
     const collection = req.db.collection<AuthorSchema>(COLLECTION);
 
     const findResult = await collection.findOne({ _id: new ObjectId(uid as string) });
-    const data = chain(findResult).extend({ uid }).omit('_id');
+    const data = chain(findResult).extend({ uid }).omit('_id').value();
 
     res.json({ data });
   })

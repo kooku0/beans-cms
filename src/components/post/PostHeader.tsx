@@ -8,6 +8,7 @@ import {
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { pick } from 'underscore';
 
 import useCreatePost from '@/hooks/query/post/useCreatePost';
 import useUpdatePost from '@/hooks/query/post/useUpdatePost';
@@ -35,14 +36,8 @@ function PostHeader() {
   const handlePublish = () => submitPostForm('published');
 
   const submitPostForm = (status: PostStatus) => {
-    const {
-      title, html, authorUid, tags,
-    } = postForm;
-
     if (postId) {
-      update({
-        title, html, authorUid, tags, status,
-      });
+      update({ ...pick(postForm, 'title', 'html', 'authorUid', 'tags'), status });
       return;
     }
 

@@ -30,7 +30,7 @@ router
     const collection = req.db.collection<PostSchema>(COLLECTION);
 
     const findResult = await collection.find({}).toArray();
-    const data = findResult.map((item) => (chain(item).extend({ uid: item._id.toString() }).omit('_id')));
+    const data = findResult.map((item) => (chain(item).extend({ uid: item._id.toString() }).omit('_id').value()));
 
     res.json({ data });
   });
