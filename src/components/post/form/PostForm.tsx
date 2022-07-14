@@ -12,14 +12,14 @@ import AuthorSelect from './AuthorSelect';
 import TagInput from './TagInput';
 
 function PostForm() {
-  const [{ title, html }, setPostForm] = useRecoilState(postFormState);
+  const [{ title, contents }, setPostForm] = useRecoilState(postFormState);
 
   const handleTitleChange = ({ target }: ChangeEvent<FormElement>) => {
     setPostForm((prev) => ({ ...prev, title: target.value }));
   };
 
-  const handleHtmlChange = ({ target }: ChangeEvent<FormElement>) => {
-    setPostForm((prev) => ({ ...prev, html: target.value }));
+  const handleContentsChange = ({ target }: ChangeEvent<FormElement>) => {
+    setPostForm((prev) => ({ ...prev, contents: target.value }));
   };
 
   return (
@@ -47,8 +47,8 @@ function PostForm() {
         placeholder="Enter contents"
         shadow={false}
         animated={false}
-        value={html}
-        onChange={handleHtmlChange}
+        value={contents}
+        onChange={handleContentsChange}
       />
     </Form>
   );

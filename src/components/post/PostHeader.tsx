@@ -37,7 +37,7 @@ function PostHeader() {
 
   const submitPostForm = (status: PostStatus) => {
     if (postId) {
-      update({ ...pick(postForm, 'title', 'html', 'authorUid', 'tags'), status });
+      update({ ...pick(postForm, 'title', 'contents', 'authorUid', 'tags'), status });
       return;
     }
 

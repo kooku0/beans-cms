@@ -23,7 +23,7 @@ describe('PostEditPage', () => {
   const uid = 'mock-uid';
   const post: UpdatePostRequest = {
     title: FIXTURE_POST.title,
-    html: FIXTURE_POST.html,
+    contents: FIXTURE_POST.contents,
     authorUid: FIXTURE_POST.authorUid,
     tags: FIXTURE_POST.tags,
   };

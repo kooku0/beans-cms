@@ -39,6 +39,6 @@ describe('PostForm', () => {
       await fireEvent.change(screen.getByLabelText('contents'), { target: { value: 'contents' } });
     });
 
-    expect(setPostForm).toHaveBeenCalledWith({ ...initialPostForm, html: 'contents' });
+    expect(setPostForm).toHaveBeenCalledWith({ ...initialPostForm, contents: 'contents' });
   });
 });
