@@ -9,7 +9,7 @@ const postFormState = atom<CreatePostForm | PostSchema>({
     status: 'create',
     title: '',
     tags: [],
-    contents: '',
+    markdown: '',
   },
 });
 

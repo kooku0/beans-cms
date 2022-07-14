@@ -56,7 +56,7 @@ describe('post API', () => {
     const post: CreatePostRequest = {
       authorUid: 'mock-author-uid',
       title: 'asf',
-      contents: 'mock-contents',
+      markdown: 'mock-markdown',
       status: 'draft',
       tags: ['mock-tag'],
     };
@@ -83,7 +83,7 @@ describe('post API', () => {
   describe('updatePost', () => {
     const uid = 'mock-uid';
     const post: UpdatePostRequest = {
-      contents: 'mock-contents',
+      markdown: 'mock-markdown',
     };
     const mockResponseData = null;
 

@@ -12,14 +12,14 @@ import AuthorSelect from './AuthorSelect';
 import TagInput from './TagInput';
 
 function PostForm() {
-  const [{ title, contents }, setPostForm] = useRecoilState(postFormState);
+  const [{ title, markdown }, setPostForm] = useRecoilState(postFormState);
 
   const handleTitleChange = ({ target }: ChangeEvent<FormElement>) => {
     setPostForm((prev) => ({ ...prev, title: target.value }));
   };
 
-  const handleContentsChange = ({ target }: ChangeEvent<FormElement>) => {
-    setPostForm((prev) => ({ ...prev, contents: target.value }));
+  const handleMarkdownChange = ({ target }: ChangeEvent<FormElement>) => {
+    setPostForm((prev) => ({ ...prev, markdown: target.value }));
   };
 
   return (
@@ -41,14 +41,14 @@ function PostForm() {
       <TagInput />
       <Spacer y={0.5} />
       <Textarea
-        aria-label="contents"
+        aria-label="markdown"
         autoComplete="off"
         fullWidth
-        placeholder="Enter contents"
+        placeholder="Enter markdown"
         shadow={false}
         animated={false}
-        value={contents}
-        onChange={handleContentsChange}
+        value={markdown}
+        onChange={handleMarkdownChange}
       />
     </Form>
   );
