@@ -1,12 +1,12 @@
 import { atom } from 'recoil';
 
-import { CreatePostRequest } from '@/api/post/model';
+import { CreatePostForm, PostSchema } from '@/models/post';
 
-const postFormState = atom<CreatePostRequest>({
+const postFormState = atom<CreatePostForm | PostSchema>({
   key: 'postFormState',
   default: {
     authorUid: '',
-    status: 'draft',
+    status: 'create',
     title: '',
     tags: [],
     html: '',

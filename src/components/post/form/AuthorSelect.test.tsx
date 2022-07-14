@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { fetchAuthors } from '@/api/author';
 import FIXTURE_AUTHOR from '@/fixtures/author';
 import { postForm as initialPostForm } from '@/fixtures/post';
-import postFormState from '@/recoil/post/create/atom';
+import postFormState from '@/recoil/post/form/atom';
 import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 import RecoilObserver from '@/test/RecoilObserver';

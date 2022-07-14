@@ -10,3 +10,13 @@ export type PostSchema = {
 }
 
 export type PostStatus = 'draft' | 'published';
+
+export type CreatePostStatus = PostStatus | 'create';
+
+export type CreatePostForm = {
+  authorUid: string;
+  status: CreatePostStatus;
+  title: string;
+  html: string;
+  tags: string[];
+}

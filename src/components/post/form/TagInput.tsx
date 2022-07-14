@@ -5,9 +5,8 @@ import {
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
 
-import postFormState from '@/recoil/post/create/atom';
-
-import Badge from '../common/Badge';
+import Badge from '@/components/common/Badge';
+import postFormState from '@/recoil/post/form/atom';
 
 function TagInput() {
   const [{ tags }, setPostForm] = useRecoilState(postFormState);
@@ -70,6 +69,7 @@ const Wrapper = styled.div`
 const Input = styled.input`
   border: none;
   height: 20px;
+  width: 100%;
   background-color: transparent;
   margin: 4px 10px;
 `;

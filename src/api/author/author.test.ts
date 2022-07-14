@@ -5,11 +5,11 @@ import { api } from '..';
 import {
   CreateAuthorRequest, CreateAuthorResponse,
   FetchAuthorResponse,
-  FetchAuthorsResponse, PatchAuthorRequest,
+  FetchAuthorsResponse, UpdateAuthorRequest,
 } from './model';
 import {
   createAuthor,
-  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor,
+  deleteAuthor, fetchAuthor, fetchAuthors, updateAuthor,
 } from '.';
 
 jest.mock('..');
@@ -76,9 +76,9 @@ describe('author API', () => {
     });
   });
 
-  describe('patchAuthor', () => {
+  describe('updateAuthor', () => {
     const uid = 'mock-uid';
-    const author: PatchAuthorRequest = {
+    const author: UpdateAuthorRequest = {
       name: 'mock-name',
     };
     const mockResponseData = null;
@@ -88,7 +88,7 @@ describe('author API', () => {
     });
 
     it('PATCH /authors/{uid}', async () => {
-      const response = await patchAuthor(uid, author);
+      const response = await updateAuthor(uid, author);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({

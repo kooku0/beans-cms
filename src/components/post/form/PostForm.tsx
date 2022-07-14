@@ -6,7 +6,7 @@ import {
 } from '@nextui-org/react';
 import { useRecoilState } from 'recoil';
 
-import postFormState from '@/recoil/post/create/atom';
+import postFormState from '@/recoil/post/form/atom';
 
 import AuthorSelect from './AuthorSelect';
 import TagInput from './TagInput';

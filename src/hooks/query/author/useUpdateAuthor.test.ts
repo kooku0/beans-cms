@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { patchAuthor } from '@/api/author';
-import { PatchAuthorRequest } from '@/api/author/model';
+import { updateAuthor } from '@/api/author';
+import { UpdateAuthorRequest } from '@/api/author/model';
 import wrapper from '@/test/ReactQueryWrapper';
 
 import useUpdateAuthor from './useUpdateAuthor';
@@ -10,7 +10,7 @@ jest.mock('@/api/author');
 
 describe('useUpdateAuthor', () => {
   const uid = 'mock-uid';
-  const author: PatchAuthorRequest = {
+  const author: UpdateAuthorRequest = {
     name: 'mock-name',
   };
 
@@ -21,16 +21,16 @@ describe('useUpdateAuthor', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (patchAuthor as jest.Mock).mockResolvedValue(null);
+    (updateAuthor as jest.Mock).mockResolvedValue(null);
   });
 
-  it('patchAuthor api가 호출되어야만 한다', async () => {
+  it('updateAuthor api가 호출되어야만 한다', async () => {
     const { result } = useUpdateAuthorHook();
 
     await act(async () => {
       await result.current.mutate(author);
     });
 
-    expect(patchAuthor).toBeCalledWith(uid, author);
+    expect(updateAuthor).toBeCalledWith(uid, author);
   });
 });

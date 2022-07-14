@@ -2,14 +2,17 @@ import { act } from 'react-test-renderer';
 
 import { render } from '@testing-library/react';
 
+import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import CreatePage from './create.page';
 
-describe('CreatePage', () => {
+describe('PostCreatePage', () => {
   const renderCreatePage = () => render((
     <ReactQueryWrapper>
-      <CreatePage />
+      <InjectTestingRecoil>
+        <CreatePage />
+      </InjectTestingRecoil>
     </ReactQueryWrapper>
   ));
 

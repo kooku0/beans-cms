@@ -7,7 +7,7 @@ import {
   CreatePostResponse,
   FetchPostResponse,
   FetchPostsResponse,
-  PatchPostRequest,
+  UpdatePostRequest,
 } from './model';
 
 const BASE_URL = '/posts';
@@ -40,7 +40,7 @@ export const createPost = async (post: CreatePostRequest):Promise<CreatePostResp
   return response.data;
 };
 
-export const patchPost = async (uid: string, post: PatchPostRequest):Promise<void> => {
+export const updatePost = async (uid: string, post: UpdatePostRequest):Promise<void> => {
   const response = await api<ApiResponse<void>>({
     method: 'patch',
     url: `${BASE_URL}/${uid}`,

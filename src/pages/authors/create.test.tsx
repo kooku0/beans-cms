@@ -11,7 +11,7 @@ import CreatePage from './create.page';
 jest.mock('@/api/author');
 jest.mock('@/components/common/sidebar/Sidebar');
 
-describe('CreatePage', () => {
+describe('AuthorCreatePage', () => {
   const mockAuthor: CreateAuthorRequest = {
     name: 'mock-name',
     email: 'mock-email',

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { PatchAuthorRequest } from '@/api/author/model';
+import { UpdateAuthorRequest } from '@/api/author/model';
 import AuthorForm from '@/components/author/AuthorForm';
 import Layout from '@/components/common/Layout';
 import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
@@ -17,7 +17,7 @@ function EditPage() {
     return <div>loading</div>;
   }
 
-  const handleSubmit = (formData: PatchAuthorRequest) => mutate(formData);
+  const handleSubmit = (formData: UpdateAuthorRequest) => mutate(formData);
 
   return (
     <Layout title="Edit Author">

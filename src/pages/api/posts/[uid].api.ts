@@ -23,10 +23,11 @@ router
   .patch(async (req, res) => {
     const { uid } = req.query;
     const collection = req.db.collection<PostSchema>(COLLECTION);
+    const now = new Date().toISOString();
 
     await collection.updateOne(
       { _id: new ObjectId(uid as string) },
-      { $set: req.body },
+      { $set: { ...req.body, updatedAt: now } },
     );
 
     res.status(204).end('Success updated');
@@ -42,6 +43,7 @@ router
 
 export default router.handler({
   onError: (err, req, res) => {
+    console.error(err);
     res.status(500).end('Something broke!');
   },
   onNoMatch: (req, res) => {

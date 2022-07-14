@@ -7,12 +7,12 @@ import {
 } from '@nextui-org/react';
 import * as yup from 'yup';
 
-import { CreateAuthorRequest, PatchAuthorRequest } from '@/api/author/model';
+import { CreateAuthorRequest, UpdateAuthorRequest } from '@/api/author/model';
 import { AuthorSchema } from '@/models/author';
 
 interface Props {
   author?: AuthorSchema;
-  onSubmit: ((formData: PatchAuthorRequest) => void) | ((formData: CreateAuthorRequest) => void);
+  onSubmit: ((formData: UpdateAuthorRequest) => void) | ((formData: CreateAuthorRequest) => void);
 }
 
 function AuthorForm({ author, onSubmit }: Props) {

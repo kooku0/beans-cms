@@ -7,7 +7,7 @@ import {
   CreateAuthorResponse,
   FetchAuthorResponse,
   FetchAuthorsResponse,
-  PatchAuthorRequest,
+  UpdateAuthorRequest,
 } from './model';
 
 const BASE_URL = '/authors';
@@ -40,7 +40,7 @@ export const createAuthor = async (author: CreateAuthorRequest):Promise<CreateAu
   return response.data;
 };
 
-export const patchAuthor = async (uid: string, author: PatchAuthorRequest):Promise<void> => {
+export const updateAuthor = async (uid: string, author: UpdateAuthorRequest):Promise<void> => {
   const response = await api<ApiResponse<void>>({
     method: 'patch',
     url: `${BASE_URL}/${uid}`,

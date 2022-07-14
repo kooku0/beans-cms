@@ -1,29 +1,63 @@
+import { useEffect } from 'react';
+
 import styled from '@emotion/styled';
 import { mdiArrowLeft } from '@mdi/js';
 import Icon from '@mdi/react';
-import { Button, Row, Spacer } from '@nextui-org/react';
+import {
+  Button, Loading, Row, Spacer,
+} from '@nextui-org/react';
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import useCreatePost from '@/hooks/query/post/useCreatePost';
-import postFormState from '@/recoil/post/create/atom';
+import useUpdatePost from '@/hooks/query/post/useUpdatePost';
+import { PostStatus } from '@/models/post';
+import postFormState from '@/recoil/post/form/atom';
 
 function PostHeader() {
   const router = useRouter();
-  const { mutate } = useCreatePost();
+  const postId = router?.query?.uid as string;
+  const {
+    mutate: create,
+    isLoading: isCreateLoading,
+    isSuccess: isCreateSuccess,
+  } = useCreatePost();
+  const {
+    mutate: update,
+    isLoading: isUpdateLoading,
+    isSuccess: isUpdateSuccess,
+  } = useUpdatePost(postId);
   const postForm = useRecoilValue(postFormState);
+  const resetPostForm = useResetRecoilState(postFormState);
 
   const handleBack = () => router.push('/posts');
+  const handleDraft = () => submitPostForm('draft');
+  const handlePublish = () => submitPostForm('published');
 
-  const handleDraft = () => {
-    mutate({ ...postForm, status: 'draft' });
-    router.push('/posts');
+  const submitPostForm = (status: PostStatus) => {
+    const {
+      title, html, authorUid, tags,
+    } = postForm;
+
+    if (postId) {
+      update({
+        title, html, authorUid, tags, status,
+      });
+      return;
+    }
+
+    create({ ...postForm, status });
   };
 
-  const handlePublish = () => {
-    mutate({ ...postForm, status: 'published' });
-    router.push('/posts');
-  };
+  const isLoading = isCreateLoading || isUpdateLoading;
+  const isSuccess = isCreateSuccess || isUpdateSuccess;
+
+  useEffect(() => {
+    if (isSuccess) {
+      resetPostForm();
+      router.push('/posts');
+    }
+  }, [isSuccess]);
 
   return (
     <Header>
@@ -31,12 +65,14 @@ function PostHeader() {
         Back
       </Button>
       <Row justify="flex-end" align="center">
-        <Button auto flat color="warning" onPress={handleDraft}>
+        <Button auto ghost color="warning" onPress={handleDraft} disabled={isLoading}>
           Draft
+          {isLoading && <StyledLoader color="currentColor" size="sm" />}
         </Button>
         <Spacer x={0.5} />
-        <Button auto flat color="success" onPress={handlePublish}>
+        <Button auto ghost color="success" onPress={handlePublish} disabled={isLoading}>
           Publish
+          {isLoading && <StyledLoader color="currentColor" size="sm" />}
         </Button>
       </Row>
     </Header>
@@ -54,4 +90,8 @@ const Header = styled.header`
   align-items: center;
   justify-items: space-between;
   background-color: #eee;
+`;
+
+const StyledLoader = styled(Loading)`
+  padding-left: 10px;
 `;
