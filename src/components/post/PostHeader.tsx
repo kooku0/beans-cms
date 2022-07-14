@@ -7,24 +7,54 @@ import {
   Button, Loading, Row, Spacer,
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import useCreatePost from '@/hooks/query/post/useCreatePost';
-import postFormState from '@/recoil/post/create/atom';
+import useUpdatePost from '@/hooks/query/post/useUpdatePost';
+import { PostStatus } from '@/models/post';
+import postFormState from '@/recoil/post/form/atom';
 
 function PostHeader() {
   const router = useRouter();
-  const { mutate, isLoading, isSuccess } = useCreatePost();
+  const postId = router?.query?.uid as string;
+  const {
+    mutate: create,
+    isLoading: isCreateLoading,
+    isSuccess: isCreateSuccess,
+  } = useCreatePost();
+  const {
+    mutate: update,
+    isLoading: isUpdateLoading,
+    isSuccess: isUpdateSuccess,
+  } = useUpdatePost(postId);
   const postForm = useRecoilValue(postFormState);
+  const resetPostForm = useResetRecoilState(postFormState);
 
   const handleBack = () => router.push('/posts');
+  const handleDraft = () => submitPostForm('draft');
+  const handlePublish = () => submitPostForm('published');
 
-  const handleDraft = () => mutate({ ...postForm, status: 'draft' });
+  const submitPostForm = (status: PostStatus) => {
+    const {
+      title, html, authorUid, tags,
+    } = postForm;
 
-  const handlePublish = () => mutate({ ...postForm, status: 'published' });
+    if (postId) {
+      update({
+        title, html, authorUid, tags, status,
+      });
+      return;
+    }
+
+    create({ ...postForm, status });
+  };
+
+  const isLoading = isCreateLoading || isUpdateLoading;
+  const isSuccess = isCreateSuccess || isUpdateSuccess;
 
   useEffect(() => {
     if (isSuccess) {
+      resetPostForm();
       router.push('/posts');
     }
   }, [isSuccess]);

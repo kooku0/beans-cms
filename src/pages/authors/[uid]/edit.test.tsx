@@ -3,7 +3,7 @@ import {
 } from '@testing-library/react';
 import { useRouter } from 'next/router';
 
-import { patchAuthor } from '@/api/author';
+import { updateAuthor } from '@/api/author';
 import { UpdateAuthorRequest } from '@/api/author/model';
 import FIXTURE_AUTHOR from '@/fixtures/author';
 import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
@@ -15,11 +15,11 @@ jest.mock('next/router', () => ({
   __esModule: true,
   useRouter: jest.fn(),
 }));
-jest.mock('@/components/common/sidebar/Sidebar');
 jest.mock('@/api/author');
 jest.mock('@/hooks/query/author/useFetchAuthor');
+jest.mock('@/components/common/sidebar/Sidebar');
 
-describe('EditPage', () => {
+describe('AuthorEditPage', () => {
   const uid = 'mock-uid';
   const author: UpdateAuthorRequest = {
     name: 'mock-name',
@@ -73,6 +73,6 @@ describe('EditPage', () => {
       await fireEvent.submit(screen.getByRole('button'));
     });
 
-    expect(patchAuthor).toBeCalledWith(uid, author);
+    expect(updateAuthor).toBeCalledWith(uid, author);
   });
 });

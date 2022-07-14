@@ -8,4 +8,4 @@ export type CreatePostResponse = {
   uid: string;
 };
 
-export type UpdatePostRequest = Partial<Omit<PostSchema, 'uid' | '_id'>>;
+export type UpdatePostRequest = Partial<Omit<PostSchema, 'uid' | '_id' | 'createdAt' | 'updatedAt'>>;

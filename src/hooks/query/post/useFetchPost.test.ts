@@ -6,7 +6,7 @@ import wrapper from '@/test/ReactQueryWrapper';
 
 import useFetchPost from './useFetchPost';
 
-jest.mock('@/api/author');
+jest.mock('@/api/post');
 
 describe('useFetchPost', () => {
   const mockResponse = FIXTURE_POST;

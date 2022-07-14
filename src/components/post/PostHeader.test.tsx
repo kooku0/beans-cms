@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { postForm as initialPostForm } from '@/fixtures/post';
 import useCreatePost from '@/hooks/query/post/useCreatePost';
+import useUpdatePost from '@/hooks/query/post/useUpdatePost';
 import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
@@ -16,10 +17,12 @@ jest.mock('next/router', () => ({
 }));
 jest.mock('@/api/post');
 jest.mock('@/hooks/query/post/useCreatePost');
+jest.mock('@/hooks/query/post/useUpdatePost');
 
 describe('PostHeader', () => {
   const mockPush = jest.fn();
-  const mutate = jest.fn();
+  const create = jest.fn();
+  const update = jest.fn();
 
   const renderPostHeader = () => render((
     <InjectTestingRecoil postForm={initialPostForm}>
@@ -32,9 +35,17 @@ describe('PostHeader', () => {
   beforeEach(() => {
     (useRouter as jest.Mock).mockImplementation(() => ({
       push: mockPush,
+      query: {
+        uid: given.uid,
+      },
     }));
     (useCreatePost as jest.Mock).mockImplementation(() => ({
-      mutate,
+      mutate: create,
+      isLoading: given.isLoading,
+      isSuccess: given.isSuccess,
+    }));
+    (useUpdatePost as jest.Mock).mockImplementation(() => ({
+      mutate: update,
       isLoading: given.isLoading,
       isSuccess: given.isSuccess,
     }));
@@ -50,32 +61,70 @@ describe('PostHeader', () => {
     });
   });
 
-  context('Draft 버튼을 누르면', () => {
-    it('draft status로 mutate 메서드를 호출한다.', async () => {
-      renderPostHeader();
+  context('query.uid가 있으면', () => {
+    given('uid', () => 'post-uid');
 
-      await act(async () => {
-        await fireEvent.click(screen.getByText(/Draft/i));
+    context('Draft 버튼을 누르면', () => {
+      it('draft status로 update 메서드를 호출한다.', async () => {
+        renderPostHeader();
+
+        await act(async () => {
+          await fireEvent.click(screen.getByText(/Draft/i));
+        });
+
+        expect(update).toHaveBeenCalledWith({
+          ...initialPostForm,
+          status: 'draft',
+        });
       });
+    });
 
-      expect(mutate).toHaveBeenCalledWith({
-        ...initialPostForm,
-        status: 'draft',
+    context('Publish 버튼을 누르면', () => {
+      it('publish status로 update 메서드를 호출한다.', async () => {
+        renderPostHeader();
+
+        await act(async () => {
+          await fireEvent.click(screen.getByText(/Publish/i));
+        });
+
+        expect(update).toHaveBeenCalledWith({
+          ...initialPostForm,
+          status: 'published',
+        });
       });
     });
   });
 
-  context('Publish 버튼을 누르면', () => {
-    it('publish status로 mutate 메서드를 호출한다.', async () => {
-      renderPostHeader();
+  context('query.uid가 없으면', () => {
+    given('uid', () => undefined);
 
-      await act(async () => {
-        await fireEvent.click(screen.getByText(/Publish/i));
+    context('Draft 버튼을 누르면', () => {
+      it('draft status로 create 메서드를 호출한다.', async () => {
+        renderPostHeader();
+
+        await act(async () => {
+          await fireEvent.click(screen.getByText(/Draft/i));
+        });
+
+        expect(create).toHaveBeenCalledWith({
+          ...initialPostForm,
+          status: 'draft',
+        });
       });
+    });
 
-      expect(mutate).toHaveBeenCalledWith({
-        ...initialPostForm,
-        status: 'published',
+    context('Publish 버튼을 누르면', () => {
+      it('publish status로 create 메서드를 호출한다.', async () => {
+        renderPostHeader();
+
+        await act(async () => {
+          await fireEvent.click(screen.getByText(/Publish/i));
+        });
+
+        expect(create).toHaveBeenCalledWith({
+          ...initialPostForm,
+          status: 'published',
+        });
       });
     });
   });

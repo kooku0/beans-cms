@@ -9,7 +9,7 @@ import {
 } from './model';
 import {
   createAuthor,
-  deleteAuthor, fetchAuthor, fetchAuthors, patchAuthor,
+  deleteAuthor, fetchAuthor, fetchAuthors, updateAuthor,
 } from '.';
 
 jest.mock('..');
@@ -76,7 +76,7 @@ describe('author API', () => {
     });
   });
 
-  describe('patchAuthor', () => {
+  describe('updateAuthor', () => {
     const uid = 'mock-uid';
     const author: UpdateAuthorRequest = {
       name: 'mock-name',
@@ -88,7 +88,7 @@ describe('author API', () => {
     });
 
     it('PATCH /authors/{uid}', async () => {
-      const response = await patchAuthor(uid, author);
+      const response = await updateAuthor(uid, author);
 
       expect(response).toBe(mockResponseData);
       expect(api).toBeCalledWith({

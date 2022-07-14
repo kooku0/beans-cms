@@ -4,7 +4,7 @@ import { MutableSnapshot, RecoilRoot } from 'recoil';
 
 import { CreatePostRequest } from '@/api/post/model';
 import { postForm as initialPostForm } from '@/fixtures/post';
-import postFormState from '@/recoil/post/create/atom';
+import postFormState from '@/recoil/post/form/atom';
 
 interface Props {
   postForm?: CreatePostRequest;

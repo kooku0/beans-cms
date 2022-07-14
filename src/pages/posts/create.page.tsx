@@ -1,22 +1,22 @@
-import styled from '@emotion/styled';
-import { RecoilRoot } from 'recoil';
+import { useEffect } from 'react';
 
-import PostForm from '@/components/post/PostForm';
+import { useResetRecoilState } from 'recoil';
+
+import PostForm from '@/components/post/form/PostForm';
 import PostHeader from '@/components/post/PostHeader';
+import postFormState from '@/recoil/post/form/atom';
 
 function CreatePostPage() {
+  const resetPostForm = useResetRecoilState(postFormState);
+
+  useEffect(() => resetPostForm(), []);
+
   return (
-    <RecoilRoot>
-      <Wrapper>
-        <PostHeader />
-        <PostForm />
-      </Wrapper>
-    </RecoilRoot>
+    <div>
+      <PostHeader />
+      <PostForm />
+    </div>
   );
 }
 
 export default CreatePostPage;
-
-const Wrapper = styled.div`
-  height: 100vh;
-`;

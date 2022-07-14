@@ -1,27 +1,39 @@
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-import { UpdatePostRequest } from '@/api/post/model';
-import Layout from '@/components/common/Layout';
+import { useRouter } from 'next/router';
+import { useResetRecoilState, useSetRecoilState } from 'recoil';
+
+import Loader from '@/components/common/Loader';
+import PostForm from '@/components/post/form/PostForm';
+import PostHeader from '@/components/post/PostHeader';
 import useFetchPost from '@/hooks/query/post/useFetchPost';
-import useUpdatePost from '@/hooks/query/post/useUpdatePost';
+import postFormState from '@/recoil/post/form/atom';
 
 function EditPage() {
+  const setPostForm = useSetRecoilState(postFormState);
+  const resetPostForm = useResetRecoilState(postFormState);
+
   const router = useRouter();
   const { uid } = router.query;
 
   const { data: post } = useFetchPost(uid as string);
-  const { mutate } = useUpdatePost(uid as string);
+
+  useEffect(() => resetPostForm(), []);
+  useEffect(() => {
+    if (post) {
+      setPostForm(post);
+    }
+  }, [post]);
 
   if (!post) {
-    return <div>loading</div>;
+    return <Loader />;
   }
 
-  const handleSubmit = (formData: UpdatePostRequest) => mutate(formData);
-
   return (
-    <Layout title="Edit Author">
-      {/* <AuthorForm author={post} onSubmit={handleSubmit} /> */}
-    </Layout>
+    <div>
+      <PostHeader />
+      <PostForm />
+    </div>
   );
 }
 

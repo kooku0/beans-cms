@@ -3,10 +3,11 @@ import {
 } from '@testing-library/react';
 import { useRouter } from 'next/router';
 
-import { patchAuthor } from '@/api/author';
-import { UpdateAuthorRequest } from '@/api/author/model';
-import FIXTURE_AUTHOR from '@/fixtures/author';
-import useFetchAuthor from '@/hooks/query/author/useFetchAuthor';
+import { updatePost } from '@/api/post';
+import { UpdatePostRequest } from '@/api/post/model';
+import FIXTURE_POST from '@/fixtures/post';
+import useFetchPost from '@/hooks/query/post/useFetchPost';
+import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import EditPage from './edit.page';
@@ -15,64 +16,62 @@ jest.mock('next/router', () => ({
   __esModule: true,
   useRouter: jest.fn(),
 }));
-jest.mock('@/components/common/sidebar/Sidebar');
-jest.mock('@/api/author');
-jest.mock('@/hooks/query/author/useFetchAuthor');
+jest.mock('@/api/post');
+jest.mock('@/hooks/query/post/useFetchPost');
 
-describe('EditPage', () => {
+describe('PostEditPage', () => {
   const uid = 'mock-uid';
-  const author: UpdateAuthorRequest = {
-    name: 'mock-name',
-    email: 'mock-email',
-    position: 'mock-position',
-    team: 'mock-team',
+  const post: UpdatePostRequest = {
+    title: FIXTURE_POST.title,
+    html: FIXTURE_POST.html,
+    authorUid: FIXTURE_POST.authorUid,
+    tags: FIXTURE_POST.tags,
   };
 
   const renderEditPage = () => render((
     <ReactQueryWrapper>
-      <EditPage />
+      <InjectTestingRecoil>
+        <EditPage />
+      </InjectTestingRecoil>
     </ReactQueryWrapper>
   ));
 
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (useRouter as jest.Mock).mockReturnValue({ query: { uid } });
-    (useFetchAuthor as jest.Mock).mockImplementation(() => ({ data: given.author }));
+    (useRouter as jest.Mock).mockReturnValue({ query: { uid }, push: jest.fn() });
+    (useFetchPost as jest.Mock).mockImplementation(() => ({ data: given.post }));
   });
 
-  given('author', () => FIXTURE_AUTHOR);
+  given('post', () => FIXTURE_POST);
 
-  context('author fetching이 완료되지 않았다면', () => {
-    given('author', () => undefined);
+  context('post fetching이 완료되지 않았다면', () => {
+    given('post', () => undefined);
 
-    it('loading이 보여야 한다.', () => {
+    it('loader가 보여야 한다.', () => {
       renderEditPage();
 
-      expect(screen.getByText(/loading/i)).toBeInTheDocument();
+      expect(screen.getByTestId('loader')).toBeInTheDocument();
     });
   });
 
-  context('author fetching이 완료되었다면', () => {
+  context('post fetching이 완료되었다면', () => {
     it('EditPage가 랜더링되어야 한다.', async () => {
       renderEditPage();
 
       await act(async () => {
-        await expect(screen.getByText(/Edit Author/i)).toBeInTheDocument();
+        await expect(screen.getByLabelText(/title/i)).toBeInTheDocument();
       });
     });
   });
 
-  it('author를 수정할 수 있어야한다.', async () => {
+  it('post를 수정할 수 있어야한다.', async () => {
     renderEditPage();
 
     await act(async () => {
-      Object.entries(author).forEach(([key, value]) => {
-        fireEvent.input(screen.getByLabelText(key), { target: { value } });
-      });
-      await fireEvent.submit(screen.getByRole('button'));
+      await fireEvent.click(screen.getByRole('button', { name: /Draft/i }));
     });
 
-    expect(patchAuthor).toBeCalledWith(uid, author);
+    expect(updatePost).toBeCalledWith(uid, { ...post, status: 'draft' });
   });
 });

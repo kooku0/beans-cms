@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { postForm as initialPostForm } from '@/fixtures/post';
-import postFormState from '@/recoil/post/create/atom';
+import postFormState from '@/recoil/post/form/atom';
 import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import RecoilObserver from '@/test/RecoilObserver';
 

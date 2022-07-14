@@ -6,7 +6,7 @@ import Select, {
 import { useRecoilState } from 'recoil';
 
 import useFetchAuthors from '@/hooks/query/author/useFetchAuthors';
-import postFormState from '@/recoil/post/create/atom';
+import postFormState from '@/recoil/post/form/atom';
 
 type Option = {
   value: string;
@@ -43,12 +43,12 @@ function AuthorSelect() {
     setPostForm((prev) => ({ ...prev, authorUid: (selectedOption as Option).value }));
   }, []);
 
-  const defaultValue = options.find((option) => option.label === authorUid);
+  const value = (options as Option[]).find((option) => option.value === authorUid);
 
   return (
     <Select
       aria-label="author"
-      defaultValue={defaultValue}
+      value={value}
       options={options}
       styles={customStyles}
       placeholder="Author"

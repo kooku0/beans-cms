@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { patchAuthor } from '@/api/author';
+import { updateAuthor } from '@/api/author';
 import { UpdateAuthorRequest } from '@/api/author/model';
 import wrapper from '@/test/ReactQueryWrapper';
 
@@ -21,16 +21,16 @@ describe('useUpdateAuthor', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (patchAuthor as jest.Mock).mockResolvedValue(null);
+    (updateAuthor as jest.Mock).mockResolvedValue(null);
   });
 
-  it('patchAuthor api가 호출되어야만 한다', async () => {
+  it('updateAuthor api가 호출되어야만 한다', async () => {
     const { result } = useUpdateAuthorHook();
 
     await act(async () => {
       await result.current.mutate(author);
     });
 
-    expect(patchAuthor).toBeCalledWith(uid, author);
+    expect(updateAuthor).toBeCalledWith(uid, author);
   });
 });
