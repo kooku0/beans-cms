@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Table } from '@nextui-org/react';
 import dayjs from 'dayjs';
 
 import Badge from '@/components/common/Badge';
@@ -52,36 +53,31 @@ function PostsTable({ posts }: Props) {
   };
 
   return (
-    <table
+    <Table
       aria-label="Posts table"
+      lined
       css={{
         height: 'auto',
         minWidth: '100%',
       }}
     >
-      <thead>
-        <tr>
-          {columns.map((column: Column) => (
-            <th key={column.uid} align={column.uid === 'actions' ? 'center' : 'left'}>
-              {column.name}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {
-          posts?.map((post) => (
-            <tr key={post.uid}>
-              {
-                columns.map((column) => (
-                  <td key={column.uid}>{renderCell(post, column.uid)}</td>
-                ))
-              }
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+      <Table.Header>
+        {columns.map((column: Column) => (
+          <Table.Column key={column.uid} hideHeader={column.uid === 'actions'} align={column.uid === 'actions' ? 'center' : 'start'}>
+            {column.name}
+          </Table.Column>
+        ))}
+      </Table.Header>
+      <Table.Body>
+        {posts.map((post) => (
+          <Table.Row key={post.uid}>
+            {columns.map((column) => (
+              <Table.Cell key={column.uid}>{renderCell(post, column.uid)}</Table.Cell>
+            ))}
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
   );
 }
 

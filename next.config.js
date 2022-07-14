@@ -6,9 +6,7 @@ const moduleExports = {
     ignoreDuringBuilds: true,
   },
   swcMinify: true,
-  experimental: {
-    emotion: true,
-  },
+  emotion: true,
   compiler: {
     reactRemoveProperties: process.env.NODE_ENV === 'production' && {
       properties: ['^data-test'],

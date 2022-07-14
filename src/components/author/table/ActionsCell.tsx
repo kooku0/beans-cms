@@ -28,7 +28,7 @@ function ActionsCell({ authorId }: Props) {
           </IconButton>
         </Tooltip>
       </Col>
-      <Col css={{ d: 'flex' }}>
+      <Col>
         <Tooltip content="Delete user" color="error">
           <IconButton onClick={handleDelete}>
             <Icon data-testid="delete" path={mdiDelete} size={1} color="#FF0080" />

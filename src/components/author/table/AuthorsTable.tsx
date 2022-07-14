@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { User } from '@nextui-org/react';
+import { Table, User } from '@nextui-org/react';
 
 import { AuthorSchema } from '@/models/author';
 import { Column } from '@/models/table';
@@ -22,50 +22,45 @@ function AuthorsTable({ authors }: Props) {
   const renderCell = (author: AuthorSchema, columnKey: React.Key) => {
     if (columnKey === 'name') {
       return (
-        <User squared src={author?.avatar} name={author.name} css={{ p: 0 }}>
-          {author?.email}
+        <User squared src={author.avatar} name={author.name} css={{ p: 0 }}>
+          {author.email}
         </User>
       );
     }
 
     if (columnKey === 'position') {
-      return <RoleCell position={author?.position} team={author?.team} />;
+      return <RoleCell position={author.position} team={author.team} />;
     }
 
     return <ActionsCell authorId={author.uid} />;
   };
 
   return (
-    <table
+    <Table
       aria-label="Authors table"
+      lined
       css={{
         height: 'auto',
         minWidth: '100%',
       }}
     >
-      <thead>
-        <tr>
-          {columns.map((column: Column) => (
-            <th key={column.uid} align={column.uid === 'actions' ? 'center' : 'left'}>
-              {column.name}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {
-          authors?.map((author) => (
-            <tr key={author.uid}>
-              {
-                columns.map((column) => (
-                  <td key={column.uid}>{renderCell(author, column.uid)}</td>
-                ))
-              }
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+      <Table.Header>
+        {columns.map((column: Column) => (
+          <Table.Column key={column.uid} hideHeader={column.uid === 'actions'} align={column.uid === 'actions' ? 'center' : 'start'}>
+            {column.name}
+          </Table.Column>
+        ))}
+      </Table.Header>
+      <Table.Body>
+        {authors.map((author) => (
+          <Table.Row key={author.uid}>
+            {columns.map((column) => (
+              <Table.Cell key={column.uid}>{renderCell(author, column.uid)}</Table.Cell>
+            ))}
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
   );
 }
 
