@@ -5,7 +5,7 @@ import { api } from '..';
 import {
   CreateAuthorRequest, CreateAuthorResponse,
   FetchAuthorResponse,
-  FetchAuthorsResponse, PatchAuthorRequest,
+  FetchAuthorsResponse, UpdateAuthorRequest,
 } from './model';
 import {
   createAuthor,
@@ -78,7 +78,7 @@ describe('author API', () => {
 
   describe('patchAuthor', () => {
     const uid = 'mock-uid';
-    const author: PatchAuthorRequest = {
+    const author: UpdateAuthorRequest = {
       name: 'mock-name',
     };
     const mockResponseData = null;

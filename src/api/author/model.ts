@@ -8,4 +8,4 @@ export type CreateAuthorResponse = {
   uid: string;
 };
 
-export type PatchAuthorRequest = Partial<Omit<AuthorSchema, 'uid' | '_id'>>;
+export type UpdateAuthorRequest = Partial<Omit<AuthorSchema, 'uid' | '_id'>>;
