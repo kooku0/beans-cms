@@ -3885,6 +3885,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/underscore@npm:^1":
+  version: 1.11.4
+  resolution: "@types/underscore@npm:1.11.4"
+  checksum: db9f8486bc851b732259e51f42d62aad1ae2158be5724612dc125ece5f5d61c51447f9dea28284c2a0f79cb95e788d01cb5ce97709880019213e69fab0dd1696
+  languageName: node
+  linkType: hard
+
 "@types/webidl-conversions@npm:*":
   version: 6.1.1
   resolution: "@types/webidl-conversions@npm:6.1.1"
@@ -4651,6 +4658,7 @@ __metadata:
     "@types/react-test-renderer": ^18
     "@types/sharp": ^0
     "@types/testing-library__jest-dom": ^5.14.3
+    "@types/underscore": ^1
     "@types/yup": ^0
     "@typescript-eslint/eslint-plugin": ^5.22.0
     "@typescript-eslint/parser": ^5.22.0
@@ -4697,6 +4705,7 @@ __metadata:
     recoil: ^0.7.2
     sharp: ^0.30.4
     typescript: ^4.7.3
+    underscore: ^1.13.4
     yup: ^0.32.11
   languageName: unknown
   linkType: soft
@@ -11431,6 +11440,13 @@ __metadata:
     has-symbols: ^1.0.3
     which-boxed-primitive: ^1.0.2
   checksum: b7a1cf5862b5e4b5deb091672ffa579aa274f648410009c81cca63fed3b62b610c4f3b773f912ce545bb4e31edc3138975b5bc777fc6e4817dca51affb6380e9
+  languageName: node
+  linkType: hard
+
+"underscore@npm:^1.13.4":
+  version: 1.13.4
+  resolution: "underscore@npm:1.13.4"
+  checksum: 6b04f66cd454e8793a552dc49c71e24e5208a29b9d9c0af988a96948af79103399c36fb15db43f3629bfed152f8b1fe94f44e1249e9d196069c0fc7edfadb636
   languageName: node
   linkType: hard
 
