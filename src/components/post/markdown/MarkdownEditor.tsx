@@ -3,7 +3,7 @@ import { ChangeEvent } from 'react';
 import styled from '@emotion/styled';
 import { FormElement } from '@nextui-org/react';
 
-import { ToolbarItemType } from '@/models/markdownEditor';
+import { MarkdownGrammar } from '@/models/markdownEditor';
 
 import MarkdownEditorToolbar from './MarkdownEditorToolbar';
 
@@ -17,16 +17,19 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
     setMarkdown(target.value);
   };
 
-  const handleClickToolbarItem = (type: ToolbarItemType) => {
-    switch (type) {
+  const handleClickToolbarItem = (item: MarkdownGrammar) => {
+    switch (item) {
+      case 'h1':
+        setMarkdown(`${markdown}\n\n# ${markdown}`);
+        break;
       case 'h2':
-        setMarkdown(`${markdown}\n\n` + `## ${markdown}`);
+        setMarkdown(`${markdown}\n\n## ${markdown}`);
         break;
       case 'h3':
-        setMarkdown(`${markdown}\n\n` + `### ${markdown}`);
+        setMarkdown(`${markdown}\n\n### ${markdown}`);
         break;
       case 'h4':
-        setMarkdown(`${markdown}\n\n` + `#### ${markdown}`);
+        setMarkdown(`${markdown}\n\n#### ${markdown}`);
         break;
       case 'bold':
         setMarkdown(`${markdown}**${markdown}**`);
@@ -47,7 +50,7 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
 
   return (
     <Wrapper>
-      <MarkdownEditorToolbar />
+      <MarkdownEditorToolbar onClickItem={handleClickToolbarItem} />
       <Textarea
         aria-label="markdown"
         autoComplete="off"
@@ -64,18 +67,20 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-`;
-
-const Textarea = styled.textarea`
-  flex-grow: 1;
   background-color: transparent; 
   border-radius: 16px;
   border: none;
   box-shadow: rgb(224, 224, 224) 0 0 0 2px;
-  padding: 12px;
-  resize: none;
+  overflow: hidden;
 
   &:focus-within, &:hover {
     box-shadow: #0072F5 0 0 0 2px;
   }
+`;
+
+const Textarea = styled.textarea`
+  flex-grow: 1;
+  padding: 12px;
+  resize: none;
+  border: none;
 `;

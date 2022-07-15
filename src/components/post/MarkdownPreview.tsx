@@ -23,14 +23,15 @@ export default MarkdownPreview;
 
 const Wrapper = styled.div`
   padding: 1rem;
+  padding-top: 0;
   height: 100vh;
   overflow: scroll;
 `;
 
 const Title = styled.h1`
-  font-size: 32px;
+  font-size: 48px;
   position: sticky;
-  top: -1rem;
+  top: 0;
   padding: 1rem 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.8);
