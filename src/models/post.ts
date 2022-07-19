@@ -3,7 +3,7 @@ export type PostSchema = {
   authorUid: string;
   status: PostStatus;
   title: string;
-  html: string;
+  markdown: string;
   tags: string[];
   createdAt: string;
   updatedAt: string;
@@ -17,6 +17,6 @@ export type CreatePostForm = {
   authorUid: string;
   status: CreatePostStatus;
   title: string;
-  html: string;
+  markdown: string;
   tags: string[];
 }

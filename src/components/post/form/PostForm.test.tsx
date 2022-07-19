@@ -32,13 +32,13 @@ describe('PostForm', () => {
     expect(setPostForm).toHaveBeenCalledWith({ ...initialPostForm, title: 'title' });
   });
 
-  it('contents를 작성할 수 있어야 한다.', async () => {
+  it('markdown을 작성할 수 있어야 한다.', async () => {
     renderPostForm();
 
     await act(async () => {
-      await fireEvent.change(screen.getByLabelText('contents'), { target: { value: 'contents' } });
+      await fireEvent.change(screen.getByLabelText('markdown'), { target: { value: 'markdown' } });
     });
 
-    expect(setPostForm).toHaveBeenCalledWith({ ...initialPostForm, html: 'contents' });
+    expect(setPostForm).toHaveBeenCalledWith({ ...initialPostForm, markdown: 'markdown' });
   });
 });

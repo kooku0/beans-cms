@@ -6,7 +6,7 @@ const post: PostSchema = {
   authorUid: 'author-uid',
   status: 'draft',
   title: 'title',
-  html: '<p>mock-html</p>',
+  markdown: '<p>mock-markdown</p>',
   tags: ['mock-tag'],
   createdAt: '2020-01-01T00:00:00.000Z',
   updatedAt: '2020-01-01T00:00:00.000Z',
@@ -17,7 +17,7 @@ export const postForm: CreatePostRequest = {
   status: 'draft',
   title: '',
   tags: [],
-  html: '',
+  markdown: '',
 };
 
 export default post;

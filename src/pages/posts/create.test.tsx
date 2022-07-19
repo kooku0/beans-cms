@@ -7,6 +7,8 @@ import ReactQueryWrapper from '@/test/ReactQueryWrapper';
 
 import CreatePage from './create.page';
 
+jest.mock('@/components/post/MarkdownPreview');
+
 describe('PostCreatePage', () => {
   const renderCreatePage = () => render((
     <ReactQueryWrapper>

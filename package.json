@@ -49,11 +49,13 @@
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.33.1",
+    "react-markdown": "^8.0.3",
     "react-query": "^3.38.1",
     "react-select": "^5.4.0",
     "react-spring": "^9.4.5",
     "react-use": "^17.3.2",
     "recoil": "^0.7.2",
+    "remark-gfm": "^3.0.1",
     "sharp": "^0.30.4",
     "underscore": "^1.13.4",
     "yup": "^0.32.11"

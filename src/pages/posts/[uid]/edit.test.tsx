@@ -18,12 +18,13 @@ jest.mock('next/router', () => ({
 }));
 jest.mock('@/api/post');
 jest.mock('@/hooks/query/post/useFetchPost');
+jest.mock('@/components/post/MarkdownPreview');
 
 describe('PostEditPage', () => {
   const uid = 'mock-uid';
   const post: UpdatePostRequest = {
     title: FIXTURE_POST.title,
-    html: FIXTURE_POST.html,
+    markdown: FIXTURE_POST.markdown,
     authorUid: FIXTURE_POST.authorUid,
     tags: FIXTURE_POST.tags,
   };

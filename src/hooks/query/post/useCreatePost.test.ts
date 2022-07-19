@@ -13,7 +13,7 @@ describe('useCreatePost', () => {
     authorUid: 'mock-author-uid',
     title: 'mock-title',
     status: 'draft',
-    html: 'mock-html',
+    markdown: 'mock-markdown',
     tags: ['mock-tag'],
   };
 

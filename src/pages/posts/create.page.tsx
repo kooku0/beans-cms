@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 
 import { useResetRecoilState } from 'recoil';
 
-import PostForm from '@/components/post/form/PostForm';
-import PostHeader from '@/components/post/PostHeader';
+import PostEditor from '@/components/post/PostEditor';
 import postFormState from '@/recoil/post/form/atom';
 
 function CreatePostPage() {
@@ -11,12 +10,7 @@ function CreatePostPage() {
 
   useEffect(() => resetPostForm(), []);
 
-  return (
-    <div>
-      <PostHeader />
-      <PostForm />
-    </div>
-  );
+  return <PostEditor />;
 }
 
 export default CreatePostPage;
