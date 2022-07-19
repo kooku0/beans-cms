@@ -35,7 +35,7 @@ describe('MarkdownEditor', () => {
 
         fireEvent.click(screen.getByRole('button', { name: 'h1' }));
 
-        expect(setMarkdown).toBeCalledWith('# MarkdownEditor');
+        expect(setMarkdown).toBeCalledWith(`# ${markdown}`);
       });
     });
 
@@ -45,7 +45,7 @@ describe('MarkdownEditor', () => {
 
         fireEvent.click(screen.getByRole('button', { name: 'h2' }));
 
-        expect(setMarkdown).toBeCalledWith('## MarkdownEditor');
+        expect(setMarkdown).toBeCalledWith(`## ${markdown}`);
       });
     });
 
@@ -55,7 +55,7 @@ describe('MarkdownEditor', () => {
 
         fireEvent.click(screen.getByRole('button', { name: 'h3' }));
 
-        expect(setMarkdown).toBeCalledWith('### MarkdownEditor');
+        expect(setMarkdown).toBeCalledWith(`### ${markdown}`);
       });
     });
 
@@ -65,7 +65,35 @@ describe('MarkdownEditor', () => {
 
         fireEvent.click(screen.getByRole('button', { name: 'h4' }));
 
-        expect(setMarkdown).toBeCalledWith('#### MarkdownEditor');
+        expect(setMarkdown).toBeCalledWith(`#### ${markdown}`);
+      });
+    });
+
+    context('when click link', () => {
+      it('should apply markdown grammar', () => {
+        renderMarkdownEditor();
+
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, cursorPosition);
+        fireEvent.click(screen.getByRole('button', { name: 'link' }));
+
+        expect(setMarkdown).toBeCalledWith('Markdown[link text]()Editor');
+      });
+    });
+
+    context('when click image', () => {
+      it('should apply markdown grammar', () => {
+        renderMarkdownEditor();
+
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, cursorPosition);
+        fireEvent.click(screen.getByRole('button', { name: 'image' }));
+
+        expect(setMarkdown).toBeCalledWith('Markdown![image]()Editor');
       });
     });
 
