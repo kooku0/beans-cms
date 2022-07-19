@@ -12,6 +12,7 @@ describe('MarkdownEditor', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+    setMarkdown.mockClear();
   });
 
   it('should render markdown', () => {
@@ -101,9 +102,55 @@ describe('MarkdownEditor', () => {
       it('should apply markdown grammar', () => {
         renderMarkdownEditor();
 
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, markdown.length);
         fireEvent.click(screen.getByRole('button', { name: 'bold' }));
 
-        expect(setMarkdown).not.toBeCalled();
+        expect(setMarkdown).toBeCalledWith('Markdown**Editor**');
+      });
+    });
+
+    context('when click italic', () => {
+      it('should apply markdown grammar', () => {
+        renderMarkdownEditor();
+
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, markdown.length);
+        fireEvent.click(screen.getByRole('button', { name: 'italic' }));
+
+        expect(setMarkdown).toBeCalledWith('Markdown*Editor*');
+      });
+    });
+
+    context('when click underline', () => {
+      it('should apply markdown grammar', () => {
+        renderMarkdownEditor();
+
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, markdown.length);
+        fireEvent.click(screen.getByRole('button', { name: 'underline' }));
+
+        expect(setMarkdown).toBeCalledWith('Markdown_Editor_');
+      });
+    });
+
+    context('when click strikethrough', () => {
+      it('should apply markdown grammar', () => {
+        renderMarkdownEditor();
+
+        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
+        const cursorPosition = markdown.indexOf('Editor');
+
+        textarea.setSelectionRange(cursorPosition, markdown.length);
+        fireEvent.click(screen.getByRole('button', { name: 'strikethrough' }));
+
+        expect(setMarkdown).toBeCalledWith('Markdown~~Editor~~');
       });
     });
   });
