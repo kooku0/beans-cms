@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 
 import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import ReactQueryWrapper from '@/test/ReactQueryWrapper';
@@ -16,9 +16,11 @@ describe('PostEditor', () => {
     </ReactQueryWrapper>
   ));
 
-  it('should render', () => {
+  it('should be render', async () => {
     const { container } = renderPostEditor();
 
-    expect(container).toBeInTheDocument();
+    await act(async () => {
+      await expect(container).toBeInTheDocument();
+    });
   });
 });

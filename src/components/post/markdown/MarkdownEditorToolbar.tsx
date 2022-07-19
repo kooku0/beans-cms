@@ -59,7 +59,7 @@ function MarkdownEditorToolbar({ onClickItem }: Props) {
   return (
     <Wrapper>
       {toolbarItems.map(({ type, icon }) => (
-        <ToolbarItem key={type} onClick={() => onClickItem(type)}>{icon}</ToolbarItem>
+        <ToolbarItem role="button" aria-label={type} key={type} onClick={() => onClickItem(type)}>{icon}</ToolbarItem>
       ))}
     </Wrapper>
   );

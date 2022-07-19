@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef } from 'react';
 
 import styled from '@emotion/styled';
-import { FormElement } from '@nextui-org/react';
 
 import { MarkdownGrammar } from '@/models/markdownEditor';
 
@@ -15,7 +14,7 @@ interface Props {
 function MarkdownEditor({ markdown, setMarkdown }: Props) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleChangeMarkdown = ({ target }: ChangeEvent<FormElement>) => {
+  const handleChangeMarkdown = ({ target }: ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdown(target.value);
   };
 
@@ -65,21 +64,6 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
         break;
       case 'h4':
         setMarkdown(`${before}#### ${after}`);
-        break;
-      case 'bold':
-        setMarkdown(`${before}** **${after}`);
-        break;
-      case 'italic':
-        setMarkdown(`${before}_ _${after}`);
-        break;
-      case 'strikethrough':
-        setMarkdown(`${before}~ ~${after}`);
-        break;
-      case 'link':
-        setMarkdown(`${before}[]()${after}`);
-        break;
-      case 'image':
-        setMarkdown(`${before}![]()${after}`);
         break;
       default:
         break;
