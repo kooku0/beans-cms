@@ -13,56 +13,84 @@ interface Props {
 }
 
 function MarkdownEditor({ markdown, setMarkdown }: Props) {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleChangeMarkdown = ({ target }: ChangeEvent<FormElement>) => {
     setMarkdown(target.value);
   };
 
-  const handleClickToolbarItem = (item: MarkdownGrammar) => {
-    const cursorPosition = textareaRef.current?.selectionStart;
-    const sliced = markdown.slice(0, cursorPosition);
-    const lastNewLineIndex = sliced.lastIndexOf('\n');
-    const textBeforCursor = sliced.slice(0, lastNewLineIndex + 1);
-    const textAfterCursor = markdown.slice(lastNewLineIndex + 1, markdown.length);
+  const handleClickToolbarItem = (grammar: MarkdownGrammar) => {
+    const cursorPosition = textAreaRef.current!.selectionStart;
+
+    const newLineGrammars = ['h1', 'h2', 'h3', 'h4'];
+    const rangeGrammars = ['bold', 'italic', 'underline', 'strikethrough'];
+    const inlineGrammars = ['link', 'image'];
+
+    const [textBeforeCursor, textAfterCursor] = slicedTextBeforeAfterCursor(
+      newLineGrammars.includes(grammar), cursorPosition,
+    );
+
+    applyMarkdownGrammar(grammar, textBeforeCursor, textAfterCursor);
   };
 
-  const applyMarkdownGrammar = (grammar: MarkdownGrammar) => {
-    // switch (item) {
-    //   case 'h1':
-    //     setMarkdown(`${markdown}\n\n# ${markdown}`);
-    //     break;
-    //   case 'h2':
-    //     setMarkdown(`${markdown}\n\n## ${markdown}`);
-    //     break;
-    //   case 'h3':
-    //     setMarkdown(`${markdown}\n\n### ${markdown}`);
-    //     break;
-    //   case 'h4':
-    //     setMarkdown(`${markdown}\n\n#### ${markdown}`);
-    //     break;
-    //   case 'bold':
-    //     setMarkdown(`${markdown}**${markdown}**`);
-    //     break;
-    //   case 'italic':
-    //     setMarkdown(`${markdown}_${markdown}_`);
-    //     break;
-    //   case 'link':
-    //     setMarkdown(`${markdown}[${markdown}](${markdown})`);
-    //     break;
-    //   case 'image':
-    //     setMarkdown(`${markdown}![${markdown}](${markdown})`);
-    //     break;
-    //   default:
-    //     break;
-    // }
+  const slicedTextBeforeAfterCursor = (
+    isNewLineGrammar: boolean,
+    cursorPosition: number) => {
+    if (isNewLineGrammar) {
+      const sliced = markdown.slice(0, cursorPosition);
+      const lastNewLineIndex = sliced.lastIndexOf('\n');
+
+      const textBeforeCursor = sliced.slice(0, lastNewLineIndex + 1);
+      const textAfterCursor = markdown.slice(lastNewLineIndex + 1, markdown.length);
+
+      return [textBeforeCursor, textAfterCursor];
+    }
+
+    const textBeforeCursor = markdown.slice(0, cursorPosition);
+    const textAfterCursor = markdown.slice(cursorPosition, markdown.length);
+
+    return [textBeforeCursor, textAfterCursor];
+  };
+
+  const applyMarkdownGrammar = (grammar: MarkdownGrammar, before: string, after: string) => {
+    switch (grammar) {
+      case 'h1':
+        setMarkdown(`${before}# ${after}`);
+        break;
+      case 'h2':
+        setMarkdown(`${before}## ${after}`);
+        break;
+      case 'h3':
+        setMarkdown(`${before}### ${after}`);
+        break;
+      case 'h4':
+        setMarkdown(`${before}#### ${after}`);
+        break;
+      case 'bold':
+        setMarkdown(`${before}** **${after}`);
+        break;
+      case 'italic':
+        setMarkdown(`${before}_ _${after}`);
+        break;
+      case 'strikethrough':
+        setMarkdown(`${before}~ ~${after}`);
+        break;
+      case 'link':
+        setMarkdown(`${before}[]()${after}`);
+        break;
+      case 'image':
+        setMarkdown(`${before}![]()${after}`);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
     <Wrapper>
       <MarkdownEditorToolbar onClickItem={handleClickToolbarItem} />
-      <Textarea
-        ref={textareaRef}
+      <TextArea
+        ref={textAreaRef}
         aria-label="markdown"
         autoComplete="off"
         value={markdown}
@@ -89,7 +117,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Textarea = styled.textarea`
+const TextArea = styled.textarea`
   flex-grow: 1;
   padding: 12px;
   resize: none;
