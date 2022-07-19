@@ -19,47 +19,38 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
   };
 
   const handleClickToolbarItem = (grammar: MarkdownGrammar) => {
-    const cursorPosition = textAreaRef.current!.selectionStart;
+    const { selectionStart, selectionEnd } = textAreaRef.current as HTMLTextAreaElement;
 
-    const [textBeforeCursor, textAfterCursor] = slicedTextBeforeAfterCursor(
-      grammar, cursorPosition,
-    );
+    const [textBeforeCursor, textAfterCursor, innerText] = slicedTextBeforeAfterCursor(
+      grammar, selectionStart, selectionEnd,
+    ) as [string, string, string];
 
-    applyMarkdownGrammar(grammar, textBeforeCursor, textAfterCursor);
+    return applyMarkdownGrammar(textBeforeCursor, textAfterCursor, innerText)[grammar];
   };
 
-  const applyMarkdownGrammar = (grammar: MarkdownGrammar, before: string, after: string) => {
-    switch (grammar) {
-      case 'h1':
-        setMarkdown(`${before}# ${after}`);
-        break;
-      case 'h2':
-        setMarkdown(`${before}## ${after}`);
-        break;
-      case 'h3':
-        setMarkdown(`${before}### ${after}`);
-        break;
-      case 'h4':
-        setMarkdown(`${before}#### ${after}`);
-        break;
-      case 'link':
-        setMarkdown(`${before}[link text]()${after}`);
-        break;
-      case 'image':
-        setMarkdown(`${before}![image]()${after}`);
-        break;
-      default:
-        break;
-    }
-  };
+  const applyMarkdownGrammar = (
+    before: string, after: string, inner: string): { [key in MarkdownGrammar]: void } => ({
+    h1: setMarkdown(`${before}# ${after}`),
+    h2: setMarkdown(`${before}## ${after}`),
+    h3: setMarkdown(`${before}### ${after}`),
+    h4: setMarkdown(`${before}#### ${after}`),
+    bold: setMarkdown(`${before}**${inner}**${after}`),
+    italic: setMarkdown(`${before}*${inner}*${after}`),
+    underline: setMarkdown(`${before}_${inner}_${after}`),
+    strikethrough: setMarkdown(`${before}~~${inner}~~${after}`),
+    link: setMarkdown(`${before}[link text]()${after}`),
+    image: setMarkdown(`${before}![image]()${after}`),
+  });
 
-  const slicedTextBeforeAfterCursor = (grammar: MarkdownGrammar, cursorPosition: number) => {
+  const slicedTextBeforeAfterCursor = (
+    // eslint-disable-next-line consistent-return
+    grammar: MarkdownGrammar, selectionStart: number, selectionEnd: number) => {
     const newLineGrammars = ['h1', 'h2', 'h3', 'h4'];
     const rangeGrammars = ['bold', 'italic', 'underline', 'strikethrough'];
     const inlineGrammars = ['link', 'image'];
 
     if (newLineGrammars.includes(grammar)) {
-      const sliced = markdown.slice(0, cursorPosition);
+      const sliced = markdown.slice(0, selectionStart);
       const lastNewLineIndex = sliced.lastIndexOf('\n');
 
       const textBeforeCursor = sliced.slice(0, lastNewLineIndex + 1);
@@ -69,13 +60,19 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
     }
 
     if (inlineGrammars.includes(grammar)) {
-      const textBeforeCursor = markdown.slice(0, cursorPosition);
-      const textAfterCursor = markdown.slice(cursorPosition, markdown.length);
+      const textBeforeCursor = markdown.slice(0, selectionStart);
+      const textAfterCursor = markdown.slice(selectionStart, markdown.length);
 
       return [textBeforeCursor, textAfterCursor];
     }
 
-    return ['', ''];
+    if (rangeGrammars.includes(grammar)) {
+      const textBeforeCursor = markdown.slice(0, selectionStart);
+      const textAfterCursor = markdown.slice(selectionEnd, markdown.length);
+      const innerText = markdown.slice(selectionStart, selectionEnd);
+
+      return [textBeforeCursor, textAfterCursor, innerText];
+    }
   };
 
   return (
