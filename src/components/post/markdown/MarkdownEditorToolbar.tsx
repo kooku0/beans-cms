@@ -1,19 +1,24 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 
+import { ReactElement } from 'react';
+
 import styled from '@emotion/styled';
 import {
   mdiFormatBold, mdiFormatItalic, mdiFormatStrikethrough, mdiFormatUnderline, mdiImage, mdiLink,
 } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import { MarkdownGrammar, ToolbarItem } from '@/models/markdownEditor';
+import { MarkdownGrammar } from '@/models/markdownEditor';
 
 interface Props {
   onClickItem: (item: MarkdownGrammar) => void;
 }
 
 function MarkdownEditorToolbar({ onClickItem }: Props) {
-  const toolbarItems: ToolbarItem[] = [
+  const toolbarItems: {
+    type: MarkdownGrammar;
+    icon: ReactElement;
+  }[] = [
     {
       type: 'h1',
       icon: <Heading>H<small>1</small></Heading>,
