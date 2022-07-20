@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 
 import styled from '@emotion/styled';
 import {
-  mdiFormatBold, mdiFormatItalic, mdiFormatStrikethrough, mdiFormatUnderline, mdiImage, mdiLink,
+  mdiFormatBold, mdiFormatItalic, mdiFormatStrikethrough, mdiImage, mdiLink,
 } from '@mdi/js';
 import Icon from '@mdi/react';
 
@@ -42,10 +42,6 @@ function MarkdownEditorToolbar({ onClickItem }: Props) {
     {
       type: 'italic',
       icon: <Icon path={mdiFormatItalic} size={1} />,
-    },
-    {
-      type: 'underline',
-      icon: <Icon path={mdiFormatUnderline} size={1} />,
     },
     {
       type: 'strikethrough',

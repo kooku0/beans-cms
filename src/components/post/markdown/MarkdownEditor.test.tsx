@@ -126,20 +126,6 @@ describe('MarkdownEditor', () => {
       });
     });
 
-    context('when click underline', () => {
-      it('should apply markdown grammar', () => {
-        renderMarkdownEditor();
-
-        const textarea = screen.getByLabelText('markdown') as HTMLTextAreaElement;
-        const cursorPosition = markdown.indexOf('Editor');
-
-        textarea.setSelectionRange(cursorPosition, markdown.length);
-        fireEvent.click(screen.getByRole('button', { name: 'underline' }));
-
-        expect(setMarkdown).toBeCalledWith('Markdown_Editor_');
-      });
-    });
-
     context('when click strikethrough', () => {
       it('should apply markdown grammar', () => {
         renderMarkdownEditor();

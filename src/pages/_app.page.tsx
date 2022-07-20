@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     defaultOptions: {
       queries: {
         retry: false,
+        keepPreviousData: true,
       },
     },
   }));
