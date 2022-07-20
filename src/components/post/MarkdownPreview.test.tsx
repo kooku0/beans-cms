@@ -7,6 +7,8 @@ import MarkdownPreview from './MarkdownPreview';
 
 jest.mock('react-markdown');
 jest.mock('remark-gfm', () => ({}));
+jest.mock('rehype-highlight', () => ({}));
+jest.mock('rehype-raw', () => ({}));
 
 describe('MarkdownPreview', () => {
   const renderMarkdownPreview = () => render((
