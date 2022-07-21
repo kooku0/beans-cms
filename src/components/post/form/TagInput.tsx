@@ -1,5 +1,5 @@
 import {
-  ChangeEventHandler, KeyboardEventHandler, useId, useState,
+  ChangeEventHandler, KeyboardEventHandler, useState,
 } from 'react';
 
 import styled from '@emotion/styled';
@@ -11,7 +11,6 @@ import postFormState from '@/recoil/post/form/atom';
 
 function TagInput() {
   const [{ tags }, setPostForm] = useRecoilState(postFormState);
-  const id = useId();
   const [value, setValue] = useState('');
 
   const tagIndicators = [',', 'Enter'];
@@ -39,7 +38,7 @@ function TagInput() {
           {tag}
         </Badge>
       ))}
-      <Input id={id} value={value} aria-label="tags" placeholder="tags" onChange={handleChange} onKeyDown={handleKeyDownDebounced} />
+      <Input value={value} aria-label="tags" placeholder="tags" onChange={handleChange} onKeyDown={handleKeyDownDebounced} />
     </Wrapper>
   );
 }
