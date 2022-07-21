@@ -18,6 +18,7 @@ const Badge = styled.span<Props>`
   box-shadow: 1px 2px 5px 0px rgb(0 0 0 / 5%);
   align-items: center;
   align-self: center;
+  white-space: nowrap;
   background-color: ${({ bordered, bg }) => (bordered ? 'transparent' : (bg || '#042F14'))};
   color: ${({ color }) => color || '#41EC8B'};
 
