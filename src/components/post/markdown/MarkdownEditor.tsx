@@ -25,21 +25,20 @@ function MarkdownEditor({ markdown, setMarkdown }: Props) {
       grammar, selectionStart, selectionEnd,
     ) as [string, string, string];
 
-    return applyMarkdownGrammar(textBeforeCursor, textAfterCursor, innerText)[grammar];
+    return applyMarkdownGrammar(textBeforeCursor, textAfterCursor, innerText)[grammar]();
   };
 
   const applyMarkdownGrammar = (
-    before: string, after: string, inner: string): { [key in MarkdownGrammar]: void } => ({
-    h1: setMarkdown(`${before}# ${after}`),
-    h2: setMarkdown(`${before}## ${after}`),
-    h3: setMarkdown(`${before}### ${after}`),
-    h4: setMarkdown(`${before}#### ${after}`),
-    bold: setMarkdown(`${before}**${inner}**${after}`),
-    italic: setMarkdown(`${before}*${inner}*${after}`),
-    underline: setMarkdown(`${before}_${inner}_${after}`),
-    strikethrough: setMarkdown(`${before}~~${inner}~~${after}`),
-    link: setMarkdown(`${before}[link text]()${after}`),
-    image: setMarkdown(`${before}![image]()${after}`),
+    before: string, after: string, inner: string) => ({
+    h1: () => setMarkdown(`${before}# ${after}`),
+    h2: () => setMarkdown(`${before}## ${after}`),
+    h3: () => setMarkdown(`${before}### ${after}`),
+    h4: () => setMarkdown(`${before}#### ${after}`),
+    bold: () => setMarkdown(`${before}**${inner}**${after}`),
+    italic: () => setMarkdown(`${before}*${inner}*${after}`),
+    strikethrough: () => setMarkdown(`${before}~~${inner}~~${after}`),
+    link: () => setMarkdown(`${before}[link text]()${after}`),
+    image: () => setMarkdown(`${before}![image]()${after}`),
   });
 
   const slicedTextBeforeAfterCursor = (

@@ -2,9 +2,13 @@ import ReactMarkdown from 'react-markdown';
 
 import styled from '@emotion/styled';
 import { useRecoilValue } from 'recoil';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
 import postFormState from '@/recoil/post/form/atom';
+
+import 'github-markdown-css/github-markdown-light.css';
 
 function MarkdownPreview() {
   const { markdown, title } = useRecoilValue(postFormState);
@@ -12,7 +16,13 @@ function MarkdownPreview() {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      <ReactMarkdown
+        className="markdown-body"
+        rehypePlugins={[
+          rehypeRaw,
+          rehypeHighlight]}
+        remarkPlugins={[remarkGfm]}
+      >
         {markdown}
       </ReactMarkdown>
     </Wrapper>
@@ -26,6 +36,7 @@ const Wrapper = styled.div`
   padding-top: 0;
   height: 100vh;
   overflow: scroll;
+  background-color: white;
 `;
 
 const Title = styled.h1`
