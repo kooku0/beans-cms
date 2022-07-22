@@ -1,4 +1,6 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  act, fireEvent, render, screen,
+} from '@testing-library/react';
 
 import { postForm as initialPostForm } from '@/fixtures/post';
 import postFormState from '@/recoil/post/form/atom';
@@ -6,6 +8,8 @@ import InjectTestingRecoil from '@/test/InjectTestingRecoil';
 import RecoilObserver from '@/test/RecoilObserver';
 
 import TagInput from './TagInput';
+
+jest.useFakeTimers();
 
 describe('TagInput', () => {
   const tagIndicators = [',', 'Enter'];
@@ -22,6 +26,10 @@ describe('TagInput', () => {
       <TagInput />
     </InjectTestingRecoil>
   ));
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   context('tag를 클릭하면', () => {
     given('tags', () => ['tag1', 'tag2']);
@@ -44,13 +52,17 @@ describe('TagInput', () => {
 
     tagIndicators.forEach((indicator) => {
       describe(`tagIndicator: ${indicator}`, () => {
-        it('tag가 추가된다.', () => {
+        it('tag가 추가된다.', async () => {
           renderTagInput();
 
           const input = screen.getByLabelText('tags');
 
-          fireEvent.change(input, { target: { value: 'tag3' } });
-          fireEvent.keyDown(input, { key: ',' });
+          await act(async () => {
+            fireEvent.change(input, { target: { value: 'tag3' } });
+            fireEvent.keyDown(input, { key: indicator });
+
+            jest.runAllTimers();
+          });
 
           expect(setPostForm).toHaveBeenCalledWith({
             ...initialPostForm,
@@ -59,13 +71,17 @@ describe('TagInput', () => {
           expect(screen.getByText('tag3')).toBeInTheDocument();
         });
 
-        it('input이 clear 된다.', () => {
+        it('input이 clear 된다.', async () => {
           renderTagInput();
 
           const input = screen.getByLabelText('tags');
 
-          fireEvent.change(input, { target: { value: 'tag3' } });
-          fireEvent.keyDown(input, { key: ',' });
+          await act(async () => {
+            fireEvent.change(input, { target: { value: 'tag3' } });
+            fireEvent.keyDown(input, { key: indicator });
+
+            jest.runAllTimers();
+          });
 
           expect(input).toHaveValue('');
         });
