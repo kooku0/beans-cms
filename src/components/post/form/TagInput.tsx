@@ -1,16 +1,16 @@
 import {
-  ChangeEventHandler, KeyboardEventHandler, useId, useState,
+  ChangeEventHandler, KeyboardEventHandler, useState,
 } from 'react';
 
 import styled from '@emotion/styled';
 import { useRecoilState } from 'recoil';
+import { debounce } from 'underscore';
 
 import Badge from '@/components/common/Badge';
 import postFormState from '@/recoil/post/form/atom';
 
 function TagInput() {
   const [{ tags }, setPostForm] = useRecoilState(postFormState);
-  const id = useId();
   const [value, setValue] = useState('');
 
   const tagIndicators = [',', 'Enter'];
@@ -21,30 +21,24 @@ function TagInput() {
       setValue('');
     }
   };
+  const handleKeyDownDebounced = debounce(handleKeyDown, 100);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     setValue(target.value.replace(',', ''));
   };
 
-  const handleRemoveTag = (tag: string) => {
+  const removeTag = (tag: string) => {
     setPostForm((prev) => ({ ...prev, tags: prev.tags.filter((t) => t !== tag) }));
   };
 
   return (
     <Wrapper>
-      {
-        tags.map((tag) => (
-          <Badge
-            key={tag}
-            bordered
-            onClick={() => handleRemoveTag(tag)}
-          >
-            {tag}
-          </Badge>
-        ))
-      }
-      <label htmlFor={id} hidden>tags</label>
-      <Input id={id} value={value} placeholder="tags" onChange={handleChange} onKeyDown={handleKeyDown} />
+      {tags.map((tag) => (
+        <Badge key={tag} bordered onClick={() => removeTag(tag)}>
+          {tag}
+        </Badge>
+      ))}
+      <Input value={value} aria-label="tags" placeholder="tags" onChange={handleChange} onKeyDown={handleKeyDownDebounced} />
     </Wrapper>
   );
 }

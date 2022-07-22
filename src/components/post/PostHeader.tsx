@@ -7,7 +7,7 @@ import {
   Button, Loading, Row, Spacer,
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { pick } from 'underscore';
 
 import useCreatePost from '@/hooks/query/post/useCreatePost';
@@ -30,7 +30,6 @@ function PostHeader() {
     isSuccess: isUpdateSuccess,
   } = useUpdatePost(postId);
   const postForm = useRecoilValue(postFormState);
-  const resetPostForm = useResetRecoilState(postFormState);
 
   const handleBack = () => router.push('/posts');
   const handleDraft = () => submitPostForm('draft');
@@ -50,7 +49,6 @@ function PostHeader() {
 
   useEffect(() => {
     if (isSuccess) {
-      resetPostForm();
       router.push('/posts');
     }
   }, [isSuccess]);

@@ -1,10 +1,10 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect } from 'react';
 
 import styled from '@emotion/styled';
 import {
   FormElement, Input, Spacer,
 } from '@nextui-org/react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import postFormState from '@/recoil/post/form/atom';
 
@@ -14,6 +14,9 @@ import AuthorSelect from './AuthorSelect';
 import TagInput from './TagInput';
 
 function PostForm() {
+  const resetPostForm = useResetRecoilState(postFormState);
+  useEffect(() => resetPostForm, []);
+
   const [{ title, markdown }, setPostForm] = useRecoilState(postFormState);
 
   const handleTitleChange = ({ target }: ChangeEvent<FormElement>) => {
