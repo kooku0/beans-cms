@@ -25,7 +25,3 @@ async function database(req: NextApiRequestWithDb, res: NextApiResponse, next: N
 }
 
 export default database;
-
-// const middleware = createRouter<NextApiRequestWithDb, NextApiResponse>().use(database);
-
-// export default middleware;
