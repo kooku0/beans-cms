@@ -11,10 +11,9 @@ const router = createRouter<NextApiRequest, NextApiResponse>();
 const form = new IncomingForm();
 
 router
-  // .use(parseMultipartForm)
   .post(async (req, res) => {
     form.parse(req, (err, fields, files) => {
-      const file = files.image[0];
+      const file = (files as any).image[0];
       const { filepath, originalFilename: fileName } = file;
 
       const fileStream = fs.createReadStream(filepath);
