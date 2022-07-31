@@ -1,4 +1,6 @@
-import formidable from 'formidable';
+import fs from 'fs';
+
+import { IncomingForm } from 'formidable';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createRouter } from 'next-connect';
 
@@ -6,25 +8,20 @@ import { client, command } from '@/middlewares/s3';
 
 const router = createRouter<NextApiRequest, NextApiResponse>();
 
-const form = formidable(); // multiples means req.files will be an array
-
-async function parseMultipartForm(req, res, next) {
-  form.parse(req, (err, fields, files) => {
-    if (!err) {
-      req.body = fields; // sets the body field in the request object
-      req.files = files; // sets the files field in the request object
-    }
-    next(); // continues to the next middleware or to the route
-  });
-}
+const form = new IncomingForm();
 
 router
-  .use(parseMultipartForm)
+  // .use(parseMultipartForm)
   .post(async (req, res) => {
-    const { image } = req.files;
-    const buffer = Buffer.from(JSON.stringify(image));
-    console.log(buffer);
-    client.send(command(buffer));
+    form.parse(req, (err, fields, files) => {
+      const file = files.image[0];
+      const { filepath, originalFilename: fileName } = file;
+
+      const fileStream = fs.createReadStream(filepath);
+
+      client.send(command(fileName, fileStream));
+    });
+
     res.end('ok');
   });
 

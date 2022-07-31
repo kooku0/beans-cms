@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 
+import axios from 'axios';
+
 import Layout from '@/components/common/Layout';
 
 function HomePage() {
@@ -16,17 +18,16 @@ function HomePage() {
     const formData = new FormData();
     formData.append('image', image);
 
-    const response = await fetch('/api/images', {
+    const response = await axios({
       method: 'POST',
+      url: '/api/images',
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      body: formData,
+      data: formData,
     });
 
-    const json = await response.json();
-
-    console.log(json);
+    console.log(response);
   };
 
   return (
