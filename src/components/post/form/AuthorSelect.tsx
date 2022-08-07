@@ -40,7 +40,10 @@ function AuthorSelect() {
   };
 
   const handleChange = useCallback((selectedOption: SingleValue<Option | GroupBase<Option>>) => {
-    setPostForm((prev) => ({ ...prev, authorUid: (selectedOption as Option).value }));
+    setPostForm((prev) => ({
+      ...prev,
+      authorUid: (selectedOption as Option).value,
+    }));
   }, []);
 
   const value = (options as Option[]).find((option) => option.value === authorUid);
