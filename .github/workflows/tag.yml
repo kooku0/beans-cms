@@ -1,0 +1,26 @@
+name: Trigger Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag in "vYYYYMMDDHHMM" format ex. "v202206071630"
+        required: true
+
+env:
+  SENTRY_RELEASE: ${GITHUB_REF#refs/*/}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use release
+        run: echo $SENTRY_RELEASE
+
+      - name: Set Sentry Release env file
+        run: |
+          echo KARROTPAY_SENTRY_RELEASE=$SENTRY_RELEASE >> .env
+          cat .env
